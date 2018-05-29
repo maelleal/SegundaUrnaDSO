@@ -34,7 +34,7 @@ public class TelaCandidato {
         System.out.println("digite o nome");
         String nome = cadastroCandidato.nextLine();
         System.out.println("escolha o partido");
-        PartidoPolitico partido = cadastroCandidato.nextInt();
+       // int partidos = cadastroCandidato.nextInt();
         System.out.println("digite o numero do candidato");
         int numeroCandidato = cadastroCandidato.nextInt();
         ctrlCandidato.cadastraCandidato(nome, partido, numeroCandidato);
