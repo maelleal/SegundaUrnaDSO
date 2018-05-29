@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.controladores;
+package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
-import br.UFSC.INE5605.urnaDSO.telas.TelaUrna;
-import br.UFSC.INE5605.urnaDSO.entidades.Urna;
-import br.UFSC.INE5605.urnaDSO.entidades.Voto;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaUrna;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Urna;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Voto;
 import java.util.ArrayList;
 
 /**

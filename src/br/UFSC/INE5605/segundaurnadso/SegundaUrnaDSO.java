@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package segundaurnadso;
+package br.UFSC.INE5605.segundaurnadso;
+
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPrincipal;
 
 /**
  *
@@ -15,7 +17,10 @@ public class SegundaUrnaDSO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ControladorPrincipal ctrlPrincipal; 
+        ctrlPrincipal = new ControladorPrincipal();
+        ctrlPrincipal.inicializa();
+ 
     }
     
 }

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.telas;
+package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import br.UFSC.INE5605.urnaDSO.controladores.ControladorPrincipal;
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPrincipal;
 import java.util.Scanner;
 
 /**

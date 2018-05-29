@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.entidades;
-import br.UFSC.INE5605.urnaDSO.entidades.Cargo;
+package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
 /**
  *
@@ -13,14 +12,9 @@ import br.UFSC.INE5605.urnaDSO.entidades.Cargo;
 public class Voto {
     
     private Candidato candidato;
-    private Cargo cargo;
  
-    
-
-    public Voto(Candidato candidato, Cargo cargo) {
+    public Voto(Candidato candidato){
         this.candidato = candidato;
-        this.cargo = cargo;
-       
     }
 
     public Voto() {
@@ -33,17 +27,6 @@ public class Voto {
 
     public void setCandidato(Candidato candidato) {
         this.candidato = candidato;
-    }
+    }    
 
-    public Cargo getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
-    }
-
-    
-    
-    
 }

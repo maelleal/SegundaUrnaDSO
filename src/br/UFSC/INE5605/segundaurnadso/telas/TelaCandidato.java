@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.telas;
+package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import br.UFSC.INE5605.urnaDSO.controladores.ControladorCadastro;
-import br.UFSC.INE5605.urnaDSO.controladores.ControladorCandidato;
-import br.UFSC.INE5605.urnaDSO.entidades.Candidato;
-import br.UFSC.INE5605.urnaDSO.entidades.Cargo;
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import java.util.Scanner;
 
 /**
@@ -33,30 +33,20 @@ public class TelaCandidato {
         System.out.println(""); 
         System.out.println("digite o nome");
         String nome = cadastroCandidato.nextLine();
-        System.out.println("digite o cargo ");
-        String cargo = cadastroCandidato.nextLine();
-        System.out.println("digite o partido");
-        String partido = cadastroCandidato.nextLine();
+        System.out.println("escolha o partido");
+        PartidoPolitico partido = cadastroCandidato.nextInt();
         System.out.println("digite o numero do candidato");
         int numeroCandidato = cadastroCandidato.nextInt();
-        ctrlCandidato.cadastraCandidato(nome, cargo, partido, numeroCandidato);
+        ctrlCandidato.cadastraCandidato(nome, partido, numeroCandidato);
         System.out.println("Candidato cadastrado com sucesso.");
-        ctrlCandidato.exibeMenuPrincipal();
-               
+        ctrlCandidato.exibeMenuPrincipal();           
     }
     
-    
-    public void incluiDeputado () {
-        System.out.println("Candidato a Deputado Adcicionado com Sucesso");
-    }
     public void incluiGovernador () {
         System.out.println("Candidato a Governador Adcicionado com Sucesso");
     }
     public void candidatoExistente() {
         System.out.println("Candidato Existente");
-    }
-    public void excluiDeputado () {
-        System.out.println("Candidato a Deputado Excluído com Sucesso");
     }
     public void excluiGovernador () {
         System.out.println("Candidato a Governador Excluído com Sucesso");

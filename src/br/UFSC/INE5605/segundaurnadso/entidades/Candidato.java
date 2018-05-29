@@ -3,46 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.entidades;
-import br.UFSC.INE5605.urnaDSO.interfaces.ICandidato;
-import br.UFSC.INE5605.urnaDSO.entidades.Cargo;
-import br.UFSC.INE5605.urnaDSO.entidades.Candidato;
-import br.UFSC.INE5605.urnaDSO.entidades.PartidoPolitico;
-import br.UFSC.INE5605.urnaDSO.telas.TelaCandidato;
+package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
+import br.UFSC.INE5605.SegundaUrnaDSO.interfaces.ICandidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
 /**
  *
  * @author Ismael
  */
 public class Candidato extends Pessoa {
 
-    
-    
-    
-    private String cargo;
-    private String partido;
+    private PartidoPolitico partido;
     private int numeroCandidato;
 
-    public Candidato(String nome, String cargo, String partido, int numeroCandidato) {
+    public Candidato(String nome, PartidoPolitico partido, int numeroCandidato) {
         super(nome);
-        this.cargo = cargo;
         this.partido = partido;
         this.numeroCandidato = numeroCandidato;
     }
 
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public String getPartido() {
+    public PartidoPolitico getPartido() {
         return partido;
     }
 
-    public void setPartido(String partido) {
+    public void setPartido(PartidoPolitico partido) {
         this.partido = partido;
     }
 

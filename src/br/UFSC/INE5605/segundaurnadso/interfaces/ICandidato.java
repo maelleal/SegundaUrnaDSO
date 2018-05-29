@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.interfaces;
+package br.UFSC.INE5605.SegundaUrnaDSO.interfaces;
 
-import br.UFSC.INE5605.urnaDSO.entidades.Candidato;
-import br.UFSC.INE5605.urnaDSO.entidades.Cargo;
-import br.UFSC.INE5605.urnaDSO.entidades.PartidoPolitico;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +15,6 @@ import java.util.ArrayList;
  */
 public interface ICandidato {
     
-    public Cargo getCargo();
     public PartidoPolitico getPartido();
     public int  getNumeroCandidato();
 }

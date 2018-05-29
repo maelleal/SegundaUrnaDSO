@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.interfaces;
+package br.UFSC.INE5605.SegundaUrnaDSO.interfaces;
 
-import br.UFSC.INE5605.urnaDSO.entidades.Eleitor;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Eleitor;
 
 /**
  *

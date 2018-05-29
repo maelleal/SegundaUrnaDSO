@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.controladores;
+package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
-import br.UFSC.INE5605.urnaDSO.telas.TelaCadastro;
-import br.UFSC.INE5605.urnaDSO.controladores.ControladorPartido;
-import br.UFSC.INE5605.urnaDSO.entidades.ZonaEleitoral;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPartido;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.ZonaEleitoral;
 /**
  *
  * @author rodri

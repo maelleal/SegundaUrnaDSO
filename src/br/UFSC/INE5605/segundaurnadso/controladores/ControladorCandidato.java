@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.controladores;
+package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
 
-import br.UFSC.INE5605.urnaDSO.interfaces.ICandidato;
-import br.UFSC.INE5605.urnaDSO.entidades.Cargo;
-import br.UFSC.INE5605.urnaDSO.entidades.Candidato;
-import br.UFSC.INE5605.urnaDSO.entidades.PartidoPolitico;
-import br.UFSC.INE5605.urnaDSO.telas.TelaCadastro;
-import br.UFSC.INE5605.urnaDSO.telas.TelaCandidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.interfaces.ICandidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
 import java.util.ArrayList;
 
 /**
@@ -20,28 +19,17 @@ import java.util.ArrayList;
  */
 public class ControladorCandidato{
     private TelaCandidato telaCandidato;
-    private ArrayList<Candidato>deputados;
     private ArrayList<Candidato>governadores;
     private ControladorCadastro ctrlCadastro;
     private ControladorPrincipal ctrlPrincipal;
     private TelaCadastro telaCadastro;
-    
    
-   
-  
-   
-
     public ControladorCandidato(ControladorCadastro ctrlCadastro) {
         this.ctrlPrincipal = ctrlPrincipal;
-        this.deputados = new ArrayList();
         this.governadores = new ArrayList();
         this.telaCandidato = new TelaCandidato(this);
         this.ctrlCadastro = ctrlCadastro;
     
-    }
-    
-    public ArrayList<Candidato> getDeputados(){
-        return deputados;
     }
     
     public ArrayList<Candidato> getGovernadores(){
@@ -52,21 +40,12 @@ public class ControladorCandidato{
         
     }
     
-    public void cadastraCandidato(String nome, String cargo, String partido, int numeroCandidato) {
-       if(cargo.equals("deputado")){
-           Candidato deputado = new Candidato(nome, cargo, partido, numeroCandidato);
-           deputados.add(deputado);
-           telaCandidato.incluiDeputado();
-           telaCadastro.exibeMenuCadastro();
-       }else{
-           Candidato governador = new Candidato(nome, cargo, partido, numeroCandidato);
+    public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {
+           Candidato governador = new Candidato(nome, partido, numeroCandidato);
            governadores.add(governador);
            telaCandidato.incluiGovernador();
-       }
     }
     
-
-
     public void exibeMenuPrincipal() {
         ctrlCadastro.iniciaCadastro();
     }

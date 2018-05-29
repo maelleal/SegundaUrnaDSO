@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.entidades;
+package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,6 @@ public class ZonaEleitoral {
         this.cidade = cidade;
     }
     
-            
     public ArrayList<SecaoEleitoral> getSecoes(){
         return secoes;
     }

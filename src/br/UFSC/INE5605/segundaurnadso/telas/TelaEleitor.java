@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.urnaDSO.telas;
+package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import br.UFSC.INE5605.urnaDSO.controladores.ControladorCadastro;
-import br.UFSC.INE5605.urnaDSO.controladores.ControladorEleitor;
-import br.UFSC.INE5605.urnaDSO.entidades.Eleitor;
-import br.UFSC.INE5605.urnaDSO.entidades.SecaoEleitoral;
-import br.UFSC.INE5605.urnaDSO.interfaces.IEleitor;
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Eleitor;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.SecaoEleitoral;
+import br.UFSC.INE5605.SegundaUrnaDSO.interfaces.IEleitor;
 import java.util.Scanner;
 
 /**
