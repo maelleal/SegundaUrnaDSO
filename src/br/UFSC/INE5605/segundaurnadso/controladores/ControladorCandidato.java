@@ -36,14 +36,16 @@ public class ControladorCandidato{
         return governadores;
     }
     public void incluiCandidato(){
-        telaCandidato.exibeCadastroCandidato();
+        //telaCandidato.exibeCadastroCandidato();
         
     }
-    
+    void abreTelaCandidato() {
+        telaCandidato.setVisible(true);
+    }
     public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {
            Candidato governador = new Candidato(nome, partido, numeroCandidato);
            governadores.add(governador);
-           telaCandidato.incluiGovernador();
+          // telaCandidato.incluiGovernador();
     }
     
     public void exibeMenuPrincipal() {
@@ -111,5 +113,7 @@ public class ControladorCandidato{
         return null;
     }
     */
+
+    
     
 }

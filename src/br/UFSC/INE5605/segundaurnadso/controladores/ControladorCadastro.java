@@ -14,12 +14,14 @@ import br.UFSC.INE5605.SegundaUrnaDSO.entidades.ZonaEleitoral;
  */
 public class ControladorCadastro {
     
+    public static final int OPCAO_ELEITORES = 4;
+    
     private TelaCadastro telaCadastro;
     private ControladorPrincipal ctrlPrincipal;
     private ControladorEleitor ctrlEleitor;
     private ControladorCandidato ctrlCandidato;
     private ControladorPartido ctrlPartido;
-    private ZonaEleitoral zonaEleitoral;
+    
 
     public ControladorCadastro(ControladorPrincipal ctrlPrincipal) {
         this.ctrlPrincipal = ctrlPrincipal;
@@ -27,23 +29,24 @@ public class ControladorCadastro {
     }
     
     public void iniciaCadastro() {
-        telaCadastro.exibeMenuCadastro();
+        
+        telaCadastro.setVisible(true);
         
     }
-    public void inicializa() {
+    //public void inicializa() {
         
-    }
-    
+   //}
+    /*
     public void executaOpcaoCadastro(int opcaoCadastro){
-        ControladorEleitor ctrlEleitor = new ControladorEleitor(this);
+       // ControladorEleitor ctrlEleitor = new ControladorEleitor(this);
         ControladorCandidato ctrlCandidato = new ControladorCandidato(this);
         ControladorPartido ctrlPartido = new ControladorPartido(this);
         ControladorPrincipal ctrlPrincipal = new ControladorPrincipal();
         if (opcaoCadastro == 3) {
             ctrlEleitor.incluiSecao();
         }
-        if (opcaoCadastro == 4) {
-           ctrlEleitor.exibeMenuEleitores();
+        if (opcaoCadastro == OPCAO_ELEITORES) {
+           ctrlEleitor.abreTelaEleitores();
         }
         if (opcaoCadastro == 5) {
            ctrlCandidato.incluiCandidato();
@@ -51,14 +54,13 @@ public class ControladorCadastro {
         if (opcaoCadastro == 6) {
            ctrlPartido.exibeMenuPartido();
         }
-        if (opcaoCadastro == 7) {
-            ctrlPrincipal.inicializa();
-        }
-        if (opcaoCadastro == 0) {
-            ctrlPrincipal.mensagemFim();
-        }
-        
-        
     }
-  
+    */
+    public void executaCadastroEleitor() {
+        ctrlEleitor.abreTelaEleitores();   
+    }
+    
+    public void executaCadastroCandidato() {
+        ctrlCandidato.abreTelaCandidato();   
+    }
 }

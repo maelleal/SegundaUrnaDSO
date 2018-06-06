@@ -19,7 +19,7 @@ public class SegundaUrnaDSO {
     public static void main(String[] args) {
         ControladorPrincipal ctrlPrincipal; 
         ctrlPrincipal = new ControladorPrincipal();
-        ctrlPrincipal.inicializa();
+        
  
     }
     

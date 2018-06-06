@@ -40,9 +40,7 @@ public class ControladorPartido {
         }
         return a;
     }
-    public void exibeMenuPartido(){
-        telaPartido.exibeMenuPartido();
-    }
+    
     
 
     public void incluiPartido(String nomePartido) {
@@ -53,6 +51,13 @@ public class ControladorPartido {
     }
     public void exibeMenuPrincipal() {
         ctrlCadastro.iniciaCadastro();
+    }
+
+    
+
+    public void executaCadastroPartido() {
+        System.out.println("TESTE");
+        //telaPartido.setVisible(true);
     }
     
     

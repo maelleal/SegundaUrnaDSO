@@ -6,6 +6,7 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPrincipal;
 
 /**
@@ -18,33 +19,21 @@ public class ControladorPrincipal {
     private ControladorCadastro ctrlCadastro;
     private ControladorUrna ctrlUrna;
     private ControladorCandidato ctrlCandidato;
+    private TelaCadastro telaCadastro;
 
     public ControladorPrincipal() {
         this.telaPrincipal = new TelaPrincipal(this);
         this.ctrlCadastro = new ControladorCadastro(this);
         this.ctrlUrna = new ControladorUrna();
-        
+        this.telaCadastro = new TelaCadastro(this.ctrlCadastro);
+    }
+     
+    
+    public void abreTelaCadastro () {
+        telaCadastro.setVisible(true);
     }
     
-    public void inicializa() {
-        telaPrincipal.exibeMenuPrincipal();
-    }
     
-    public void executaOpcao(int opcao) {
-        if (opcao == 1) {
-           ctrlCadastro.iniciaCadastro();
-        }
-        if (opcao == 2) {
-            ctrlUrna.iniciarVotacao();
-        } 
-        if (opcao == 0) {
-            this.mensagemFim();
-        }
-    }
-
-    public void mensagemFim() {
-        telaPrincipal.mensagemFim();
-    }
 }   
 
 

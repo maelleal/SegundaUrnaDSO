@@ -24,14 +24,11 @@ public class ControladorEleitor {
 
     public ControladorEleitor(ControladorCadastro ctrlCadastro) {
         this.eleitores = new ArrayList();
-        this.telaEleitor = new TelaEleitor(this);
         this.ctrlCadastro = ctrlCadastro;
-        this.secoes = new ArrayList();
+        this.telaEleitor = new TelaEleitor(this);
+        //this.secoes = new ArrayList();
     }
     
-    
-    
-    //public void editaEleitor(Eleitor e)
     
     public Eleitor encontraEleitorPeloTitulo(int titulo){
         Eleitor a = null;
@@ -54,8 +51,8 @@ public class ControladorEleitor {
     }
     
     
-    public void exibeMenuEleitores(){
-        telaEleitor.exibeMenuEleitores();
+    public void abreTelaEleitores(){
+        telaEleitor.setVisible(true);
     }
     
     public void exibeMenuPrincipal() {
@@ -71,7 +68,7 @@ public class ControladorEleitor {
     }
     
     public void incluiSecao(){
-        telaEleitor.incluirSecao();
+       //telaEleitor.incluirSecao();
     }
     
     public void cadastraSecao(int numeroSecao, String cidade){
@@ -92,6 +89,4 @@ public class ControladorEleitor {
         return eleitores;
     }
 
-    
-    
 }

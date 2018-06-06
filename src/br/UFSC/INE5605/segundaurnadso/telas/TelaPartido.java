@@ -8,61 +8,69 @@ package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPartido;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.Scanner;
+import java.awt.GraphicsConfiguration;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
 
 /**
  *
  * @author ismael
  */
-public class TelaPartido {
+public class TelaPartido extends JFrame {
     private TelaCadastro telaCadastro;
     private ControladorCadastro ctrlCadastro;
     private ControladorPartido ctrlPartido;
-    private Scanner teclado;
+    private JButton cadastrar;
+    private JButton pesquisar;
+    private JButton voltar;
+    private JTextField nomePartido;
+    private JTextField pesquisaPartido;
+    private JLabel txtNome;
+    private JLabel txtPesquisaPartido;
+    private Dimension tamanhoBotao = new Dimension(200, 60);
 
     public TelaPartido(ControladorPartido ctrlPartido) {
+        super("Tela de Cadastro de Partido");
         this.ctrlPartido = ctrlPartido;
-        this.teclado = new Scanner(System.in);
+        Container container = getContentPane();
+        container.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        
+        cadastrar = new JButton();
+        pesquisar = new JButton();
+        voltar = new JButton();
+        nomePartido = new JTextField();
+        pesquisaPartido = new JTextField();
+        txtNome = new JLabel();
+        txtPesquisaPartido = new JLabel();
+        
+        container.add(cadastrar);
+        container.add(pesquisar);
+        container.add(voltar);
+        container.add(nomePartido);
+        container.add(pesquisaPartido);
+        container.add(txtNome);
+        container.add(txtPesquisaPartido);
+        
+        setSize(300, 400);
+        setVisible(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        
+        this.ctrlPartido = ctrlPartido;
     }
-
-    
-    public void adicionaPartido(){
-        System.out.println("Partido Adicionado com Sucesso");
-    }
-    public void excluiPartido(){
-        System.out.println("Partido Excluído com Sucesso");
-    }
-    public void partidoExistente(){
-        System.out.println("Partido Existente");
-    }
-    public void partidoInexistente() {
-        System.out.println("Partido Inexistente");
-    }
-    public void partidoTeste() {
-        System.out.println("Partido Inexistente");
-    }
-    public void listaPartidos() {
-        for (PartidoPolitico partido : ctrlPartido.getPartidos()) {
-            System.out.println("Partidos Cadastrados: "+ partido.getPartido());
-        }
-    }
-   
-
-    public void exibeMenuPartido() {
-        TelaCadastro telaCadastro = new TelaCadastro(ctrlCadastro);
-        System.out.println("==== Cadastro de Partido ===="); 
-        System.out.println(""); 
-        System.out.println("Preencha os dados a seguir"); 
-        System.out.println(""); 
-        System.out.println("Nome do Partido: ");
-        String nome = teclado.nextLine();
-        ctrlPartido.incluiPartido(nome);
-        this.adicionaPartido();
-        this.listaPartidos();   
-
-        ctrlPartido.exibeMenuPrincipal();
-
-    }
-
-    
 }

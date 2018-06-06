@@ -10,45 +10,85 @@ import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Eleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.SecaoEleitoral;
 import br.UFSC.INE5605.SegundaUrnaDSO.interfaces.IEleitor;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.Scanner;
+import java.awt.GraphicsConfiguration;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
 
 /**
  *
  * @author Ismael
  */
-public class TelaEleitor {
-    
-    private Scanner teclado;
+public class TelaEleitor extends JFrame {
     private ControladorEleitor ctrlEleitor;
     private TelaCadastro telaCadastro;
     private ControladorCadastro ctrlCadastro;
     private SecaoEleitoral secao;
+    private JButton cadastrar;
+    private JButton pesquisar;
+    private JButton voltar;
+    private JTextField nomeEleitor;
+    private JTextField tituloEleitor;
+    private JTextField pesquisaTitulo;
+    private JLabel txtNome;
+    private JLabel txtTitulo;
+    private JLabel txtPesquisaTitulo;
+    private Dimension tamanhoBotao = new Dimension(200, 60);
     
-    public TelaEleitor (ControladorEleitor ctrlEleitor){
-        this.teclado = new Scanner(System.in);
+    public TelaEleitor (ControladorEleitor ctrlEleitor) {
+        super("Tela do Eleitor");
         this.ctrlEleitor = ctrlEleitor;
+        
+        Container container = getContentPane();
+        container.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        
+        cadastrar = new JButton();
+        pesquisar = new JButton();
+        voltar = new JButton();
+        nomeEleitor = new JTextField();
+        tituloEleitor = new JTextField();
+        pesquisaTitulo = new JTextField("Pesquisa Eleitor");
+        
+        txtNome.setText("Insira o nome do Eleitor");
+        txtTitulo.setText("Insira o Titulo de eleitor");       
+        txtPesquisaTitulo.setText("Insira o Titulo de Eleitor para Pesquisa");
+        
+        container.add(cadastrar);
+        container.add(pesquisar);
+        container.add(voltar);
+        container.add(nomeEleitor);
+        container.add(tituloEleitor);
+        container.add(pesquisaTitulo);
+        container.add(txtNome);
+        container.add(txtTitulo);
+        container.add(txtPesquisaTitulo);
+        
+        setSize (300, 600);
+        setVisible(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
+        
     }
 
    
     public void exibeMenuEleitores() {
-        System.out.println("==== Cadastro de Eleitor ===="); 
-        System.out.println(""); 
-        System.out.println("Preencha os dados a seguir"); 
-        System.out.println(""); 
-        System.out.println("Nome do eleitor: ");
-        String nome = teclado.nextLine();
-        System.out.println("Cidade: ");
-        String cidade = teclado.nextLine();
-        System.out.println("Numero do titulo de eleitor: ");
-        int tituloEleitoral = teclado.nextInt();
-        System.out.println("Numero da secao: ");
-        int secaoEleitoral = teclado.nextInt();
-        System.out.println("Eleitor Cadastrado com Sucesso.");
-        ctrlEleitor.cadastraEleitor(tituloEleitoral, secaoEleitoral, nome, cidade);
-        this.exibeEleitores();
-        ctrlEleitor.exibeMenuPrincipal();
+        
     }
- 
+ /*
     public void exibeEleitores() {
         for(Eleitor e : ctrlEleitor.getEleitores()){
             System.out.println("Eleitor: "+e.getNome());
@@ -57,7 +97,7 @@ public class TelaEleitor {
     
 
     public void incluirSecao() {
-        TelaCadastro telaCadastro = new TelaCadastro(ctrlCadastro);
+        //TelaCadastro telaCadastro = new TelaCadastro(ctrlCadastro);
         System.out.println("==== Cadastro de Seção ====");
         System.out.println("");
         System.out.println("Digite o numero da secao:");
@@ -69,4 +109,5 @@ public class TelaEleitor {
         
         ctrlEleitor.exibeMenuPrincipal();
     }
+*/
 }
