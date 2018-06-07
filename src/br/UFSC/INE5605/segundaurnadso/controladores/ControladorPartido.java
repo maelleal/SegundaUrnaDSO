@@ -18,11 +18,13 @@ public class ControladorPartido {
     private ArrayList<PartidoPolitico> partidos;
     private TelaPartido telaPartido;
     private ControladorCadastro ctrlCadastro;
+    private PartidoPolitico partido;
 
     public ControladorPartido(ControladorCadastro ctrlCadastro) {
         this.partidos = new ArrayList();
         this.telaPartido = new TelaPartido(this);
         this.ctrlCadastro = ctrlCadastro;
+        
         
         
     }

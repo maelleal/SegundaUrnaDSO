@@ -10,18 +10,18 @@ package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
  * @author Ismael
  */
 public class PartidoPolitico {
-    private String partido;
+    private String nome;
 
-    public PartidoPolitico(String partido) {
-        this.partido = partido;
+    public PartidoPolitico(String nome) {
+        this.nome = nome;
     }
 
     public String getPartido() {
-        return partido;
+        return nome;
     }
 
     public void setPartido(String partido) {
-        this.partido = partido;
+        this.nome = nome;
     }
     
 }
