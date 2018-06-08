@@ -57,6 +57,12 @@ public class TelaEleitor extends JFrame {
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         
+        txtNome = new JLabel();
+        txtNome.setText("Insira o nome do Eleitor");
+        
+        
+        
+        
         cadastrar = new JButton();
         pesquisar = new JButton();
         voltar = new JButton();
@@ -64,19 +70,10 @@ public class TelaEleitor extends JFrame {
         tituloEleitor = new JTextField();
         pesquisaTitulo = new JTextField("Pesquisa Eleitor");
         
-        txtNome.setText("Insira o nome do Eleitor");
+        
         txtTitulo.setText("Insira o Titulo de eleitor");       
         txtPesquisaTitulo.setText("Insira o Titulo de Eleitor para Pesquisa");
         
-        container.add(cadastrar);
-        container.add(pesquisar);
-        container.add(voltar);
-        container.add(nomeEleitor);
-        container.add(tituloEleitor);
-        container.add(pesquisaTitulo);
-        container.add(txtNome);
-        container.add(txtTitulo);
-        container.add(txtPesquisaTitulo);
         
         setSize (300, 600);
         setVisible(false);

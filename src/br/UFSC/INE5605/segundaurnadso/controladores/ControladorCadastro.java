@@ -6,8 +6,9 @@
 package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPartido;
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.ZonaEleitoral;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaEleitor;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
 /**
  *
  * @author rodri
@@ -18,49 +19,36 @@ public class ControladorCadastro {
     
     private TelaCadastro telaCadastro;
     private ControladorPrincipal ctrlPrincipal;
-    private ControladorEleitor ctrlEleitor;
+    private ControladorEleitor ctrlEleitor; 
     private ControladorCandidato ctrlCandidato;
     private ControladorPartido ctrlPartido;
+    private TelaEleitor telaEleitor;
+    private TelaCandidato telaCandidato;
+    private TelaPartido telaPartido;
     
 
     public ControladorCadastro(ControladorPrincipal ctrlPrincipal) {
         this.ctrlPrincipal = ctrlPrincipal;
         this.telaCadastro = new TelaCadastro(this);
+        this.telaEleitor = new TelaEleitor(this.ctrlEleitor);
+        this.telaCandidato = new TelaCandidato(this.ctrlCandidato);
+        this.telaPartido = new TelaPartido(this.ctrlPartido);
+        
     }
     
     public void iniciaCadastro() {
-        
-        telaCadastro.setVisible(true);
-        
+        telaCadastro.setVisible(true);   
     }
-    //public void inicializa() {
-        
-   //}
-    /*
-    public void executaOpcaoCadastro(int opcaoCadastro){
-       // ControladorEleitor ctrlEleitor = new ControladorEleitor(this);
-        ControladorCandidato ctrlCandidato = new ControladorCandidato(this);
-        ControladorPartido ctrlPartido = new ControladorPartido(this);
-        ControladorPrincipal ctrlPrincipal = new ControladorPrincipal();
-        if (opcaoCadastro == 3) {
-            ctrlEleitor.incluiSecao();
-        }
-        if (opcaoCadastro == OPCAO_ELEITORES) {
-           ctrlEleitor.abreTelaEleitores();
-        }
-        if (opcaoCadastro == 5) {
-           ctrlCandidato.incluiCandidato();
-        }
-        if (opcaoCadastro == 6) {
-           ctrlPartido.exibeMenuPartido();
-        }
-    }
-    */
+    
     public void executaCadastroEleitor() {
-        ctrlEleitor.abreTelaEleitores();   
+        telaEleitor.setVisible(true);   
     }
     
     public void executaCadastroCandidato() {
-        ctrlCandidato.abreTelaCandidato();   
+        telaCandidato.setVisible(true);   
+    }
+    
+    public void executaCadastroPartido() {
+        telaPartido.setVisible(true);
     }
 }
