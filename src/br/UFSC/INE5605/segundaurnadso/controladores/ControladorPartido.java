@@ -7,13 +7,14 @@ package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ivo Guilherme
  */
-public class ControladorPartido {
+public class ControladorPartido implements Serializable {
 
     private ArrayList<PartidoPolitico> partidos;
     private TelaPartido telaPartido;

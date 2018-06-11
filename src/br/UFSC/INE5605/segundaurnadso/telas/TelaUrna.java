@@ -235,13 +235,15 @@ public class TelaUrna extends JFrame {
 	constraints.gridy = 0;
 	container.add(txtNumeroCandidato, constraints);
         
-        numeroCandidato = new JTextField();
+        numeroCandidato = new JTextField(2);
         //numeroCandidato.setText("Numero do Candidato");
         //numeroCandidato.setActionCommand();
         numeroCandidato.addActionListener(botoes);
-        numeroCandidato.setPreferredSize(tamanhoBotao2);
-	constraints.gridx = 0;
-	constraints.gridy = 4;
+        numeroCandidato.setPreferredSize(tamanhoBotao);
+        constraints.gridheight = 2;
+        constraints.gridwidth = 6;
+       	constraints.gridx = 1;
+	constraints.gridy = 0;
 	container.add(numeroCandidato, constraints);
         
         

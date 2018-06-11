@@ -41,7 +41,7 @@ public class TelaPartido extends JFrame {
     private JLabel txtNome;
     private JLabel txtPesquisaPartido;
     private GerenciaBotoes botoes;
-    private Dimension tamanhoBotao = new Dimension(200, 60);
+    private Dimension tamanhoBotao = new Dimension(100, 30);
 
     public TelaPartido(ControladorPartido ctrlPartido) {
         super("Tela de Cadastro de Partido");
@@ -109,9 +109,10 @@ public class TelaPartido extends JFrame {
 	constraints.gridy = 4;
 	container.add(voltar, constraints);
        
-        setSize(1200, 800);
+        setSize(600, 400);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        setLocationRelativeTo(null);
     }
     public class GerenciaBotoes implements ActionListener {
         @Override
