@@ -13,7 +13,6 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.util.Scanner;
 import java.awt.GraphicsConfiguration;
 import java.awt.GridBagConstraints;
@@ -66,17 +65,14 @@ public class TelaUrna extends JFrame {
     private JTextField numeroCandidato;
     private JLabel txtNumeroCandidato;
     private GerenciaBotoes botoes;
-    private Dimension tamanhoBotao = new Dimension(180, 90);
-    private Dimension tamanhoBotao2 = new Dimension(300, 200);
+    private Dimension tamanhoBotao = new Dimension(200, 60);
+    private Dimension tamanhoBotao2 = new Dimension(500, 200);
     
     
     public TelaUrna(ControladorUrna ctrlUrna){
         super("Tela Urna");
         this.ctrlUrna = ctrlUrna;
         this.botoes = new GerenciaBotoes();
-        Font fonte = new Font("Courier New", Font.BOLD, 50);
-        Font fonte2 = new Font("Courier New", Font.BOLD, 30);
-        Font fonte3 = new Font("Courier New", Font.BOLD, 30);
         
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
@@ -84,7 +80,6 @@ public class TelaUrna extends JFrame {
         
         botaoUm = new JButton();
         botaoUm.setText("1");
-        botaoUm.setFont(fonte);
         botaoUm.setActionCommand(BOTAO_UM);
         botaoUm.addActionListener(botoes);
         botaoUm.setPreferredSize(tamanhoBotao);
@@ -96,7 +91,6 @@ public class TelaUrna extends JFrame {
         
         botaoDois = new JButton();
         botaoDois.setText("2");
-        botaoDois.setFont(fonte);
         botaoDois.setActionCommand(BOTAO_DOIS);
         botaoDois.addActionListener(botoes);
         botaoDois.setPreferredSize(tamanhoBotao);
@@ -108,7 +102,6 @@ public class TelaUrna extends JFrame {
         
         botaoTres = new JButton();
         botaoTres.setText("3");
-        botaoTres.setFont(fonte);
         botaoTres.setActionCommand(BOTAO_TRES);
         botaoTres.addActionListener(botoes);
         botaoTres.setPreferredSize(tamanhoBotao);
@@ -120,7 +113,6 @@ public class TelaUrna extends JFrame {
         
         botaoQuatro = new JButton();
         botaoQuatro.setText("4");
-        botaoQuatro.setFont(fonte);
         botaoQuatro.setActionCommand(BOTAO_QUATRO);
         botaoQuatro.addActionListener(botoes);
         botaoQuatro.setPreferredSize(tamanhoBotao);
@@ -132,7 +124,6 @@ public class TelaUrna extends JFrame {
         
         botaoCinco = new JButton();
         botaoCinco.setText("5");
-        botaoCinco.setFont(fonte);
         botaoCinco.setActionCommand(BOTAO_CINCO);
         botaoCinco.addActionListener(botoes);
         botaoCinco.setPreferredSize(tamanhoBotao);
@@ -144,7 +135,6 @@ public class TelaUrna extends JFrame {
         
         botaoSeis = new JButton();
         botaoSeis.setText("6");
-        botaoSeis.setFont(fonte);
         botaoSeis.setActionCommand(BOTAO_SEIS);
         botaoSeis.addActionListener(botoes);
         botaoSeis.setPreferredSize(tamanhoBotao);
@@ -156,7 +146,6 @@ public class TelaUrna extends JFrame {
         
         botaoSete = new JButton();
         botaoSete.setText("7");
-        botaoSete.setFont(fonte);
         botaoSete.setActionCommand(BOTAO_SETE);
         botaoSete.addActionListener(botoes);
         botaoSete.setPreferredSize(tamanhoBotao);
@@ -168,7 +157,6 @@ public class TelaUrna extends JFrame {
         
         botaoOito = new JButton();
         botaoOito.setText("8");
-        botaoOito.setFont(fonte);
         botaoOito.setActionCommand(BOTAO_OITO);
         botaoOito.addActionListener(botoes);
         botaoOito.setPreferredSize(tamanhoBotao);
@@ -180,7 +168,6 @@ public class TelaUrna extends JFrame {
         
         botaoNove = new JButton();
         botaoNove.setText("9");
-        botaoNove.setFont(fonte);
         botaoNove.setActionCommand(BOTAO_NOVE);
         botaoNove.addActionListener(botoes);
         botaoNove.setPreferredSize(tamanhoBotao);
@@ -192,7 +179,6 @@ public class TelaUrna extends JFrame {
         
         botaoZero = new JButton();
         botaoZero.setText("0");
-        botaoZero.setFont(fonte);
         botaoZero.setActionCommand(BOTAO_ZERO);
         botaoZero.addActionListener(botoes);
         botaoZero.setPreferredSize(tamanhoBotao);
@@ -204,7 +190,6 @@ public class TelaUrna extends JFrame {
         
         botaoConfirma = new JButton();
         botaoConfirma.setText("CONFIRMA");
-        botaoConfirma.setFont(fonte2);
         botaoConfirma.setActionCommand(OPCAO_CONFIRMA);
         botaoConfirma.addActionListener(botoes);
         botaoConfirma.setPreferredSize(tamanhoBotao);
@@ -216,7 +201,6 @@ public class TelaUrna extends JFrame {
         
         botaoVotarBranco = new JButton();
         botaoVotarBranco.setText("BRANCO");
-        botaoVotarBranco.setFont(fonte2);
         botaoVotarBranco.setActionCommand(OPCAO_BRANCO);
         botaoVotarBranco.addActionListener(botoes);
         botaoVotarBranco.setPreferredSize(tamanhoBotao);
@@ -227,7 +211,6 @@ public class TelaUrna extends JFrame {
         
         botaoVoltar = new JButton();
         botaoVoltar.setText("CORRIGE");
-        botaoVoltar.setFont(fonte2);
         botaoVoltar.setActionCommand(OPCAO_VOLTAR);
         botaoVoltar.addActionListener(botoes);
         botaoVoltar.setPreferredSize(tamanhoBotao);
@@ -238,7 +221,6 @@ public class TelaUrna extends JFrame {
         
         botaoSair = new JButton();
         botaoSair.setText("SAIR");
-        botaoSair.setFont(fonte2);
         botaoSair.setActionCommand(OPCAO_SAIR);
         botaoSair.addActionListener(botoes);
         botaoSair.setPreferredSize(tamanhoBotao);
@@ -248,25 +230,22 @@ public class TelaUrna extends JFrame {
         
         txtNumeroCandidato = new JLabel();
         txtNumeroCandidato.setText("DIGITE O NUMERO DO CANDIDADTO");
-        txtNumeroCandidato.setFont(fonte3);
+        
 	constraints.gridx = 2;
 	constraints.gridy = 0;
 	container.add(txtNumeroCandidato, constraints);
         
-        numeroCandidato = new JTextField(2);
+        numeroCandidato = new JTextField();
         //numeroCandidato.setText("Numero do Candidato");
         //numeroCandidato.setActionCommand();
         numeroCandidato.addActionListener(botoes);
-        numeroCandidato.setFont(fonte);
         numeroCandidato.setPreferredSize(tamanhoBotao2);
 	constraints.gridx = 0;
 	constraints.gridy = 4;
 	container.add(numeroCandidato, constraints);
         
         
-        
-        
-        setSize (1400, 1200);
+        setSize (1200, 1200);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
         setLocationRelativeTo(null);

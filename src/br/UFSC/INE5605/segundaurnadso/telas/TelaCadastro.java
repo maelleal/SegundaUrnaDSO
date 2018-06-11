@@ -115,7 +115,7 @@ public class GerenciaBotoes implements ActionListener {
             dispose();
         }
         if(opcao.equals(OPCAO_CANDIDATO)) {
-            ctrlCadastro.executaCadastroEleitor();
+            ctrlCadastro.executaCadastroCandidato();
             dispose();
         }
         if(opcao.equals(OPCAO_SAIR)) {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
@@ -11,9 +6,7 @@ import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.util.Scanner;
 import java.awt.GraphicsConfiguration;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -106,7 +99,6 @@ public class TelaPartido extends JFrame {
 	constraints.gridy = 3;
 	container.add(pesquisar, constraints);
         
-        
         voltar = new JButton();
         voltar.setText("VOLTAR");
 	voltar.setFont(fonte);
@@ -120,15 +112,13 @@ public class TelaPartido extends JFrame {
         setSize(900, 600);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-        
-        this.ctrlPartido = ctrlPartido;
     }
     public class GerenciaBotoes implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals("")) {
-                ctrlCadastro.executaCadastroEleitor();
+                ctrlCadastro.executaCadastroPartido();
                 dispose();
             }
         }
