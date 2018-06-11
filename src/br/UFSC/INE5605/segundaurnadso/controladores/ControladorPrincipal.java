@@ -14,20 +14,29 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPrincipal;
  * @author rodri
  */
 public class ControladorPrincipal {
+    private static ControladorPrincipal instancia;
     
     private TelaPrincipal telaPrincipal;
-    private ControladorCadastro ctrlCadastro;
     private ControladorUrna ctrlUrna;
     private ControladorCandidato ctrlCandidato;
     private TelaCadastro telaCadastro;
 
     public ControladorPrincipal() {
+        
+        
         this.telaPrincipal = new TelaPrincipal(this);
-        this.ctrlCadastro = new ControladorCadastro(this);
+
         this.ctrlUrna = new ControladorUrna();
-        this.telaCadastro = new TelaCadastro(this.ctrlCadastro);
+        this.telaCadastro = new TelaCadastro(ControladorCadastro.getInstancia());
     }
      
+    public static ControladorPrincipal getInstancia (){
+        if (instancia == null) {
+            instancia = new ControladorPrincipal();
+        }
+        return instancia;
+    }
+    
     
     public void abreTelaCadastro () {
         telaCadastro.setVisible(true);

@@ -109,7 +109,7 @@ public class TelaPartido extends JFrame {
 	constraints.gridy = 4;
 	container.add(voltar, constraints);
        
-        setSize(900, 600);
+        setSize(1200, 800);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
     }

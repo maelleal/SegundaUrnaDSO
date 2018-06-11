@@ -5,6 +5,7 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaEleitor;
@@ -16,7 +17,7 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
 public class ControladorCadastro {
     
     public static final int OPCAO_ELEITORES = 4;
-    
+    private static ControladorCadastro instancia;
     private TelaCadastro telaCadastro;
     private ControladorPrincipal ctrlPrincipal;
     private ControladorEleitor ctrlEleitor; 
@@ -27,13 +28,20 @@ public class ControladorCadastro {
     private TelaPartido telaPartido;
     
 
-    public ControladorCadastro(ControladorPrincipal ctrlPrincipal) {
-        this.ctrlPrincipal = ctrlPrincipal;
+    public ControladorCadastro() {
+       
         this.telaCadastro = new TelaCadastro(this);
         this.telaEleitor = new TelaEleitor(this.ctrlEleitor);
         this.telaCandidato = new TelaCandidato(this.ctrlCandidato);
         this.telaPartido = new TelaPartido(this.ctrlPartido);
         
+    }
+    
+    public static ControladorCadastro getInstancia(){
+        if (instancia == null) {
+            instancia = new ControladorCadastro();
+        }
+        return instancia;
     }
     
     public void iniciaCadastro() {

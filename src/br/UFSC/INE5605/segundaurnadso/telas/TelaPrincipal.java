@@ -33,11 +33,11 @@ import javax.swing.JTextField;
  */
 public class TelaPrincipal extends JFrame{
     
+    
     public static final String OPCAO_CADASTRO = "1";
     public static final String OPCAO_VOTACAO = "2";
     public static final String OPCAO_RESULTADOS = "3";
     public static final String OPCAO_SAIR = "4";
-    private ControladorPrincipal ctrlPrincipal;
     private ControladorUrna ctrlUrna = new ControladorUrna();
     private JButton cadastros;
     private JButton votacao;
@@ -50,8 +50,6 @@ public class TelaPrincipal extends JFrame{
     
     public TelaPrincipal(ControladorPrincipal ctrlPrincipal) {
         super("Tela Principal");
-       
-        this.ctrlPrincipal = ctrlPrincipal;
         this.botoes = new GerenciaBotoes();
         
               
@@ -115,7 +113,7 @@ public class GerenciaBotoes implements ActionListener {
     public void actionPerformed(ActionEvent evento) {
         String opcao = evento.getActionCommand();
         if(opcao.equals(OPCAO_CADASTRO)) {
-            ctrlPrincipal.abreTelaCadastro();
+            ControladorPrincipal.getInstancia().abreTelaCadastro();
             dispose();
         }
         if(opcao.equals(OPCAO_VOTACAO)) {
