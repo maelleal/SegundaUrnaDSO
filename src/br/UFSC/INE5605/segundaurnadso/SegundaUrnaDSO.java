@@ -19,7 +19,6 @@ public class SegundaUrnaDSO {
     public static void main(String[] args) {
         ControladorPrincipal.getInstancia();
         
- 
     }
     
 }
