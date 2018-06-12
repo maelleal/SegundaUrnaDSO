@@ -28,7 +28,7 @@ public class ControladorCadastro {
     private TelaPartido telaPartido;
     
 
-    public ControladorCadastro() {
+    private ControladorCadastro() {
        
         this.telaCadastro = new TelaCadastro(this);
         this.telaEleitor = new TelaEleitor(this.ctrlEleitor);

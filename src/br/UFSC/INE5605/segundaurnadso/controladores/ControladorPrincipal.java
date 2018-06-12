@@ -21,7 +21,7 @@ public class ControladorPrincipal {
     private ControladorCandidato ctrlCandidato;
     private TelaCadastro telaCadastro;
 
-    public ControladorPrincipal() {
+    private ControladorPrincipal() {
         
         
         this.telaPrincipal = new TelaPrincipal(this);
