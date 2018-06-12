@@ -17,17 +17,25 @@ import javax.swing.JOptionPane;
  * @author Ismael
  */
 public class ControladorUrna {
+    private static ControladorUrna instancia;
     private TelaPrincipal telaPrincipal;
     private TelaUrna telaUrna;
     private ArrayList<Voto>listaVotosGovernadores;
     private int votoGov;
     
 
-    public ControladorUrna() {
+    private ControladorUrna() {
         this.telaUrna = new TelaUrna(this);
         this.listaVotosGovernadores = new ArrayList();
         
-    }    
+    } 
+    
+    public static ControladorUrna getInstancia(){
+        if (instancia == null) {
+            instancia = new ControladorUrna();
+        }
+        return instancia;
+    }
     
     public void iniciarVotacao(){
        

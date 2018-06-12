@@ -38,7 +38,6 @@ public class TelaPrincipal extends JFrame{
     public static final String OPCAO_VOTACAO = "2";
     public static final String OPCAO_RESULTADOS = "3";
     public static final String OPCAO_SAIR = "4";
-    private ControladorUrna ctrlUrna = new ControladorUrna();
     private JButton cadastros;
     private JButton votacao;
     private JButton resultado;
@@ -117,11 +116,11 @@ public class GerenciaBotoes implements ActionListener {
             dispose();
         }
         if(opcao.equals(OPCAO_VOTACAO)) {
-            ctrlUrna.abreTelaUrna();
+            ControladorUrna.getInstancia().abreTelaUrna();
             dispose();
         }
         if(opcao.equals(OPCAO_RESULTADOS)) {
-            ctrlUrna.resultadoGov();
+            ControladorUrna.getInstancia().resultadoGov();
             dispose();
         }
         if(opcao.equals(OPCAO_SAIR)) {

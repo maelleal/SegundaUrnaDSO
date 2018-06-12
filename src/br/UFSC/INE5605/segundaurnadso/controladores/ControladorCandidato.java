@@ -18,18 +18,26 @@ import java.util.ArrayList;
  * @author Ivo Guilherme
  */
 public class ControladorCandidato{
+    private static ControladorCandidato instancia;
     private TelaCandidato telaCandidato;
-    private ArrayList<Candidato>governadores;
+    private ArrayList<Candidato> governadores;
     private ControladorCadastro ctrlCadastro;
     private ControladorPrincipal ctrlPrincipal;
     private TelaCadastro telaCadastro;
    
-    public ControladorCandidato(ControladorCadastro ctrlCadastro) {
+    private ControladorCandidato(ControladorCadastro ctrlCadastro) {
         this.ctrlPrincipal = ctrlPrincipal;
         this.governadores = new ArrayList();
         this.telaCandidato = new TelaCandidato(this);
         this.ctrlCadastro = ctrlCadastro;
     
+    }
+    
+    public static ControladorCandidato getInstancia() {
+        if (instancia == null) {
+            instancia = new ControladorCandidato(ControladorCadastro.getInstancia());
+        }
+        return instancia;
     }
     
     public ArrayList<Candidato> getGovernadores(){

@@ -15,20 +15,26 @@ import java.util.ArrayList;
  * @author Ismael
  */
 public class ControladorEleitor {
-
+    private static ControladorEleitor instancia;
     private ArrayList<Eleitor> eleitores;
     private TelaEleitor telaEleitor;
     private ControladorCadastro ctrlCadastro;
     private ArrayList<SecaoEleitoral>secoes;
    
 
-    public ControladorEleitor(ControladorCadastro ctrlCadastro) {
+    private ControladorEleitor() {
+        
         this.eleitores = new ArrayList();
         this.ctrlCadastro = ctrlCadastro;
         this.telaEleitor = new TelaEleitor(this);
         //this.secoes = new ArrayList();
     }
-    
+    public static ControladorEleitor getInstancia(){
+        if(instancia == null) {
+            instancia = new ControladorEleitor();
+        }
+        return instancia;
+    }
     
     public Eleitor encontraEleitorPeloTitulo(int titulo){
         Eleitor a = null;

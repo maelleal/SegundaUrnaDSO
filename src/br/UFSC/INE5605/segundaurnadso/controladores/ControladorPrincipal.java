@@ -17,16 +17,13 @@ public class ControladorPrincipal {
     private static ControladorPrincipal instancia;
     
     private TelaPrincipal telaPrincipal;
-    private ControladorUrna ctrlUrna;
-    private ControladorCandidato ctrlCandidato;
+   
+    
     private TelaCadastro telaCadastro;
 
     private ControladorPrincipal() {
-        
-        
+ 
         this.telaPrincipal = new TelaPrincipal(this);
-
-        this.ctrlUrna = new ControladorUrna();
         this.telaCadastro = new TelaCadastro(ControladorCadastro.getInstancia());
     }
      

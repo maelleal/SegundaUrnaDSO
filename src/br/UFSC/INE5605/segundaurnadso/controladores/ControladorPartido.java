@@ -15,23 +15,21 @@ import java.util.ArrayList;
  * @author Ivo Guilherme
  */
 public class ControladorPartido implements Serializable {
-
+    private static ControladorPartido instancia;
     private ArrayList<PartidoPolitico> partidos;
-    private TelaPartido telaPartido;
-    private ControladorCadastro ctrlCadastro;
     private PartidoPolitico partido;
 
-    public ControladorPartido(ControladorCadastro ctrlCadastro) {
-        this.partidos = new ArrayList();
-        this.telaPartido = new TelaPartido(this);
-        this.ctrlCadastro = ctrlCadastro;
-        
-        
-        
-    }
-
+    
+    
     public ArrayList<PartidoPolitico> getPartidos() {
         return partidos;
+    }
+    
+    public static ControladorPartido getInstancia(){
+        if(instancia == null){
+            instancia = new ControladorPartido();
+        }
+        return instancia;
     }
     
     public PartidoPolitico encontraPartidoPeloNome(String nome){
@@ -53,7 +51,7 @@ public class ControladorPartido implements Serializable {
     
     }
     public void exibeMenuPrincipal() {
-        ctrlCadastro.iniciaCadastro();
+        ControladorCadastro.getInstancia().iniciaCadastro();
     }
 
     
