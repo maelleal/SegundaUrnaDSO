@@ -25,13 +25,13 @@ import javax.swing.JOptionPane;
  * @author rodri
  */
 public class TelaCadastro extends JFrame {
+    private static TelaCadastro instancia;
     
     public static final String OPCAO_ELEITOR = "1";
     public static final String OPCAO_PARTIDO = "2";
     public static final String OPCAO_CANDIDATO = "3";
     public static final String OPCAO_SAIR = "4";
-    private ControladorCadastro ctrlCadastro;
-    private ControladorPartido ctrlPartido;
+    
     //private ControladorEleitor ctrlEleitor;
     //private ControladorCandidato ctrlCandidato;
     private JButton botaoEleitor;
@@ -43,10 +43,8 @@ public class TelaCadastro extends JFrame {
     private Dimension tamanhoBotao = new Dimension(200, 60);
     private Dimension tamanhoBotao2 = new Dimension(400, 60);
 
-    public TelaCadastro(ControladorCadastro ctrlCadastro) {
+    private TelaCadastro() {
         super("Tela de Cadastros");
-        this.ctrlCadastro = ctrlCadastro;
-        this.ctrlPartido = ctrlPartido;
         this.gerenciador = new GerenciaBotoes();
         GridBagConstraints constraints = new GridBagConstraints();
         
@@ -107,15 +105,15 @@ public class GerenciaBotoes implements ActionListener {
     public void actionPerformed(ActionEvent evento) {
         String opcao = evento.getActionCommand();
         if(opcao.equals(OPCAO_ELEITOR)) {
-            ctrlCadastro.executaCadastroEleitor();
+            ControladorCadastro.getInstancia().executaCadastroEleitor();
             dispose();
         }
         if(opcao.equals(OPCAO_PARTIDO)) {
-            ctrlCadastro.executaCadastroPartido();
+            ControladorCadastro.getInstancia().executaCadastroPartido();
             dispose();
         }
         if(opcao.equals(OPCAO_CANDIDATO)) {
-            ctrlCadastro.executaCadastroCandidato();
+            ControladorCadastro.getInstancia().executaCadastroCandidato();
             dispose();
         }
         if(opcao.equals(OPCAO_SAIR)) {
@@ -123,8 +121,16 @@ public class GerenciaBotoes implements ActionListener {
             System.exit(0);
         }
     }
+    
+    
 }
     
+    public static TelaCadastro getInstancia() {
+        if(instancia == null){
+            instancia = new TelaCadastro();
+        }
+        return instancia;
+    }
 }
 
     

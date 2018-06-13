@@ -16,15 +16,8 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPrincipal;
 public class ControladorPrincipal {
     private static ControladorPrincipal instancia;
     
-    private TelaPrincipal telaPrincipal;
-   
-    
-    private TelaCadastro telaCadastro;
-
     private ControladorPrincipal() {
- 
-        this.telaPrincipal = new TelaPrincipal(this);
-        this.telaCadastro = new TelaCadastro(ControladorCadastro.getInstancia());
+        TelaPrincipal.getInstancia();
     }
      
     public static ControladorPrincipal getInstancia (){
@@ -36,7 +29,7 @@ public class ControladorPrincipal {
     
     
     public void abreTelaCadastro () {
-        telaCadastro.setVisible(true);
+        TelaCadastro.getInstancia().setVisible(true);
     }
     
     

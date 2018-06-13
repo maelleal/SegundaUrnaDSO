@@ -21,21 +21,17 @@ public class ControladorCandidato{
     private static ControladorCandidato instancia;
     private TelaCandidato telaCandidato;
     private ArrayList<Candidato> governadores;
-    private ControladorCadastro ctrlCadastro;
-    private ControladorPrincipal ctrlPrincipal;
     private TelaCadastro telaCadastro;
    
-    private ControladorCandidato(ControladorCadastro ctrlCadastro) {
-        this.ctrlPrincipal = ctrlPrincipal;
+    private ControladorCandidato() {
         this.governadores = new ArrayList();
-        this.telaCandidato = new TelaCandidato(this);
-        this.ctrlCadastro = ctrlCadastro;
+        
     
     }
     
     public static ControladorCandidato getInstancia() {
         if (instancia == null) {
-            instancia = new ControladorCandidato(ControladorCadastro.getInstancia());
+            instancia = new ControladorCandidato();
         }
         return instancia;
     }
@@ -57,7 +53,7 @@ public class ControladorCandidato{
     }
     
     public void exibeMenuPrincipal() {
-        ctrlCadastro.iniciaCadastro();
+        ControladorCadastro.getInstancia().iniciaCadastro();
     }
  
     /*

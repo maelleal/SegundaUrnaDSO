@@ -24,15 +24,13 @@ public class ControladorCadastro {
     private ControladorCandidato ctrlCandidato;
     private ControladorPartido ctrlPartido;
     private TelaEleitor telaEleitor;
-    private TelaCandidato telaCandidato;
     private TelaPartido telaPartido;
     
 
     private ControladorCadastro() {
        
-        this.telaCadastro = new TelaCadastro(this);
+        
         this.telaEleitor = new TelaEleitor(this.ctrlEleitor);
-        this.telaCandidato = new TelaCandidato(this.ctrlCandidato);
         this.telaPartido = new TelaPartido(this.ctrlPartido);
         
     }
@@ -53,7 +51,7 @@ public class ControladorCadastro {
     }
     
     public void executaCadastroCandidato() {
-        telaCandidato.setVisible(true);   
+        TelaCandidato.getInstancia().setVisible(true);   
     }
     
     public void executaCadastroPartido() {

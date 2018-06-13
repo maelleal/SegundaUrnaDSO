@@ -312,30 +312,3 @@ public class TelaUrna extends JFrame {
 }
     
 }
-/*
-public void actionPerformed(ActionEvent e) {
-			String opcao = e.getActionCommand();
-			switch(opcao) {
-			case "AlugaVeiculo":
-				claviculario.abreTelaAlugaVeiculo();
-				break;
-			case "DevolveVeiculo":
-				claviculario.abreTelaDevolveVeiculo();
-				break;
-			case "ListaEmprestimo":
-				claviculario.abreTelaListaEmprestimo();
-				break;
-			case "ControleVeiculo":
-				claviculario.getCtrlVeiculo().abreControleVeiculo();
-				break;
-			case "ControleFuncionario":
-				claviculario.getCtrlFuncionario().inicia();
-				break;
-			case "ListaLogs":
-				claviculario.getCtrlLogs().inicia();
-				break;
-			default:
-				break;
-			}
-		}
-*/

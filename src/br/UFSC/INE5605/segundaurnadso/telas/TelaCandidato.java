@@ -33,16 +33,13 @@ import javax.swing.JTextField;
  * @author Ismael
  */
 public class TelaCandidato extends javax.swing.JFrame {
+    private static TelaCandidato instancia;
     private static final String BOTAO_CADASTRAR = "1";
     private static final String BOTAO_PESQUISAR = "2";
     private static final String BOTAO_VOLTAR = "3";
-    private Scanner cadastroCandidato;
     private JButton cadastrar;
     private JButton pesquisar;
     private JButton voltar;
-    private ControladorCandidato ctrlCandidato;
-    private ControladorPartido ctrlPartido;
-    private ControladorCadastro ctrlCadastro;
     private JTextField nomeCandidato;
     private JTextField txtNumero;
     private JTextField partidoCandidato;
@@ -57,9 +54,8 @@ public class TelaCandidato extends javax.swing.JFrame {
     private Dimension tamanhoBotao = new Dimension(200, 60);
     
     
-    public TelaCandidato (ControladorCandidato ctrlCandidato){
+    private TelaCandidato (){
         super ("Tela de Candidato");
-        this.ctrlCandidato = ctrlCandidato;
         this.gerenciador = new GerenciaBotoes();
         Font fonte = new Font("Courier New", Font.BOLD, 10);
         Font fonte2 = new Font("Courier New", Font.BOLD, 20);
@@ -167,10 +163,17 @@ public class TelaCandidato extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals("")) {
-                ctrlCadastro.executaCadastroCandidato();
+                ControladorCadastro.getInstancia().executaCadastroCandidato();
                 dispose();
             }
         }
+    }
+    
+    public static TelaCandidato getInstancia(){
+        if(instancia == null){
+            instancia = new TelaCandidato();
+        }
+        return instancia;
     }
 
 }
