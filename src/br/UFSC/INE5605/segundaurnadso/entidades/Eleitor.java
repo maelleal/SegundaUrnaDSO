@@ -5,11 +5,13 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ismael
  */
-public class Eleitor extends Pessoa {
+public class Eleitor extends Pessoa implements Serializable  {
     
     private int tituloEleitoral;
     private SecaoEleitoral secaoEleitoral;

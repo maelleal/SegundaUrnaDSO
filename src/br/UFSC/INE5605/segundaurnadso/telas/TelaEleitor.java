@@ -9,25 +9,23 @@ import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Eleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.SecaoEleitoral;
-import br.UFSC.INE5605.SegundaUrnaDSO.interfaces.IEleitor;
+import br.UFSC.INE5605.segundaurnadso.entidades.EleitorDAO;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.util.Scanner;
-import java.awt.GraphicsConfiguration;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -36,13 +34,10 @@ import javax.xml.bind.Unmarshaller;
  */
 public class TelaEleitor extends JFrame {
     private static TelaEleitor instancia;
+    private EleitorDAO eleitorDAO;
     private static final String BOTAO_CADASTRAR = "1";
     private static final String BOTAO_PESQUISAR = "2";
     private static final String BOTAO_VOLTAR = "3";
-    private ControladorEleitor ctrlEleitor;
-    private TelaCadastro telaCadastro;
-    private ControladorCadastro ctrlCadastro;
-    private SecaoEleitoral secao;
     private JButton cadastrar;
     private JButton pesquisar;
     private JButton voltar;
@@ -51,42 +46,17 @@ public class TelaEleitor extends JFrame {
     private JTextField pesquisaEleitor;
     private JLabel txtNomeEleitor;
     private JLabel txtPesquisaEleitor;
-    private JTextField txtNome = new JTextField();
-    private JTextField txtTitulo = new JTextField();
-    private JTextField txtPesquisaTitulo = new JTextField();
+    private JTable tabelaEleitores;
     private GerenciaBotoes gerenciador;
     private Dimension tamanhoBotao = new Dimension(200, 60);
     
     public TelaEleitor () {
         super("Tela do Eleitor");
-        this.ctrlEleitor = ctrlEleitor;
         Font fonte = new Font("Courier New", Font.BOLD, 10);
         Font fonte2 = new Font("Courier New", Font.BOLD, 20);
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
-        /*
-        cadastrar = new JButton();
-        pesquisar = new JButton();
-        voltar = new JButton();
-        nomeEleitor = new JTextField();
-        tituloEleitor = new JTextField();
-        pesquisaTitulo = new JTextField("Pesquisa Eleitor");
-        
-        txtNome.setText("Insira o nome do Eleitor");
-        txtTitulo.setText("Insira o Titulo de eleitor");       
-        txtPesquisaTitulo.setText("Insira o Titulo de Eleitor para Pesquisa");
-        
-        container.add(cadastrar);
-        container.add(pesquisar);
-        container.add(voltar);
-        container.add(nomeEleitor);
-        container.add(tituloEleitor);
-        container.add(pesquisaTitulo);
-        container.add(txtNome);
-        container.add(txtTitulo);
-        container.add(txtPesquisaTitulo);
-        */
         
         txtNomeEleitor = new JLabel();
         txtNomeEleitor.setText("Nome do Eleitor: ");
@@ -169,18 +139,44 @@ public class TelaEleitor extends JFrame {
 	constraints.gridx = 3;
 	constraints.gridy = 7;
 	container.add(voltar, constraints);
+        
+        tabelaEleitores = new JTable();
+        tabelaEleitores.setPreferredScrollableViewportSize(new Dimension(150,100));
+        tabelaEleitores.setFillsViewportHeight(true);
+        constraints.fill = GridBagConstraints.WEST;
+        constraints.gridheight = 3;
+        constraints.gridwidth = 3;
+        constraints.gridx = 6;
+        constraints.gridy = 2;
+        JScrollPane rolagem = new JScrollPane(tabelaEleitores);
+        container.add(rolagem, constraints);
        
         setSize(900, 600);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
     }
-    
+    /*
+    private void updateData(){
+        DefaultTableModel modelTbItens = new DefaultTableModel();
+        modelTbItens.addColumn("Numero do Titulo");
+        modelTbItens.addColumn("Nome");
+        modelTbItens.addColumn("Cidade");
+        
+        for (Eleitor eleitor : eleitorDAO.getList()){
+            modelTbItens.addRow(new Object[]{eleitor.getTituloEleitoral(), eleitor.getSecaoEleitoral(),
+                eleitor.getNome(), eleitor.getCidade});
+        }
+        tabelaEleitores.setModel(modelTbItens);
+        this.repaint();
+        
+    }
+    */
     public class GerenciaBotoes implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals("")) {
-                ctrlCadastro.executaCadastroCandidato();
+                ControladorCadastro.getInstancia().executaCadastroCandidato();
                 dispose();
             }
         }
@@ -192,6 +188,8 @@ public class TelaEleitor extends JFrame {
         }
         return instancia;
     }
+    
+     
 }
 
 

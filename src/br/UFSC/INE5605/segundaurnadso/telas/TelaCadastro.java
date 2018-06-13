@@ -6,15 +6,12 @@
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPartido;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
-import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,9 +28,6 @@ public class TelaCadastro extends JFrame {
     public static final String OPCAO_PARTIDO = "2";
     public static final String OPCAO_CANDIDATO = "3";
     public static final String OPCAO_SAIR = "4";
-    
-    //private ControladorEleitor ctrlEleitor;
-    //private ControladorCandidato ctrlCandidato;
     private JButton botaoEleitor;
     private JButton botaoPartido;
     private JButton botaoCandidato;

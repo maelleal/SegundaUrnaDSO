@@ -20,8 +20,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.util.Collection;
-import javafx.print.Collation;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -44,14 +42,13 @@ public class TelaCandidato extends JFrame {
     private JButton voltar;
     private JTextField nomeCandidato;
     private JTextField numeroCandidato;
-    private JComboBox partidoCandidato;
+    private JComboBox<PartidoPoliticoDAO> partidoCandidato;
     private JTable tabelaCandidatos;
     private JLabel txtNomeCandidato;
     private JLabel txtPartidoCandidato;
     private JLabel txtNumeroCandidato;
     private GerenciaBotoes gerenciador;
     private Dimension tamanhoBotao = new Dimension(200, 60);
-    
     
     private TelaCandidato (){
         super ("Tela de Candidato");

@@ -5,11 +5,13 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ismael
  */
-public class PartidoPolitico {
+public class PartidoPolitico implements Serializable {
     private String nome;
 
     public PartidoPolitico(String nome) {
@@ -23,5 +25,7 @@ public class PartidoPolitico {
     public void setPartido(String partido) {
         this.nome = nome;
     }
+
+   
     
 }

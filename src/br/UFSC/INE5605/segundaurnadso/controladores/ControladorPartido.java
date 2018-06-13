@@ -7,8 +7,9 @@ package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
+import br.UFSC.INE5605.segundaurnadso.entidades.PartidoPoliticoDAO;
 import java.io.Serializable;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -16,13 +17,39 @@ import java.util.ArrayList;
  */
 public class ControladorPartido implements Serializable {
     private static ControladorPartido instancia;
-    private ArrayList<PartidoPolitico> partidos;
-    private PartidoPolitico partido;
 
+    public ControladorPartido() {
+        PartidoPolitico partido1 = new PartidoPolitico("PCC");
+        PartidoPoliticoDAO.getInstancias().put(partido1);
+        PartidoPolitico partido2 = new PartidoPolitico("TCC");
+        PartidoPoliticoDAO.getInstancias().put(partido2);
+        PartidoPolitico partido3 = new PartidoPolitico("BCC");
+        PartidoPoliticoDAO.getInstancias().put(partido3);
+    }
     
+    /*
+    public PartidoPolitico encontraPartidoPeloNome(String nome){
+        PartidoPolitico a = null;
+        for(PartidoPolitico e : PartidoPoliticoDAO.getInstancias().get(Integer.valueOf(nome))){
+            if(e.getPartido() == nome){
+                a = e;
+            }      
+        }
+        return a;
+    }
+    */
+    public void incluiPartido(String nomePartido) {
+        PartidoPolitico partido = new PartidoPolitico(nomePartido);
+        PartidoPoliticoDAO.getInstancias().put(partido);
     
-    public ArrayList<PartidoPolitico> getPartidos() {
-        return partidos;
+    }
+    public void exibeMenuPrincipal() {
+        ControladorCadastro.getInstancia().iniciaCadastro();
+    }
+
+    public void executaCadastroPartido() {
+        System.out.println("TESTE");
+        //telaPartido.setVisible(true);
     }
     
     public static ControladorPartido getInstancia(){
@@ -31,35 +58,5 @@ public class ControladorPartido implements Serializable {
         }
         return instancia;
     }
-    
-    public PartidoPolitico encontraPartidoPeloNome(String nome){
-        PartidoPolitico a = null;
-        for(PartidoPolitico e : partidos){
-            if(e.getPartido() == nome){
-                a = e;
-            }      
-        }
-        return a;
-    }
-    
-    
-
-    public void incluiPartido(String nomePartido) {
-        PartidoPolitico partido = new PartidoPolitico(nomePartido);
-        partidos.add(partido);
-        
-    
-    }
-    public void exibeMenuPrincipal() {
-        ControladorCadastro.getInstancia().iniciaCadastro();
-    }
-
-    
-
-    public void executaCadastroPartido() {
-        System.out.println("TESTE");
-        //telaPartido.setVisible(true);
-    }
-    
     
 }
