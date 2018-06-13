@@ -8,19 +8,20 @@ import br.UFSC.INE5605.SegundaUrnaDSO.interfaces.ICandidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
+import java.io.Serializable;
 /**
  *
  * @author Ismael
  */
-public class Candidato extends Pessoa {
+public class Candidato extends Pessoa implements Serializable {
 
     private PartidoPolitico partido;
-    private int numeroCandidato;
+    private int numero;
 
-    public Candidato(String nome, PartidoPolitico partido, int numeroCandidato) {
+    public Candidato(String nome, PartidoPolitico partido, int numero) {
         super(nome);
         this.partido = partido;
-        this.numeroCandidato = numeroCandidato;
+        this.numero = numero;
     }
 
     public PartidoPolitico getPartido() {
@@ -31,12 +32,12 @@ public class Candidato extends Pessoa {
         this.partido = partido;
     }
 
-    public int getNumeroCandidato() {
-        return numeroCandidato;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setNumeroCandidato(int numeroCandidato) {
-        this.numeroCandidato = numeroCandidato;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public String getNome() {
