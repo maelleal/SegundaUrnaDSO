@@ -18,7 +18,8 @@ import java.util.HashMap;
  * @author Ismael
  */
 public class PartidoPoliticoDAO {
-     private HashMap<Integer, PartidoPolitico> cachePartido = new HashMap<>();
+    private static PartidoPoliticoDAO instancia;
+    private HashMap<Integer, PartidoPolitico> cachePartido = new HashMap<>();
     private final String arquivoPartido = "eleitor.dat";
     
     public PartidoPolitico get(Integer idPartido){
@@ -72,7 +73,11 @@ public class PartidoPoliticoDAO {
         } catch (IOException ex) {
             System.out.println(ex);
         }
-    
-        
+    }
+    public static PartidoPoliticoDAO getInstancias(){
+        if(instancia == null ){
+            instancia = new PartidoPoliticoDAO();
+        }
+        return instancia;
     }
 }

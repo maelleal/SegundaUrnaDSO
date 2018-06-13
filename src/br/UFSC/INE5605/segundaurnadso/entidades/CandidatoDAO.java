@@ -18,9 +18,13 @@ import java.util.HashMap;
  * @author Ismael
  */
 public class CandidatoDAO {
+    private static CandidatoDAO instancia;
     private HashMap<Integer, Candidato> cacheCandidatos = new HashMap<>();
     private final String arquivoCandidato = "candidatos.dat";
     
+    private CandidatoDAO(){
+        
+    }
     public Candidato get(Integer idCandidato){
         
         return cacheCandidatos.get(idCandidato);
@@ -77,5 +81,10 @@ public class CandidatoDAO {
         
     }
     
-    
+    public static CandidatoDAO getInstancia (){
+        if(instancia == null){
+            instancia = new CandidatoDAO();
+        }
+        return instancia;
+    }
 }

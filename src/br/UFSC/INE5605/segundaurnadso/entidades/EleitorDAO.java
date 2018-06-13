@@ -18,8 +18,13 @@ import java.util.HashMap;
  * @author Ismael
  */
 public class EleitorDAO {
+    private static EleitorDAO instancia;
     private HashMap<Integer, Eleitor> cacheEleitor = new HashMap<>();
     private final String arquivoEleitor = "eleitor.dat";
+    
+    private EleitorDAO (){
+        
+    }
     
     public Eleitor get(Integer idEleitor){
         return cacheEleitor.get(idEleitor);
@@ -72,7 +77,12 @@ public class EleitorDAO {
         } catch (IOException ex) {
             System.out.println(ex);
         }
+    }
     
-        
+    public static EleitorDAO getInstancia(){
+        if(instancia == null){
+            instancia = new EleitorDAO();
+        }
+        return instancia;
     }
 }
