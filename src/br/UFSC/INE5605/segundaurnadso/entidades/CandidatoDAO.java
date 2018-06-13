@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -86,5 +87,13 @@ public class CandidatoDAO {
             instancia = new CandidatoDAO();
         }
         return instancia;
+    }
+    
+    public void remove(Integer idCandidato){
+	cacheCandidatos.remove(idCandidato);
+	persist();
+    }
+    public Collection<Candidato> getList(){
+	return cacheCandidatos.values();
     }
 }

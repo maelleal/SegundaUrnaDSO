@@ -11,6 +11,7 @@ import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
+import br.UFSC.INE5605.segundaurnadso.entidades.CandidatoDAO;
 import java.util.ArrayList;
 
 /**
@@ -19,43 +20,33 @@ import java.util.ArrayList;
  */
 public class ControladorCandidato{
     private static ControladorCandidato instancia;
-    private TelaCandidato telaCandidato;
-    private ArrayList<Candidato> governadores;
-    private TelaCadastro telaCadastro;
-   
+    private CandidatoDAO candidatoDAO;
     private ControladorCandidato() {
-        this.governadores = new ArrayList();
-        
-    
+       
     }
-    
-    public static ControladorCandidato getInstancia() {
-        if (instancia == null) {
-            instancia = new ControladorCandidato();
-        }
-        return instancia;
-    }
-    
-    public ArrayList<Candidato> getGovernadores(){
-        return governadores;
-    }
+   
     public void incluiCandidato(){
         //telaCandidato.exibeCadastroCandidato();
         
     }
     void abreTelaCandidato() {
-        telaCandidato.setVisible(true);
+        TelaCandidato.getInstancia().setVisible(true);
     }
     public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {
            Candidato governador = new Candidato(nome, partido, numeroCandidato);
-           governadores.add(governador);
+           candidatoDAO.put(governador);
           // telaCandidato.incluiGovernador();
     }
     
     public void exibeMenuPrincipal() {
         ControladorCadastro.getInstancia().iniciaCadastro();
     }
- 
+    public static ControladorCandidato getInstancia() {
+        if (instancia == null) {
+            instancia = new ControladorCandidato();
+        }
+        return instancia;
+    }
     /*
         try {
             while (candidato.getNumeroCandidato() < 01 || candidato.getNumeroCandidato() > 98 ) {            
