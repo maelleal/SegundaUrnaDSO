@@ -32,6 +32,7 @@ import javax.xml.bind.Unmarshaller;
  * @author Ismael
  */
 public class TelaUrna extends JFrame {
+    private static TelaUrna instancia;
     public static final String	BOTAO_UM = "1";
     public static final String	BOTAO_DOIS = "2";
     public static final String	BOTAO_TRES = "3";
@@ -69,7 +70,7 @@ public class TelaUrna extends JFrame {
     private Dimension tamanhoBotao2 = new Dimension(500, 200);
     
     
-    public TelaUrna(ControladorUrna ctrlUrna){
+    private TelaUrna(){
         super("Tela Urna");
         this.ctrlUrna = ctrlUrna;
         this.botoes = new GerenciaBotoes();
@@ -310,5 +311,12 @@ public class TelaUrna extends JFrame {
         
     } 
 }
+    
+    public static TelaUrna getInstancia(){
+        if(instancia == null){
+            instancia = new TelaUrna();
+        }
+        return instancia;
+    }
     
 }

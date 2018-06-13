@@ -18,15 +18,12 @@ public class ControladorEleitor {
     private static ControladorEleitor instancia;
     private ArrayList<Eleitor> eleitores;
     private TelaEleitor telaEleitor;
-    private ControladorCadastro ctrlCadastro;
     private ArrayList<SecaoEleitoral>secoes;
    
 
     private ControladorEleitor() {
         
         this.eleitores = new ArrayList();
-        this.ctrlCadastro = ctrlCadastro;
-        this.telaEleitor = new TelaEleitor(this);
         //this.secoes = new ArrayList();
     }
     public static ControladorEleitor getInstancia(){
@@ -62,7 +59,7 @@ public class ControladorEleitor {
     }
     
     public void exibeMenuPrincipal() {
-        ctrlCadastro.iniciaCadastro();
+        ControladorCadastro.getInstancia().iniciaCadastro();
     }
     
     public void cadastraEleitor(int tituloEleitoral, int secaoEleitoral, String nome, String cidade){

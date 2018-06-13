@@ -15,23 +15,10 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
  * @author rodri
  */
 public class ControladorCadastro {
-    
-    public static final int OPCAO_ELEITORES = 4;
     private static ControladorCadastro instancia;
-    private TelaCadastro telaCadastro;
-    private ControladorPrincipal ctrlPrincipal;
-    private ControladorEleitor ctrlEleitor; 
-    private ControladorCandidato ctrlCandidato;
-    private ControladorPartido ctrlPartido;
-    private TelaEleitor telaEleitor;
-    private TelaPartido telaPartido;
     
 
     private ControladorCadastro() {
-       
-        
-        this.telaEleitor = new TelaEleitor(this.ctrlEleitor);
-        this.telaPartido = new TelaPartido(this.ctrlPartido);
         
     }
     
@@ -43,11 +30,11 @@ public class ControladorCadastro {
     }
     
     public void iniciaCadastro() {
-        telaCadastro.setVisible(true);   
+        TelaCadastro.getInstancia().setVisible(true);   
     }
     
     public void executaCadastroEleitor() {
-        telaEleitor.setVisible(true);   
+        TelaEleitor.getInstancia().setVisible(true);   
     }
     
     public void executaCadastroCandidato() {
@@ -55,6 +42,6 @@ public class ControladorCadastro {
     }
     
     public void executaCadastroPartido() {
-        telaPartido.setVisible(true);
+        TelaPartido.getInstancia().setVisible(true);
     }
 }

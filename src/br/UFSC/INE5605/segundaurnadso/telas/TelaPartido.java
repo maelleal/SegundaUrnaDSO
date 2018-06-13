@@ -27,12 +27,10 @@ import javax.xml.bind.Unmarshaller;
  * @author ismael
  */
 public class TelaPartido extends JFrame {
+    private static TelaPartido instancia;
     private static final String BOTAO_CADASTRAR = "1";
     private static final String BOTAO_PESQUISAR = "2";
     private static final String BOTAO_VOLTAR = "3";
-    private TelaCadastro telaCadastro;
-    private ControladorCadastro ctrlCadastro;
-    private ControladorPartido ctrlPartido;
     private JButton cadastrar;
     private JButton pesquisar;
     private JButton voltar;
@@ -43,9 +41,8 @@ public class TelaPartido extends JFrame {
     private GerenciaBotoes botoes;
     private Dimension tamanhoBotao = new Dimension(100, 30);
 
-    public TelaPartido(ControladorPartido ctrlPartido) {
+    private TelaPartido() {
         super("Tela de Cadastro de Partido");
-        this.ctrlPartido = ctrlPartido;
         this.botoes = new GerenciaBotoes();
         Font fonte = new Font("Courier New", Font.BOLD, 10);
         Font fonte2 = new Font("Courier New", Font.BOLD, 20);
@@ -119,9 +116,16 @@ public class TelaPartido extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals("")) {
-                ctrlCadastro.executaCadastroPartido();
+                ControladorCadastro.getInstancia().executaCadastroPartido();
                 dispose();
             }
         }
+    }
+    
+    public static TelaPartido getInstancia(){
+        if(instancia == null){
+            instancia = new TelaPartido();
+        }
+        return instancia;
     }
 }

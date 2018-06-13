@@ -35,6 +35,7 @@ import javax.xml.bind.Unmarshaller;
  * @author Ismael
  */
 public class TelaEleitor extends JFrame {
+    private static TelaEleitor instancia;
     private static final String BOTAO_CADASTRAR = "1";
     private static final String BOTAO_PESQUISAR = "2";
     private static final String BOTAO_VOLTAR = "3";
@@ -56,7 +57,7 @@ public class TelaEleitor extends JFrame {
     private GerenciaBotoes gerenciador;
     private Dimension tamanhoBotao = new Dimension(200, 60);
     
-    public TelaEleitor (ControladorEleitor ctrlEleitor) {
+    public TelaEleitor () {
         super("Tela do Eleitor");
         this.ctrlEleitor = ctrlEleitor;
         Font fonte = new Font("Courier New", Font.BOLD, 10);
@@ -185,33 +186,13 @@ public class TelaEleitor extends JFrame {
         }
     }
 
+    public static TelaEleitor getInstancia(){
+        if(instancia == null){
+            instancia = new TelaEleitor();
+        }
+        return instancia;
+    }
 }
 
 
-    
-   // public void exibeMenuEleitores() {
-        
-   // }
- /*
-    public void exibeEleitores() {
-        for(Eleitor e : ctrlEleitor.getEleitores()){
-            System.out.println("Eleitor: "+e.getNome());
-        }
-    }
-    
-
-    public void incluirSecao() {
-        //TelaCadastro telaCadastro = new TelaCadastro(ctrlCadastro);
-        System.out.println("==== Cadastro de Seção ====");
-        System.out.println("");
-        System.out.println("Digite o numero da secao:");
-        int numeroSecao = teclado.nextInt();
-        System.out.println("Digite o nome da cidade: ");
-        String cidade = teclado.next();
-        
-        ctrlEleitor.cadastraSecao(numeroSecao, cidade);
-        
-        ctrlEleitor.exibeMenuPrincipal();
-    }
-*/
 

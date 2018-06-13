@@ -18,14 +18,11 @@ import javax.swing.JOptionPane;
  */
 public class ControladorUrna {
     private static ControladorUrna instancia;
-    private TelaPrincipal telaPrincipal;
-    private TelaUrna telaUrna;
     private ArrayList<Voto>listaVotosGovernadores;
     private int votoGov;
     
 
     private ControladorUrna() {
-        this.telaUrna = new TelaUrna(this);
         this.listaVotosGovernadores = new ArrayList();
         
     } 
@@ -48,6 +45,6 @@ public class ControladorUrna {
     
 
     public void abreTelaUrna() {
-        telaUrna.setVisible(true);
+        TelaUrna.getInstancia().setVisible(true);
     }
 }
