@@ -58,7 +58,7 @@ public class PartidoPoliticoDAO implements Serializable {
            
             
         } catch (FileNotFoundException ex) {
-            System.out.println(ex);
+            load();
         }catch (IOException ex) {
             System.out.println(ex);
         }
