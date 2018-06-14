@@ -40,11 +40,16 @@ public class ControladorPartido implements Serializable {
         return a;
     }
     */
-    public void incluiPartido(String nomePartido, int numeroPartido) {
-        PartidoPolitico partido = new PartidoPolitico(nomePartido, numeroPartido);
-        PartidoPoliticoDAO.getInstancias().put(partido);
-    
+    public void incluiPartido(String nomePartido, int codigoPartido) {
+        PartidoPolitico partido = new PartidoPolitico(nomePartido, codigoPartido);
+        if(PartidoPoliticoDAO.getInstancias().get(codigoPartido) == null){
+            PartidoPoliticoDAO.getInstancias().put(partido);
+            TelaCadastraPartido.getInstancia().mensagemOK();
+        } else {
+            TelaCadastraPartido.getInstancia().mensagemErro();
+        }
     }
+    
     public void exibeMenuCadastro() {
         ControladorCadastro.getInstancia().iniciaCadastro();
     }
