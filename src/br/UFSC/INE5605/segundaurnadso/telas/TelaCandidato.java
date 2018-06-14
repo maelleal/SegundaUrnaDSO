@@ -7,9 +7,6 @@ package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
-import br.UFSC.INE5605.segundaurnadso.entidades.CandidatoDAO;
-import br.UFSC.INE5605.segundaurnadso.entidades.PartidoPoliticoDAO;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -18,13 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JComboBox;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *

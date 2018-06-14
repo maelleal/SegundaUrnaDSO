@@ -5,28 +5,19 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPartido;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPrincipal;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorUrna;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
-import javax.swing.Action;
-import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -52,7 +43,7 @@ public class TelaPrincipal extends JFrame{
         super("Tela Principal");
         this.botoes = new GerenciaBotoes();
         
-        Font fonte = new Font("Courier New", Font.BOLD, 20);      
+        Font fonte = new Font("Courier New", Font.BOLD, 17);    
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -66,6 +57,7 @@ public class TelaPrincipal extends JFrame{
         
         sair = new JButton();
         sair.setText("Sair");
+        sair.setFont(fonte);
         sair.setActionCommand(OPCAO_SAIR);
         sair.setPreferredSize(tamanhoBotao);
         sair.addActionListener(botoes);
@@ -75,6 +67,7 @@ public class TelaPrincipal extends JFrame{
         
         cadastros = new JButton();
         cadastros.setText("Cadastros");
+        cadastros.setFont(fonte);
 	cadastros.setActionCommand(OPCAO_CADASTRO);
 	cadastros.setPreferredSize(tamanhoBotao);
         cadastros.addActionListener(botoes);
@@ -85,6 +78,7 @@ public class TelaPrincipal extends JFrame{
 		
         votacao = new JButton();
         votacao.setText("Votação");
+        votacao.setFont(fonte);
         votacao.setActionCommand(OPCAO_VOTACAO);
         votacao.setPreferredSize(tamanhoBotao);
         votacao.addActionListener(botoes);
@@ -95,6 +89,7 @@ public class TelaPrincipal extends JFrame{
         
         resultado = new JButton();
         resultado.setText("Resultado do Pleito");
+        resultado.setFont(fonte);
         resultado.setActionCommand(OPCAO_RESULTADOS);
         resultado.setPreferredSize(tamanhoBotao);
         resultado.addActionListener(botoes);

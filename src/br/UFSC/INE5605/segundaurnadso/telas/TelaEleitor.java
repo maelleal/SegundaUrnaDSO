@@ -6,11 +6,6 @@
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Eleitor;
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.SecaoEleitoral;
-import br.UFSC.INE5605.segundaurnadso.entidades.EleitorDAO;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,15 +13,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -44,7 +32,7 @@ public class TelaEleitor extends JFrame {
     private GerenciaBotoes gerenciador;
     private Dimension tamanhoBotao = new Dimension(280, 80);
     
-    public TelaEleitor () {
+    private TelaEleitor () {
         super("Tela do Eleitor");
         Font fonte = new Font("Courier New", Font.BOLD, 20);
         Container container = getContentPane();
@@ -87,40 +75,26 @@ public class TelaEleitor extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
-    /*
-    private void updateData(){
-        DefaultTableModel modelTbItens = new DefaultTableModel();
-        modelTbItens.addColumn("Numero do Titulo");
-        modelTbItens.addColumn("Nome");
-        modelTbItens.addColumn("Cidade");
-        
-        for (Eleitor eleitor : eleitorDAO.getList()){
-            modelTbItens.addRow(new Object[]{eleitor.getTituloEleitoral(), eleitor.getSecaoEleitoral(),
-                eleitor.getNome(), eleitor.getCidade});
-        }
-        tabelaEleitores.setModel(modelTbItens);
-        this.repaint();
-        
-    }
-    */
     public class GerenciaBotoes implements ActionListener {
+       
         @Override
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_CADASTRAR)) {
-                ControladorCadastro.getInstancia().executaCadastroCandidato();
+                ControladorCadastro.getInstancia().executaCadastroEleitor();
                 dispose();
             }
             if(opcao.equals(BOTAO_PESQUISAR)) {
-                ControladorCadastro.getInstancia().executaCadastroCandidato();
+                System.out.println("Está executando");
                 dispose();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorCandidato.getInstancia().exibeMenuPrincipal();
+                TelaPrincipal.getInstancia().setVisible(true);
                 dispose();
             }
         }
     }
+    
 
     public static TelaEleitor getInstancia(){
         if(instancia == null){

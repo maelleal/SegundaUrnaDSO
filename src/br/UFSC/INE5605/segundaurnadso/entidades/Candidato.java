@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
-import br.UFSC.INE5605.SegundaUrnaDSO.interfaces.ICandidato;
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
-import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
+
 import java.io.Serializable;
 /**
  *

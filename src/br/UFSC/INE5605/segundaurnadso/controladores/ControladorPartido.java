@@ -7,8 +7,8 @@ package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
-import br.UFSC.INE5605.segundaurnadso.entidades.PartidoPoliticoDAO;
-import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraPartido;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPoliticoDAO;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraPartido;
 import java.io.Serializable;
 
 

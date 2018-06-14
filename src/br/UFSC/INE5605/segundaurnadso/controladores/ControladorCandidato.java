@@ -11,8 +11,8 @@ import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
-import br.UFSC.INE5605.segundaurnadso.entidades.CandidatoDAO;
-import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraCandidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.CandidatoDAO;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraCandidato;
 import java.util.ArrayList;
 
 /**

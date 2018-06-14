@@ -10,9 +10,9 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaEleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
-import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraCandidato;
-import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraEleitor;
-import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraPartido;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraCandidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraEleitor;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraPartido;
 /**
  *
  * @author rodri

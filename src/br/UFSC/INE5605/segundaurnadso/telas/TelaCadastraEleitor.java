@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.segundaurnadso.telas;
+package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import javax.swing.JFrame;
+
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
-import br.UFSC.INE5605.segundaurnadso.entidades.EleitorDAO;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.EleitorDAO;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;

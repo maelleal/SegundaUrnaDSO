@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.segundaurnadso.entidades;
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
+package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

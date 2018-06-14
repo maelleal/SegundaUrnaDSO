@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.segundaurnadso.entidades;
+package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
+
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Eleitor;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -90,7 +91,7 @@ public class EleitorDAO {
 	cacheEleitor.remove(idCandidato);
 	persist();
     }
-    public Collection<Candidato> getList(){
+    public Collection<Eleitor> getList(){
 	return cacheEleitor.values();
     }
 }

@@ -5,19 +5,12 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import java.util.Scanner;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorUrna;
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
-import static br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPrincipal.OPCAO_SAIR;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.util.Scanner;
-import java.awt.GraphicsConfiguration;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -25,8 +18,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 /**
  *
  * @author Ismael

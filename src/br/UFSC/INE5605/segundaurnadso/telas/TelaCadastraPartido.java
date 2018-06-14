@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.segundaurnadso.telas;
+package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPartido;
@@ -61,7 +61,7 @@ public class TelaCadastraPartido extends JFrame{
         
         txtcodigoPartido = new JLabel();
         txtcodigoPartido.setFont(fonte);
-        txtcodigoPartido.setText("Codigo:");
+        txtcodigoPartido.setText("Codigo do Partido:");
         constraints.gridx = 0;
 	constraints.gridy = 3;
         container.add(txtcodigoPartido, constraints);

@@ -40,7 +40,7 @@ public class TelaCadastro extends JFrame {
     private TelaCadastro() {
         super("Tela de Cadastros");
         this.gerenciador = new GerenciaBotoes();
-        Font fonte = new Font("Courier New", Font.BOLD, 15);
+        Font fonte = new Font("Courier New", Font.BOLD, 17);
         
         GridBagConstraints constraints = new GridBagConstraints();
         Container container = getContentPane();
@@ -99,31 +99,31 @@ public class TelaCadastro extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
         setLocationRelativeTo(null);
     }
-public class GerenciaBotoes implements ActionListener {
+    public class GerenciaBotoes implements ActionListener {
        
-    @Override
-    public void actionPerformed(ActionEvent evento) {
-        String opcao = evento.getActionCommand();
-        if(opcao.equals(OPCAO_ELEITOR)) {
-            ControladorCadastro.getInstancia().executaTelaEleitor();
-            dispose();
-        }
-        if(opcao.equals(OPCAO_PARTIDO)) {
-            ControladorCadastro.getInstancia().executaTelaPartido();
-            dispose();
-        }
-        if(opcao.equals(OPCAO_CANDIDATO)) {
-            ControladorCadastro.getInstancia().executaTelaCandidato();
-            dispose();
-        }
-        if(opcao.equals(OPCAO_VOLTAR)) {
-            TelaPrincipal.getInstancia().setVisible(true);
-            dispose();
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            String opcao = evento.getActionCommand();
+            if(opcao.equals(OPCAO_ELEITOR)) {
+                ControladorCadastro.getInstancia().executaTelaEleitor();
+                dispose();
+            }
+            if(opcao.equals(OPCAO_PARTIDO)) {
+                ControladorCadastro.getInstancia().executaTelaPartido();
+                dispose();
+            }
+            if(opcao.equals(OPCAO_CANDIDATO)) {
+                ControladorCadastro.getInstancia().executaTelaCandidato();
+                dispose();
+            }
+            if(opcao.equals(OPCAO_VOLTAR)) {
+                TelaPrincipal.getInstancia().setVisible(true);
+                dispose();
+            }
         }
     }
     
-    
-}
+
     
     public static TelaCadastro getInstancia() {
         if(instancia == null){
