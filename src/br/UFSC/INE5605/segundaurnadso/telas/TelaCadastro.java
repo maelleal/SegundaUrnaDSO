@@ -24,7 +24,6 @@ import javax.swing.JOptionPane;
  */
 public class TelaCadastro extends JFrame {
     private static TelaCadastro instancia;
-    
     public static final String OPCAO_ELEITOR = "1";
     public static final String OPCAO_PARTIDO = "2";
     public static final String OPCAO_CANDIDATO = "3";

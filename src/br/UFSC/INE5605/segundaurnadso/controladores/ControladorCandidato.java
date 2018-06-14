@@ -51,4 +51,8 @@ public class ControladorCandidato{
         }
         return instancia;
     }
+
+    public void exibeMenuCandidato() {
+        TelaCandidato.getInstancia().setVisible(true);
+    }
 }

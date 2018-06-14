@@ -21,6 +21,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -32,16 +34,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaCadastraCandidato extends JFrame {
     private static TelaCadastraCandidato instancia;
-    private static final String BOTAO_CADASTRAR = "1";
-    private static final String BOTAO_PESQUISAR = "2";
+    private static final String BOTAO_SALVAR = "1";
     private static final String BOTAO_VOLTAR = "3";
     private JButton cadastrar;
-    private JButton pesquisar;
     private JButton voltar;
     private JTextField nomeCandidato;
     private JTextField numeroCandidato;
     private JComboBox<PartidoPoliticoDAO> partidoCandidato;
-    private JTable tabelaCandidatos;
     private JLabel txtNomeCandidato;
     private JLabel txtPartidoCandidato;
     private JLabel txtNumeroCandidato;
@@ -57,62 +56,53 @@ public class TelaCadastraCandidato extends JFrame {
         GridBagConstraints constraints = new GridBagConstraints();
         
         txtNomeCandidato = new JLabel();
-        txtNomeCandidato.setText("Nome do Candidato: ");
+        txtNomeCandidato.setText("Nome do Candidato:");
         txtNomeCandidato.setFont(fonte);
-        constraints.gridx = 2;
+        constraints.gridx = 0;
 	constraints.gridy = 0;
         container.add(txtNomeCandidato, constraints);
         
-        nomeCandidato = new JTextField(10);
+        nomeCandidato = new JTextField(15);
         nomeCandidato.setFont(fonte);
-        constraints.gridx = 2;
+        constraints.gridx = 0;
 	constraints.gridy = 1;
         container.add(nomeCandidato, constraints);
         
         txtPartidoCandidato = new JLabel();
         txtPartidoCandidato.setText("Partido do Candidato: ");
         txtPartidoCandidato.setFont(fonte);
-        constraints.gridx = 2;
+        constraints.gridx = 0;
 	constraints.gridy = 2;
         container.add(txtPartidoCandidato, constraints);
         
         partidoCandidato = new JComboBox();
-        constraints.gridx = 2;
+        constraints.gridx = 0;
         constraints.gridy = 3;
+        partidoCandidato.setPreferredSize(new Dimension(175, 30));
         container.add(partidoCandidato, constraints);
         
         txtNumeroCandidato = new JLabel();
         txtNumeroCandidato.setText("Numero do Candidato: ");
         txtNumeroCandidato.setFont(fonte);
-        constraints.gridx = 2;
+        constraints.gridx = 0;
         constraints.gridy = 4;
         container.add(txtNumeroCandidato, constraints);
         
-        numeroCandidato = new JTextField(2);
+        numeroCandidato = new JTextField(15);
         numeroCandidato.setFont(fonte);
-        constraints.gridx = 2;
+        constraints.gridx = 0;
         constraints.gridy = 5;
         container.add(numeroCandidato, constraints);
         
         cadastrar = new JButton();
-        cadastrar.setText("Cadastrar");
+        cadastrar.setText("SALVAR");
         cadastrar.setFont(fonte);
-        cadastrar.setActionCommand(BOTAO_CADASTRAR);
+        cadastrar.setActionCommand(BOTAO_SALVAR);
         cadastrar.addActionListener(gerenciador);
         cadastrar.setPreferredSize(tamanhoBotao);
-        constraints.gridx = 2;
+        constraints.gridx = 0;
         constraints.gridy = 6;
         container.add(cadastrar, constraints);
-        
-        pesquisar = new JButton();
-        pesquisar.setText("Pesquisar");
-	pesquisar.setFont(fonte);
-	pesquisar.setActionCommand(BOTAO_PESQUISAR);
-	pesquisar.addActionListener(gerenciador);
-	pesquisar.setPreferredSize(tamanhoBotao);
-	constraints.gridx = 6;
-	constraints.gridy = 6;
-	container.add(pesquisar, constraints);
         
         voltar = new JButton();
         voltar.setText("VOLTAR");
@@ -120,58 +110,40 @@ public class TelaCadastraCandidato extends JFrame {
 	voltar.setActionCommand(BOTAO_VOLTAR);
 	voltar.addActionListener(gerenciador);
 	voltar.setPreferredSize(tamanhoBotao);
-        //constraints.ipady = 2;
-        //constraints.weightx = 0.0;
-        //constraints.gridwidth = 3;
-	constraints.gridx = 3;
-	constraints.gridy = 5;
+	constraints.gridx = 0;
+	constraints.gridy = 7;
 	container.add(voltar, constraints);
         
-        tabelaCandidatos = new JTable();
-        tabelaCandidatos.setPreferredScrollableViewportSize(new Dimension(150, 100));
-        tabelaCandidatos.setFillsViewportHeight(true);
-        constraints.fill = GridBagConstraints.WEST;
-        constraints.gridheight = 3;
-        constraints.gridwidth = 3;
-        constraints.gridx = 6;
-        constraints.gridy = 2;
-        JScrollPane rolagem = new JScrollPane(tabelaCandidatos);
-        container.add(rolagem, constraints);
-        
-       
         setSize(400, 500);
         setVisible(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        setLocationRelativeTo(null);
     }
     
-    private void updateData(){
-        DefaultTableModel modelTbItens = new DefaultTableModel();
-        modelTbItens.addColumn("Nome");
-        modelTbItens.addColumn("Partido");
-        modelTbItens.addColumn("Numero");
-        
-        for (Candidato candidato : CandidatoDAO.getInstancia().getList()){
-            modelTbItens.addRow(new Object[]{candidato.getNome(), candidato.getPartido(),
-                candidato.getNumero()});
-        }
-        tabelaCandidatos.setModel(modelTbItens);
-        this.repaint();
-    }
+    
     
     public class GerenciaBotoes implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
-            if(opcao.equals(BOTAO_CADASTRAR)) {
-                ControladorCadastro.getInstancia().executaCadastroCandidato();
-                dispose();
-            }
-            if(opcao.equals(BOTAO_PESQUISAR)) {
-                ControladorCadastro.getInstancia().executaCadastroCandidato();
-                dispose();
+            if(opcao.equals(BOTAO_SALVAR)) {
+                try {
+                    int numero = Integer.parseInt(numeroCandidato.getText());
+                    if (numero < 0 || numero > 99){
+                        //apaga o que está no campo de numeroCandidato
+                    }else {
+                        ControladorCadastro.getInstancia().executaCadastroCandidato();
+                        dispose();
+                    }
+                } catch (Exception e) {
+                   
+                    JOptionPane.showMessageDialog(null, "Somente numeros entre 1 e 99!", "Erro ao Cadastrar", ERROR_MESSAGE);
+
+                }
+                
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorCandidato.getInstancia().exibeMenuPrincipal();
+                ControladorCandidato.getInstancia().exibeMenuCandidato();
                 dispose();
             }
         }

@@ -62,13 +62,12 @@ public class TelaEleitor extends JFrame {
         voltar = new JButton();
         voltar.setText("VOLTAR");
 	voltar.setFont(fonte);
+        voltar.addActionListener(gerenciador);
 	voltar.setActionCommand(BOTAO_VOLTAR);
-	voltar.addActionListener(gerenciador);
 	voltar.setPreferredSize(tamanhoBotao);
 	constraints.gridx = 0;
 	constraints.gridy = 3;
 	container.add(voltar, constraints);
-        
         
         setSize(400, 500);
         setVisible(false);
@@ -81,15 +80,15 @@ public class TelaEleitor extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_CADASTRAR)) {
-                ControladorCadastro.getInstancia().executaCadastroEleitor();
+                TelaCadastraEleitor.getInstancia().setVisible(true);
                 dispose();
             }
             if(opcao.equals(BOTAO_PESQUISAR)) {
-                System.out.println("Está executando");
+                ControladorCadastro.getInstancia().executaTelaPartido();
                 dispose();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                TelaPrincipal.getInstancia().setVisible(true);
+                TelaCadastro.getInstancia().setVisible(true);
                 dispose();
             }
         }
@@ -105,6 +104,3 @@ public class TelaEleitor extends JFrame {
     
      
 }
-
-
-
