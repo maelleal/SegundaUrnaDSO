@@ -8,6 +8,7 @@ package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -27,35 +28,37 @@ public class TelaCadastro extends JFrame {
     public static final String OPCAO_ELEITOR = "1";
     public static final String OPCAO_PARTIDO = "2";
     public static final String OPCAO_CANDIDATO = "3";
-    public static final String OPCAO_SAIR = "4";
+    public static final String OPCAO_VOLTAR = "4";
     private JButton botaoEleitor;
     private JButton botaoPartido;
     private JButton botaoCandidato;
     private JButton botaoSair;
     private JLabel txt;
     private GerenciaBotoes gerenciador;
-    private Dimension tamanhoBotao = new Dimension(200, 60);
-    private Dimension tamanhoBotao2 = new Dimension(400, 60);
+    private Dimension tamanhoBotao = new Dimension(280, 80);
 
     private TelaCadastro() {
         super("Tela de Cadastros");
         this.gerenciador = new GerenciaBotoes();
-        GridBagConstraints constraints = new GridBagConstraints();
+        Font fonte = new Font("Courier New", Font.BOLD, 15);
         
-        //texto dentro da tela
+        GridBagConstraints constraints = new GridBagConstraints();
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
+        
         txt = new JLabel();
         txt.setText("Escolha uma das Opções:");
+        txt.setFont(fonte);
         constraints.gridx = 0;
 	constraints.gridy = 0;
 	container.add(txt, constraints);
         
        
         botaoSair = new JButton();
-        botaoSair.setText("Sair");
+        botaoSair.setText("VOLTAR");
+        botaoSair.setFont(fonte);
         botaoSair.addActionListener(gerenciador);
-        botaoSair.setActionCommand(OPCAO_SAIR);
+        botaoSair.setActionCommand(OPCAO_VOLTAR);
         botaoSair.setPreferredSize(tamanhoBotao);
 	constraints.gridx = 0;
 	constraints.gridy = 2;
@@ -63,6 +66,7 @@ public class TelaCadastro extends JFrame {
         
         botaoEleitor = new JButton();
         botaoEleitor.setText("Cadastro de Eleitores");
+        botaoEleitor.setFont(fonte);
         botaoEleitor.addActionListener(gerenciador);
         botaoEleitor.setActionCommand(OPCAO_ELEITOR);
         botaoEleitor.setPreferredSize(tamanhoBotao);
@@ -72,6 +76,7 @@ public class TelaCadastro extends JFrame {
         
         botaoPartido = new JButton();
         botaoPartido.setText("Cadastro de Partidos");
+        botaoPartido.setFont(fonte);
         botaoPartido.addActionListener(gerenciador);
         botaoPartido.setActionCommand(OPCAO_PARTIDO);
         botaoPartido.setPreferredSize(tamanhoBotao);
@@ -81,6 +86,7 @@ public class TelaCadastro extends JFrame {
         
         botaoCandidato = new JButton();
         botaoCandidato.setText("Cadastro de Candidatos");
+        botaoCandidato.setFont(fonte);
         botaoCandidato.addActionListener(gerenciador);
         botaoCandidato.setActionCommand(OPCAO_CANDIDATO);
         botaoCandidato.setPreferredSize(tamanhoBotao);
@@ -88,7 +94,7 @@ public class TelaCadastro extends JFrame {
 	constraints.gridy = 8;
 	container.add(botaoCandidato, constraints);
         
-        setSize (300, 500);
+        setSize (400, 500);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
         setLocationRelativeTo(null);
@@ -110,9 +116,9 @@ public class GerenciaBotoes implements ActionListener {
             ControladorCadastro.getInstancia().executaCadastroCandidato();
             dispose();
         }
-        if(opcao.equals(OPCAO_SAIR)) {
-            JOptionPane.showMessageDialog(null, "By By!!");
-            System.exit(0);
+        if(opcao.equals(OPCAO_VOLTAR)) {
+            TelaPrincipal.getInstancia().setVisible(true);
+            dispose();
         }
     }
     

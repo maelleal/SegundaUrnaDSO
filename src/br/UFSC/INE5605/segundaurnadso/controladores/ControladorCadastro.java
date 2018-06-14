@@ -19,7 +19,7 @@ public class ControladorCadastro {
     
 
     private ControladorCadastro() {
-        ControladorPartido.getInstancia();
+        
     }
     
     public static ControladorCadastro getInstancia(){

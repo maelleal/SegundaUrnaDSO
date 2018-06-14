@@ -53,28 +53,27 @@ public class TelaCandidato extends JFrame {
     private TelaCandidato (){
         super ("Tela de Candidato");
         this.gerenciador = new GerenciaBotoes();
-        Font fonte = new Font("Courier New", Font.BOLD, 10);
-        Font fonte2 = new Font("Courier New", Font.BOLD, 20);
+        Font fonte = new Font("Courier New", Font.BOLD, 20);
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         
         txtNomeCandidato = new JLabel();
         txtNomeCandidato.setText("Nome do Candidato: ");
-        txtNomeCandidato.setFont(fonte2);
+        txtNomeCandidato.setFont(fonte);
         constraints.gridx = 2;
 	constraints.gridy = 0;
         container.add(txtNomeCandidato, constraints);
         
         nomeCandidato = new JTextField(10);
-        nomeCandidato.setFont(fonte2);
+        nomeCandidato.setFont(fonte);
         constraints.gridx = 2;
 	constraints.gridy = 1;
         container.add(nomeCandidato, constraints);
         
         txtPartidoCandidato = new JLabel();
         txtPartidoCandidato.setText("Partido do Candidato: ");
-        txtPartidoCandidato.setFont(fonte2);
+        txtPartidoCandidato.setFont(fonte);
         constraints.gridx = 2;
 	constraints.gridy = 2;
         container.add(txtPartidoCandidato, constraints);
@@ -86,13 +85,13 @@ public class TelaCandidato extends JFrame {
         
         txtNumeroCandidato = new JLabel();
         txtNumeroCandidato.setText("Numero do Candidato: ");
-        txtNumeroCandidato.setFont(fonte2);
+        txtNumeroCandidato.setFont(fonte);
         constraints.gridx = 2;
         constraints.gridy = 4;
         container.add(txtNumeroCandidato, constraints);
         
         numeroCandidato = new JTextField(2);
-        numeroCandidato.setFont(fonte2);
+        numeroCandidato.setFont(fonte);
         constraints.gridx = 2;
         constraints.gridy = 5;
         container.add(numeroCandidato, constraints);
@@ -142,7 +141,7 @@ public class TelaCandidato extends JFrame {
         container.add(rolagem, constraints);
         
        
-        setSize(1200, 1000);
+        setSize(400, 500);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
     }

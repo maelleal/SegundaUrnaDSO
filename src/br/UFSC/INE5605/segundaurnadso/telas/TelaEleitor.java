@@ -48,11 +48,10 @@ public class TelaEleitor extends JFrame {
     private JLabel txtPesquisaEleitor;
     private JTable tabelaEleitores;
     private GerenciaBotoes gerenciador;
-    private Dimension tamanhoBotao = new Dimension(200, 60);
+    private Dimension tamanhoBotao = new Dimension(280, 80);
     
     public TelaEleitor () {
         super("Tela do Eleitor");
-        Font fonte = new Font("Courier New", Font.BOLD, 10);
         Font fonte2 = new Font("Courier New", Font.BOLD, 20);
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
@@ -99,7 +98,7 @@ public class TelaEleitor extends JFrame {
         
         cadastrar = new JButton();
         cadastrar.setText("Cadastrar");
-        cadastrar.setFont(fonte);
+        cadastrar.setFont(fonte2);
         cadastrar.setActionCommand(BOTAO_CADASTRAR);
         cadastrar.addActionListener(gerenciador);
         cadastrar.setPreferredSize(tamanhoBotao);
@@ -122,7 +121,7 @@ public class TelaEleitor extends JFrame {
         
         pesquisar = new JButton();
         pesquisar.setText("Pesquisar");
-	pesquisar.setFont(fonte);
+	pesquisar.setFont(fonte2);
 	pesquisar.setActionCommand(BOTAO_PESQUISAR);
 	pesquisar.addActionListener(gerenciador);
 	pesquisar.setPreferredSize(tamanhoBotao);
@@ -132,7 +131,7 @@ public class TelaEleitor extends JFrame {
         
         voltar = new JButton();
         voltar.setText("VOLTAR");
-	voltar.setFont(fonte);
+	voltar.setFont(fonte2);
 	voltar.setActionCommand(BOTAO_VOLTAR);
 	voltar.addActionListener(gerenciador);
 	voltar.setPreferredSize(tamanhoBotao);
@@ -151,7 +150,7 @@ public class TelaEleitor extends JFrame {
         JScrollPane rolagem = new JScrollPane(tabelaEleitores);
         container.add(rolagem, constraints);
        
-        setSize(900, 600);
+        setSize(400, 500);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
     }

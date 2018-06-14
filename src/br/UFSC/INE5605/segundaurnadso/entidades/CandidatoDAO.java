@@ -24,7 +24,7 @@ public class CandidatoDAO {
     private final String arquivoCandidato = "candidatos.dat";
     
     private CandidatoDAO(){
-        
+        load();
     }
     public Candidato get(Integer idCandidato){
         

@@ -24,7 +24,7 @@ public class EleitorDAO {
     private final String arquivoEleitor = "eleitor.dat";
     
     private EleitorDAO (){
-        
+        load();
     }
     
     public Eleitor get(Integer idEleitor){

@@ -1,5 +1,5 @@
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
-
+import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraPartido;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPartido;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
@@ -34,66 +34,35 @@ public class TelaPartido extends JFrame {
     private JButton cadastrar;
     private JButton pesquisar;
     private JButton voltar;
-    private JTextField nomePartido;
-    private JTextField pesquisaPartido;
-    private JLabel txtNome;
-    private JLabel txtPesquisaPartido;
     private GerenciaBotoes botoes;
-    private Dimension tamanhoBotao = new Dimension(100, 30);
+    private Dimension tamanhoBotao = new Dimension(280, 80);
 
     private TelaPartido() {
         super("Tela de Cadastro de Partido");
         this.botoes = new GerenciaBotoes();
-        Font fonte = new Font("Courier New", Font.BOLD, 10);
-        Font fonte2 = new Font("Courier New", Font.BOLD, 20);
+        Font fonte = new Font("Courier New", Font.BOLD, 20);
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
-        
-        txtNome = new JLabel();
-        txtNome.setText("Cadastrar Partido: ");
-        txtNome.setFont(fonte2);
-        constraints.gridx = 2;
-	constraints.gridy = 1;
-        container.add(txtNome, constraints);
-        
-        nomePartido = new JTextField(10);
-        nomePartido.setFont(fonte2);
-        constraints.gridx = 2;
-	constraints.gridy = 2;
-        container.add(nomePartido, constraints);
-        
+                
         cadastrar = new JButton();
         cadastrar.setText("Cadastrar");
         cadastrar.setFont(fonte);
         cadastrar.setActionCommand(BOTAO_CADASTRAR);
         cadastrar.addActionListener(botoes);
         cadastrar.setPreferredSize(tamanhoBotao);
-        constraints.gridx = 2;
-        constraints.gridy = 3;
+        constraints.gridx = 0;
+        constraints.gridy = 1;
         container.add(cadastrar, constraints);
-        
-        txtPesquisaPartido = new JLabel();
-        txtPesquisaPartido.setFont(fonte2);
-        txtPesquisaPartido.setText("Pesquisar partido: ");
-        constraints.gridx = 4;
-	constraints.gridy = 1;
-        container.add(txtPesquisaPartido, constraints);
-        
-        pesquisaPartido = new JTextField(10);
-        pesquisaPartido.setFont(fonte2);
-        constraints.gridx = 4;
-	constraints.gridy = 2;
-        container.add(pesquisaPartido, constraints);
-        
+                
         pesquisar = new JButton();
         pesquisar.setText("Pesquisar");
 	pesquisar.setFont(fonte);
 	pesquisar.setActionCommand(BOTAO_PESQUISAR);
 	pesquisar.addActionListener(botoes);
 	pesquisar.setPreferredSize(tamanhoBotao);
-	constraints.gridx = 4;
-	constraints.gridy = 3;
+	constraints.gridx = 0;
+	constraints.gridy = 2;
 	container.add(pesquisar, constraints);
         
         voltar = new JButton();
@@ -102,11 +71,11 @@ public class TelaPartido extends JFrame {
 	voltar.setActionCommand(BOTAO_VOLTAR);
 	voltar.addActionListener(botoes);
 	voltar.setPreferredSize(tamanhoBotao);
-	constraints.gridx = 3;
-	constraints.gridy = 4;
+	constraints.gridx = 0;
+	constraints.gridy = 3;
 	container.add(voltar, constraints);
        
-        setSize(600, 400);
+        setSize(400, 500);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         setLocationRelativeTo(null);
@@ -115,8 +84,12 @@ public class TelaPartido extends JFrame {
         @Override
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
-            if(opcao.equals("")) {
-                ControladorCadastro.getInstancia().executaCadastroPartido();
+            if(opcao.equals(BOTAO_CADASTRAR)) {
+                ControladorPartido.getInstancia().exibeCadastraPartido();
+                dispose();
+            }
+            if(opcao.equals(BOTAO_VOLTAR)) {
+                TelaPrincipal.getInstancia().setVisible(true);
                 dispose();
             }
         }

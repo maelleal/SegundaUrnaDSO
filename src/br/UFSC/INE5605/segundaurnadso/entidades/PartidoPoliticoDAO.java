@@ -21,6 +21,11 @@ public class PartidoPoliticoDAO {
     private static PartidoPoliticoDAO instancia;
     private HashMap<Integer, PartidoPolitico> cachePartido = new HashMap<>();
     private final String arquivoPartido = "eleitor.dat";
+
+    private PartidoPoliticoDAO() {
+        load();
+    }
+    
     
     public PartidoPolitico get(Integer idPartido){
         return cachePartido.get(idPartido);

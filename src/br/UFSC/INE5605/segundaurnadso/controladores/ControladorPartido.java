@@ -8,6 +8,7 @@ package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
 import br.UFSC.INE5605.segundaurnadso.entidades.PartidoPoliticoDAO;
+import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraPartido;
 import java.io.Serializable;
 
 
@@ -19,11 +20,12 @@ public class ControladorPartido implements Serializable {
     private static ControladorPartido instancia;
 
     public ControladorPartido() {
-        PartidoPolitico partido1 = new PartidoPolitico("PCC");
+       
+        PartidoPolitico partido1 = new PartidoPolitico("PCC", 11);
         PartidoPoliticoDAO.getInstancias().put(partido1);
-        PartidoPolitico partido2 = new PartidoPolitico("TCC");
+        PartidoPolitico partido2 = new PartidoPolitico("TCC", 12);
         PartidoPoliticoDAO.getInstancias().put(partido2);
-        PartidoPolitico partido3 = new PartidoPolitico("BCC");
+        PartidoPolitico partido3 = new PartidoPolitico("BCC", 13);
         PartidoPoliticoDAO.getInstancias().put(partido3);
     }
     
@@ -38,20 +40,18 @@ public class ControladorPartido implements Serializable {
         return a;
     }
     */
-    public void incluiPartido(String nomePartido) {
-        PartidoPolitico partido = new PartidoPolitico(nomePartido);
+    public void incluiPartido(String nomePartido, int numeroPartido) {
+        PartidoPolitico partido = new PartidoPolitico(nomePartido, numeroPartido);
         PartidoPoliticoDAO.getInstancias().put(partido);
     
     }
-    public void exibeMenuPrincipal() {
+    public void exibeMenuCadastro() {
         ControladorCadastro.getInstancia().iniciaCadastro();
     }
-
-    public void executaCadastroPartido() {
-        System.out.println("TESTE");
-        //telaPartido.setVisible(true);
+    public void exibeCadastraPartido() {
+        TelaCadastraPartido.getInstancia().setVisible(true);
     }
-    
+   
     public static ControladorPartido getInstancia(){
         if(instancia == null){
             instancia = new ControladorPartido();

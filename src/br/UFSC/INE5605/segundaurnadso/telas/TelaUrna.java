@@ -66,9 +66,11 @@ public class TelaUrna extends JFrame {
     private JTextField numeroCandidato;
     private JLabel txtNumeroCandidato;
     private GerenciaBotoes botoes;
-    private Dimension tamanhoBotao = new Dimension(200, 60);
+    private Dimension tamanhoBotao = new Dimension(280, 80);
     private Dimension tamanhoBotao2 = new Dimension(500, 200);
     
+    
+    //adicionar dois paineis dentre de um painel
     
     private TelaUrna(){
         super("Tela Urna");
@@ -78,6 +80,13 @@ public class TelaUrna extends JFrame {
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
+        
+        Container containerTeclado = getContentPane();
+        container.setLayout(new GridBagLayout());
+        
+        Container containerVisor = getContentPane();
+        container.setLayout(new GridBagLayout());
+        
         
         botaoUm = new JButton();
         botaoUm.setText("1");
@@ -248,7 +257,7 @@ public class TelaUrna extends JFrame {
 	container.add(numeroCandidato, constraints);
         
         
-        setSize (1200, 1200);
+        setSize (900, 1100);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
         setLocationRelativeTo(null);

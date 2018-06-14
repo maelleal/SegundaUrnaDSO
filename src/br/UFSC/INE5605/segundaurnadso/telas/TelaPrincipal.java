@@ -13,6 +13,7 @@ import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorUrna;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -44,20 +45,21 @@ public class TelaPrincipal extends JFrame{
     private JButton sair;
     private JLabel txt;
     private GerenciaBotoes botoes;
-    private Dimension tamanhoBotao = new Dimension(200, 60);
+    private Dimension tamanhoBotao = new Dimension(280, 80);
     
     
     private TelaPrincipal() {
         super("Tela Principal");
         this.botoes = new GerenciaBotoes();
         
-              
+        Font fonte = new Font("Courier New", Font.BOLD, 20);      
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         
         txt = new JLabel();
-        txt.setText("Escolha uma das Opções:       ");
+        txt.setText("Escolha uma das Opções:");
+        txt.setFont(fonte);
         constraints.gridx = 0;
 	constraints.gridy = 0;
         container.add(txt, constraints);
@@ -100,7 +102,7 @@ public class TelaPrincipal extends JFrame{
 	constraints.gridy = 8;
         container.add(resultado, constraints);
     
-        setSize (300, 500);
+        setSize (400, 500);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
         setLocationRelativeTo(null);
