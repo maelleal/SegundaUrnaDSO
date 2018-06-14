@@ -39,11 +39,12 @@ public class Candidato extends Pessoa implements Serializable {
     public void setNumero(int numero) {
         this.numero = numero;
     }
-
+    
+    @Override
     public String getNome() {
         return nome;
     }
-
+    @Override
     public void setNome(String nome) {
         this.nome = nome;
     }

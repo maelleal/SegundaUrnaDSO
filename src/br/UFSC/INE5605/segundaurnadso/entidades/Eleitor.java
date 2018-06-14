@@ -14,14 +14,12 @@ import java.io.Serializable;
 public class Eleitor extends Pessoa implements Serializable  {
     
     private int tituloEleitoral;
-    private SecaoEleitoral secaoEleitoral;
     private String cidade;
     public boolean jaVotou;
 
-    public Eleitor(int tituloEleitoral, SecaoEleitoral secaoEleitoral, String nome, String cidade) {
+    public Eleitor(int tituloEleitoral, String nome, String cidade) {
         super(nome);
         this.tituloEleitoral = tituloEleitoral;
-        this.secaoEleitoral = secaoEleitoral;
         this.jaVotou = false;
         this.cidade = cidade;
     }
@@ -34,22 +32,12 @@ public class Eleitor extends Pessoa implements Serializable  {
         this.jaVotou = jaVotou;
     }
     
-    
-
     public int getTituloEleitoral() {
         return tituloEleitoral;
     }
 
     public void setTituloEleitoral(int tituloEleitoral) {
         this.tituloEleitoral = tituloEleitoral;
-    }
-
-    public SecaoEleitoral getSecaoEleitoral() {
-        return secaoEleitoral;
-    }
-
-    public void setSecaoEleitoral(SecaoEleitoral secaoEleitoral) {
-        this.secaoEleitoral = secaoEleitoral;
     }
 
     @Override

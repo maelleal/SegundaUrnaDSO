@@ -8,6 +8,8 @@ package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Eleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.SecaoEleitoral;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaEleitor;
+import br.UFSC.INE5605.segundaurnadso.entidades.EleitorDAO;
+import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraEleitor;
 import java.util.ArrayList;
 
 /**
@@ -16,15 +18,11 @@ import java.util.ArrayList;
  */
 public class ControladorEleitor {
     private static ControladorEleitor instancia;
-    private ArrayList<Eleitor> eleitores;
     private TelaEleitor telaEleitor;
-    private ArrayList<SecaoEleitoral>secoes;
    
 
     private ControladorEleitor() {
         
-        this.eleitores = new ArrayList();
-        //this.secoes = new ArrayList();
     }
     public static ControladorEleitor getInstancia(){
         if(instancia == null) {
@@ -32,7 +30,7 @@ public class ControladorEleitor {
         }
         return instancia;
     }
-    
+    /*
     public Eleitor encontraEleitorPeloTitulo(int titulo){
         Eleitor a = null;
         for(Eleitor e : eleitores){
@@ -52,44 +50,32 @@ public class ControladorEleitor {
         }
         return a;
     }
-    
+    */
     
     public void abreTelaEleitores(){
         telaEleitor.setVisible(true);
     }
     
-    public void exibeMenuPrincipal() {
+    public void exibeMenuCadastro() {
         ControladorCadastro.getInstancia().iniciaCadastro();
     }
-    
-    public void cadastraEleitor(int tituloEleitoral, int secaoEleitoral, String nome, String cidade){
-        SecaoEleitoral secao = this.encontraSecaoPeloNumero(secaoEleitoral);
-        
-        Eleitor eleitor = new Eleitor(tituloEleitoral, secao, nome, cidade);
-        eleitores.add(eleitor);
-        //secao.getEleitores().add(eleitor);
+    public void exibeCadastraEleitor() {
+        TelaCadastraEleitor.getInstancia().setVisible(true);
     }
     
-    public void incluiSecao(){
-       //telaEleitor.incluirSecao();
+    public void cadastraEleitor(int tituloEleitoral, String nome, String cidade){
+        Eleitor eleitor = new Eleitor(tituloEleitoral, nome, cidade);
+        EleitorDAO.getInstancia().put(eleitor);
     }
-    
-    public void cadastraSecao(int numeroSecao, String cidade){
-        SecaoEleitoral secao = new SecaoEleitoral(numeroSecao, cidade);
-        secoes.add(secao);
-    }
-    
-    
-    public void incluiEleitor(Eleitor e){
-        eleitores.add(e);// TODO tratar exceções
+  
+    public void incluiEleitor(Eleitor eleitor){
+        EleitorDAO.getInstancia().put(eleitor);
     }
     
     public void excluirEleitor(Eleitor e){
-        this.eleitores.remove(e);//TODO tratar exceções
+        //EleitorDAO.getInstancia().remove();
+    //TODO tratar exceções
     }
     
-    public ArrayList<Eleitor> getEleitores(){
-        return eleitores;
-    }
-
+    
 }

@@ -12,6 +12,7 @@ import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
 import br.UFSC.INE5605.segundaurnadso.entidades.CandidatoDAO;
+import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraCandidato;
 import java.util.ArrayList;
 
 /**
@@ -26,8 +27,13 @@ public class ControladorCandidato{
     private ControladorCandidato() {
        
     }
-    
-    void abreTelaCandidato() {
+    public void exibeMenuCadastro() {
+        ControladorCadastro.getInstancia().iniciaCadastro();
+    }
+    public void exibeCadastraCandidato() {
+        TelaCadastraCandidato.getInstancia().setVisible(true);
+    }
+    void exibeTelaCandidato() {
         TelaCandidato.getInstancia().setVisible(true);
     }
     public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {

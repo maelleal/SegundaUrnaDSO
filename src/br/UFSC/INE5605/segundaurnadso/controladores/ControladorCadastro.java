@@ -10,6 +10,9 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaEleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
+import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraCandidato;
+import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraEleitor;
+import br.UFSC.INE5605.segundaurnadso.telas.TelaCadastraPartido;
 /**
  *
  * @author rodri
@@ -33,15 +36,28 @@ public class ControladorCadastro {
         TelaCadastro.getInstancia().setVisible(true);   
     }
     
-    public void executaCadastroEleitor() {
+    public void executaTelaEleitor() {
         TelaEleitor.getInstancia().setVisible(true);   
     }
     
-    public void executaCadastroCandidato() {
+    public void executaTelaCandidato() {
         TelaCandidato.getInstancia().setVisible(true);   
     }
     
-    public void executaCadastroPartido() {
+    public void executaTelaPartido() {
         TelaPartido.getInstancia().setVisible(true);
     }
+    public void executaCadastroEleitor() {
+        TelaCadastraEleitor.getInstancia().setVisible(true);   
+    }
+    
+    public void executaCadastroCandidato() {
+        TelaCadastraCandidato.getInstancia().setVisible(true);   
+    }
+    
+    public void executaCadastroPartido() {
+        TelaCadastraPartido.getInstancia().setVisible(true);
+    }
+    
+    
 }
