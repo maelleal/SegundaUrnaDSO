@@ -41,7 +41,8 @@ public class TelaCadastraEleitor extends JFrame {
     private Dimension tamanhoBotao = new Dimension(280, 80);
 
     private TelaCadastraEleitor() {
-        super("Tela do Eleitor");
+        super("Tela de Cadastro de Eleitor");
+        this.gerenciador = new GerenciaBotoes();
         Font fonte = new Font("Courier New", Font.BOLD, 15);
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
@@ -120,7 +121,7 @@ public class TelaCadastraEleitor extends JFrame {
                 
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorCandidato.getInstancia().exibeMenuCandidato();
+                TelaEleitor.getInstancia().setVisible(true);
                 dispose();
             }
         }

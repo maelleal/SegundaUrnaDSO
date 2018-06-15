@@ -13,9 +13,9 @@ import java.io.Serializable;
 public class Candidato extends Pessoa implements Serializable {
 
     private PartidoPolitico partido;
-    private int numero;
+    private Integer numero;
 
-    public Candidato(String nome, PartidoPolitico partido, int numero) {
+    public Candidato(String nome, PartidoPolitico partido, Integer numero) {
         super(nome);
         this.partido = partido;
         this.numero = numero;
@@ -29,11 +29,11 @@ public class Candidato extends Pessoa implements Serializable {
         this.partido = partido;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
     

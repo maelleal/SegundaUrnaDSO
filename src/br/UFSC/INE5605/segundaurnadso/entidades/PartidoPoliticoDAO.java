@@ -5,7 +5,7 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
+//import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -20,18 +20,17 @@ import java.util.HashMap;
  *
  * @author Ismael
  */
-public class PartidoPoliticoDAO implements Serializable {
+public class PartidoPoliticoDAO {
     private static PartidoPoliticoDAO instancia;
     private HashMap<Integer, PartidoPolitico> cachePartidos = new HashMap<>();
-    private final String fileName = "partidos.ppl";
-
+    private final String fileName = "partidos.dat";
+/*
     private PartidoPoliticoDAO() {
         load();
     }
-    
-    
-    public PartidoPolitico get(Integer codigo){
-        return cachePartidos.get(codigo);
+   */ 
+    public PartidoPolitico get(Integer codigoPartido){
+        return cachePartidos.get(codigoPartido);
     }
     
     public void put(PartidoPolitico partido){
@@ -55,6 +54,8 @@ public class PartidoPoliticoDAO implements Serializable {
             
            oo.close();
            fout.close();
+           oo = null;
+           fout = null;
            
             
         } catch (FileNotFoundException ex) {

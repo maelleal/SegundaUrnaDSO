@@ -16,17 +16,17 @@ import java.io.Serializable;
  *
  * @author Ivo Guilherme
  */
-public class ControladorPartido implements Serializable {
+public class ControladorPartido {
     private static ControladorPartido instancia;
 
     public ControladorPartido() {
        
-        PartidoPolitico partido1 = new PartidoPolitico("PCC", 11);
-        PartidoPoliticoDAO.getInstancias().put(partido1);
-        PartidoPolitico partido2 = new PartidoPolitico("TCC", 12);
-        PartidoPoliticoDAO.getInstancias().put(partido2);
-        PartidoPolitico partido3 = new PartidoPolitico("BCC", 13);
-        PartidoPoliticoDAO.getInstancias().put(partido3);
+      //  PartidoPolitico partido1 = new PartidoPolitico("PCC", 11);
+       // PartidoPoliticoDAO.getInstancias().put(partido1);
+        //PartidoPolitico partido2 = new PartidoPolitico("TCC", 12);
+       // PartidoPoliticoDAO.getInstancias().put(partido2);
+        //PartidoPolitico partido3 = new PartidoPolitico("BCC", 13);
+       // PartidoPoliticoDAO.getInstancias().put(partido3);
     }
     
     /*

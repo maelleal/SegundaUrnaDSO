@@ -21,9 +21,9 @@ public class ControladorEleitor {
     private TelaEleitor telaEleitor;
    
 
-    private ControladorEleitor() {
-        
+    public ControladorEleitor() {
     }
+    
     public static ControladorEleitor getInstancia(){
         if(instancia == null) {
             instancia = new ControladorEleitor();
@@ -51,11 +51,11 @@ public class ControladorEleitor {
         return a;
     }
     */
-    
+    /*
     public void abreTelaEleitores(){
         telaEleitor.setVisible(true);
     }
-    
+    */
     public void exibeMenuCadastro() {
         ControladorCadastro.getInstancia().iniciaCadastro();
     }
@@ -71,11 +71,11 @@ public class ControladorEleitor {
     public void incluiEleitor(Eleitor eleitor){
         EleitorDAO.getInstancia().put(eleitor);
     }
-    
+    /*
     public void excluirEleitor(Eleitor e){
         //EleitorDAO.getInstancia().remove();
     //TODO tratar exceções
     }
     
-    
+    */
 }

@@ -23,11 +23,10 @@ public class CandidatoDAO {
     private HashMap<Integer, Candidato> cacheCandidatos = new HashMap<>();
     private final String arquivoCandidato = "candidatos.dat";
     
-    private CandidatoDAO(){
+   /* private CandidatoDAO(){
         load();
-    }
+    }*/
     public Candidato get(Integer idCandidato){
-        
         return cacheCandidatos.get(idCandidato);
     }
     

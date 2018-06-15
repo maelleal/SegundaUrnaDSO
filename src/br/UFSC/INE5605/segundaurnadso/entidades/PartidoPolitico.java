@@ -12,9 +12,13 @@ import java.io.Serializable;
  * @author Ismael
  */
 public class PartidoPolitico implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
+            
     private String nome;
-    private int codigo;
-    public PartidoPolitico(String nome, int codigo) {
+    private Integer codigo;
+    
+    public PartidoPolitico(String nome, Integer codigo) {
         this.nome = nome;
         this.codigo = codigo;
     }
@@ -27,11 +31,11 @@ public class PartidoPolitico implements Serializable {
         this.nome = nome;
     }
 
-    public int getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 }

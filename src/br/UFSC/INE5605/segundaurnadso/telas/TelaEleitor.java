@@ -6,6 +6,7 @@
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -34,6 +35,7 @@ public class TelaEleitor extends JFrame {
     
     private TelaEleitor () {
         super("Tela do Eleitor");
+        this.gerenciador = new GerenciaBotoes();
         Font fonte = new Font("Courier New", Font.BOLD, 20);
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
@@ -80,13 +82,15 @@ public class TelaEleitor extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_CADASTRAR)) {
-                TelaCadastraEleitor.getInstancia().setVisible(true);
+                ControladorEleitor.getInstancia().exibeCadastraEleitor();
                 dispose();
             }
+            /*
             if(opcao.equals(BOTAO_PESQUISAR)) {
                 ControladorCadastro.getInstancia().executaTelaPartido();
                 dispose();
             }
+*/
             if(opcao.equals(BOTAO_VOLTAR)) {
                 TelaCadastro.getInstancia().setVisible(true);
                 dispose();
