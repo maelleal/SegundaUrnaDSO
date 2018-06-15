@@ -60,7 +60,7 @@ public class TelaCadastro extends JFrame {
         botaoSair.setActionCommand(OPCAO_VOLTAR);
         botaoSair.setPreferredSize(tamanhoBotao);
 	constraints.gridx = 0;
-	constraints.gridy = 2;
+	constraints.gridy = 5;
 	container.add(botaoSair, constraints);
         
         botaoEleitor = new JButton();
@@ -70,7 +70,7 @@ public class TelaCadastro extends JFrame {
         botaoEleitor.setActionCommand(OPCAO_ELEITOR);
         botaoEleitor.setPreferredSize(tamanhoBotao);
 	constraints.gridx = 0;
-	constraints.gridy = 4;
+	constraints.gridy = 1;
 	container.add(botaoEleitor, constraints);
         
         botaoPartido = new JButton();
@@ -80,7 +80,7 @@ public class TelaCadastro extends JFrame {
         botaoPartido.setActionCommand(OPCAO_PARTIDO);
         botaoPartido.setPreferredSize(tamanhoBotao);
 	constraints.gridx = 0;
-	constraints.gridy = 6;
+	constraints.gridy = 2;
 	container.add(botaoPartido, constraints);
         
         botaoCandidato = new JButton();
@@ -90,7 +90,7 @@ public class TelaCadastro extends JFrame {
         botaoCandidato.setActionCommand(OPCAO_CANDIDATO);
         botaoCandidato.setPreferredSize(tamanhoBotao);
 	constraints.gridx = 0;
-	constraints.gridy = 8;
+	constraints.gridy = 3;
 	container.add(botaoCandidato, constraints);
         
         setSize (400, 500);

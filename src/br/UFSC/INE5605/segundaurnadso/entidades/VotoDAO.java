@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
+package br.UFSC.INE5605.segundaurnadso.entidades;
 
-//import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -20,34 +18,27 @@ import java.util.HashMap;
  *
  * @author Ismael
  */
-public class PartidoPoliticoDAO {
-    private static PartidoPoliticoDAO instancia;
-    private HashMap<Integer, PartidoPolitico> cachePartidos = new HashMap<>();
-    private final String fileName = "partidos.dat";
-    /*
-    private PartidoPoliticoDAO() {
-        load();
-    }
-    */ 
-    public PartidoPolitico get(Integer codigoPartido){
-        return cachePartidos.get(codigoPartido);
+public class VotoDAO {
+    private static VotoDAO instancia;
+    private HashMap<Integer, Voto> cacheVotos = new HashMap<>();
+    private final String fileName = "votos.dat";
+    
+    public Voto get(Integer codigoVoto){
+        return cacheVotos.get(codigoVoto);
     }
     
-    public void put(PartidoPolitico partido){
-        cachePartidos.put(partido.getCodigo(), partido);
+    public void put(Voto voto){
+        cacheVotos.put(voto.getCodigo(), voto);
     }
-    public void removePartido(Integer codigo) {
-        this.cachePartidos.remove(codigo);
-        this.persist();
-    }
-    public Collection<PartidoPolitico> getList() {
-        return cachePartidos.values();
+    
+    public Collection<Voto> getList() {
+        return cacheVotos.values();
     }
     public void persist(){
         try{
            FileOutputStream fout = new FileOutputStream(fileName);
            ObjectOutputStream oo = new ObjectOutputStream(fout);
-           oo.writeObject(cachePartidos);
+           oo.writeObject(cacheVotos);
            
            oo.flush();
            fout.flush();
@@ -70,7 +61,7 @@ public class PartidoPoliticoDAO {
             FileInputStream fin = new FileInputStream(fileName);
             ObjectInputStream oi = new ObjectInputStream(fin);
         
-            this.cachePartidos = (HashMap<Integer, PartidoPolitico>) oi.readObject();
+            this.cacheVotos = (HashMap<Integer, Voto>) oi.readObject();
             
             oi.close();
             fin.close();
@@ -88,9 +79,9 @@ public class PartidoPoliticoDAO {
             System.out.println(ex);
         }
     }
-    public static PartidoPoliticoDAO getInstancias(){
+    public static VotoDAO getInstancia(){
         if(instancia == null ){
-            instancia = new PartidoPoliticoDAO();
+            instancia = new VotoDAO();
         }
         return instancia;
     }

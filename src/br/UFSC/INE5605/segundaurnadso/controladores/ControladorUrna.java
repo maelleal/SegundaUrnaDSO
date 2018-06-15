@@ -5,10 +5,12 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaUrna;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Urna;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Voto;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPrincipal;
+import br.UFSC.INE5605.segundaurnadso.entidades.VotoDAO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -18,12 +20,12 @@ import javax.swing.JOptionPane;
  */
 public class ControladorUrna {
     private static ControladorUrna instancia;
-    private ArrayList<Voto>listaVotosGovernadores;
-    private int votoGov;
+    Candidato candidato;
+    //private int votoGov;
     
 
     private ControladorUrna() {
-        this.listaVotosGovernadores = new ArrayList();
+        
         
     } 
     
@@ -37,6 +39,14 @@ public class ControladorUrna {
     public void iniciarVotacao(){
        
     }
+    
+    public void capturaVoto(int numeroDigitado){
+        candidato = ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(numeroDigitado);
+        Voto votoComputado = new Voto(candidato);
+        //VotoDAO.getInstancia().put(votoComputado);
+    }
+    
+    
     
     public void resultadoGov(){
         JOptionPane.showMessageDialog(null, "Resultado é secreto!");

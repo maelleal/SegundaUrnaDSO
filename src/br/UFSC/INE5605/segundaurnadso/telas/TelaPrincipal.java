@@ -62,7 +62,7 @@ public class TelaPrincipal extends JFrame{
         sair.setPreferredSize(tamanhoBotao);
         sair.addActionListener(botoes);
         constraints.gridx = 0;
-	constraints.gridy = 2;
+	constraints.gridy = 5;
         container.add(sair, constraints);
         
         cadastros = new JButton();
@@ -72,7 +72,7 @@ public class TelaPrincipal extends JFrame{
 	cadastros.setPreferredSize(tamanhoBotao);
         cadastros.addActionListener(botoes);
         constraints.gridx = 0;
-	constraints.gridy = 4;
+	constraints.gridy = 1;
         container.add(cadastros, constraints);
 	
 		
@@ -83,7 +83,7 @@ public class TelaPrincipal extends JFrame{
         votacao.setPreferredSize(tamanhoBotao);
         votacao.addActionListener(botoes);
         constraints.gridx = 0;
-	constraints.gridy = 6;
+	constraints.gridy = 2;
         container.add(votacao, constraints);
         
         
@@ -94,7 +94,7 @@ public class TelaPrincipal extends JFrame{
         resultado.setPreferredSize(tamanhoBotao);
         resultado.addActionListener(botoes);
         constraints.gridx = 0;
-	constraints.gridy = 8;
+	constraints.gridy = 3;
         container.add(resultado, constraints);
     
         setSize (400, 500);

@@ -25,7 +25,22 @@ public class ControladorCandidato{
     
     
     private ControladorCandidato() {
-       
+    }
+    
+    public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {
+           Candidato candidato = new Candidato(nome, partido, numeroCandidato);
+           candidatoDAO.put(candidato);
+    }
+    
+    public static ControladorCandidato getInstancia() {
+        if (instancia == null) {
+            instancia = new ControladorCandidato();
+        }
+        return instancia;
+    }
+
+    public void exibeMenuCandidato() {
+        TelaCandidato.getInstancia().setVisible(true);
     }
     public void exibeMenuCadastro() {
         ControladorCadastro.getInstancia().iniciaCadastro();
@@ -36,23 +51,17 @@ public class ControladorCandidato{
     void exibeTelaCandidato() {
         TelaCandidato.getInstancia().setVisible(true);
     }
-    public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {
-           Candidato candidato = new Candidato(nome, partido, numeroCandidato);
-           candidatoDAO.put(candidato);
-         
-    }
-    
-    public void exibeMenuPrincipal() {
+     public void exibeMenuPrincipal() {
         ControladorCadastro.getInstancia().iniciaCadastro();
     }
-    public static ControladorCandidato getInstancia() {
-        if (instancia == null) {
-            instancia = new ControladorCandidato();
+     
+    public Candidato buscaCandidatoPeloNumero(int numeroCandidato){
+        Candidato cand = null;
+        for(Candidato e : CandidatoDAO.getInstancia().getList()){
+            if(e.getNumero()== numeroCandidato){
+                cand = e;
+            }      
         }
-        return instancia;
-    }
-
-    public void exibeMenuCandidato() {
-        TelaCandidato.getInstancia().setVisible(true);
+        return cand;
     }
 }

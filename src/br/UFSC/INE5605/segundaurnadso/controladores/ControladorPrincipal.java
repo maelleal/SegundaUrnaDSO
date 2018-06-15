@@ -17,7 +17,7 @@ public class ControladorPrincipal {
     private static ControladorPrincipal instancia;
     
     private ControladorPrincipal() {
-        TelaPrincipal.getInstancia();
+        
     }
      
     public static ControladorPrincipal getInstancia (){
@@ -30,6 +30,10 @@ public class ControladorPrincipal {
     
     public void abreTelaCadastro () {
         TelaCadastro.getInstancia().setVisible(true);
+    }
+
+    public void abreTelaPrincipal() {
+        TelaPrincipal.getInstancia().setVisible(true);
     }
     
     
