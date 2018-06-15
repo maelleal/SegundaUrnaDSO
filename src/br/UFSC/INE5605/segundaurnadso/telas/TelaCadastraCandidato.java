@@ -114,7 +114,7 @@ public class TelaCadastraCandidato extends JFrame {
 	constraints.gridy = 7;
 	container.add(voltar, constraints);
         
-        setSize(400, 500);
+        setSize(500, 600);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         setLocationRelativeTo(null);

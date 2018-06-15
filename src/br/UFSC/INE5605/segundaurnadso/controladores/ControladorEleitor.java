@@ -10,6 +10,7 @@ import br.UFSC.INE5605.SegundaUrnaDSO.entidades.SecaoEleitoral;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaEleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.EleitorDAO;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraEleitor;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPesquisaEleitor;
 import java.util.ArrayList;
 
 /**
@@ -78,4 +79,12 @@ public class ControladorEleitor {
     }
     
     */
+
+    public void executaTelaPesquisaEleitor() {
+        TelaPesquisaEleitor.getInstancia().updateData();
+        TelaPesquisaEleitor.getInstancia().setVisible(true);
+        
+    }
+
+    
 }

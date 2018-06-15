@@ -93,7 +93,7 @@ public class TelaCadastraPartido extends JFrame{
 	constraints.gridy = 6;
 	container.add(voltar, constraints);
        
-        setSize(400, 500);
+        setSize(500, 600);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         setLocationRelativeTo(null);

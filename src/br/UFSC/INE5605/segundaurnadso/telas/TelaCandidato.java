@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.Font;
+import javax.swing.JLabel;
 
 /**
  *
@@ -26,11 +27,12 @@ public class TelaCandidato extends JFrame {
     private static final String BOTAO_CADASTRAR = "1";
     private static final String BOTAO_PESQUISAR = "2";
     private static final String BOTAO_VOLTAR = "3";
+    private JLabel txt;
     private JButton cadastrar;
     private JButton pesquisar;
     private JButton voltar;
     private GerenciaBotoes gerenciador;
-    private Dimension tamanhoBotao = new Dimension(200, 60);
+    private Dimension tamanhoBotao = new Dimension(280, 80);
     
     private TelaCandidato (){
         super ("Tela de Candidato");
@@ -40,6 +42,12 @@ public class TelaCandidato extends JFrame {
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         
+        txt = new JLabel();
+        txt.setText("Escolha uma das Opções:");
+        txt.setFont(fonte);
+        constraints.gridx = 0;
+	constraints.gridy = 0;
+	container.add(txt, constraints);
         
         cadastrar = new JButton();
         cadastrar.setText("Cadastrar");
@@ -87,7 +95,7 @@ public class TelaCandidato extends JFrame {
                 dispose();
             }
             if(opcao.equals(BOTAO_PESQUISAR)) {
-                ControladorCadastro.getInstancia().executaCadastroCandidato();
+                ControladorCandidato.getInstancia().abreTelaPesquisaCandidato();
                 dispose();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {

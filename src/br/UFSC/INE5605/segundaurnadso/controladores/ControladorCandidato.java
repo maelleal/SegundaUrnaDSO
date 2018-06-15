@@ -12,7 +12,9 @@ import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.CandidatoDAO;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPoliticoDAO;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraCandidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPesquisaCandidato;
 import java.util.ArrayList;
 
 /**
@@ -23,9 +25,16 @@ public class ControladorCandidato{
     private static ControladorCandidato instancia;
     private CandidatoDAO candidatoDAO;
     
-    
     private ControladorCandidato() {
+        
+        Candidato candidato1 = new Candidato("Ismael Leal", PartidoPoliticoDAO.getInstancias().get(88), 01);
+        CandidatoDAO.getInstancia().put(candidato1);
+        Candidato candidato2 = new Candidato("Ivo Guilherme", PartidoPoliticoDAO.getInstancias().get(88), 02);
+        CandidatoDAO.getInstancia().put(candidato2);
+        Candidato candidato3 = new Candidato("Jean VouRodar", PartidoPoliticoDAO.getInstancias().get(88), 03);
+        CandidatoDAO.getInstancia().put(candidato3);
     }
+    
     
     public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {
            Candidato candidato = new Candidato(nome, partido, numeroCandidato);
@@ -54,7 +63,10 @@ public class ControladorCandidato{
      public void exibeMenuPrincipal() {
         ControladorCadastro.getInstancia().iniciaCadastro();
     }
-     
+    public void abreTelaPesquisaCandidato() {
+        TelaPesquisaCandidato.getInstancia().updateData();
+        TelaPesquisaCandidato.getInstancia().setVisible(true);
+    }
     public Candidato buscaCandidatoPeloNumero(int numeroCandidato){
         Candidato cand = null;
         for(Candidato e : CandidatoDAO.getInstancia().getList()){
@@ -64,4 +76,6 @@ public class ControladorCandidato{
         }
         return cand;
     }
+
+    
 }

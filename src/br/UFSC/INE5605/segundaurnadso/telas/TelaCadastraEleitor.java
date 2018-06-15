@@ -94,7 +94,7 @@ public class TelaCadastraEleitor extends JFrame {
 	constraints.gridy = 5;
 	container.add(voltar, constraints);
        
-        setSize(400, 500);
+        setSize(500, 600);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -116,10 +116,9 @@ public class TelaCadastraEleitor extends JFrame {
                 } catch (Exception e) {
                    
                     JOptionPane.showMessageDialog(null, "Somente numeros entre 1 e 99!", "Erro ao Cadastrar", ERROR_MESSAGE);
-
                 }
-                
             }
+            
             if(opcao.equals(BOTAO_VOLTAR)) {
                 TelaEleitor.getInstancia().setVisible(true);
                 dispose();

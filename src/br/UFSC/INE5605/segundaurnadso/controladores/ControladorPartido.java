@@ -9,6 +9,7 @@ import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPoliticoDAO;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraPartido;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPesquisaPartido;
 import java.io.Serializable;
 
 
@@ -62,6 +63,11 @@ public class ControladorPartido {
             instancia = new ControladorPartido();
         }
         return instancia;
+    }
+
+    public void abreTelaPesquisaPartido() {
+        TelaPesquisaPartido.getInstancia().updateData();
+        TelaPesquisaPartido.getInstancia().setVisible(true);
     }
     
 }

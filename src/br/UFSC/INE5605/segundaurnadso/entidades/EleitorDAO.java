@@ -5,7 +5,6 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Eleitor;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -87,8 +86,8 @@ public class EleitorDAO {
         }
         return instancia;
     }
-    public void remove(Integer idCandidato){
-	cacheEleitor.remove(idCandidato);
+    public void remove(Integer titulo){
+	cacheEleitor.remove(titulo);
 	persist();
     }
     public Collection<Eleitor> getList(){

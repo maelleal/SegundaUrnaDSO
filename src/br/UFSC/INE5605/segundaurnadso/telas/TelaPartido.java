@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 
 /**
@@ -26,6 +27,7 @@ public class TelaPartido extends JFrame {
     private static final String BOTAO_CADASTRAR = "1";
     private static final String BOTAO_PESQUISAR = "2";
     private static final String BOTAO_VOLTAR = "3";
+    private JLabel txt;
     private JButton cadastrar;
     private JButton pesquisar;
     private JButton voltar;
@@ -35,10 +37,17 @@ public class TelaPartido extends JFrame {
     private TelaPartido() {
         super("Tela de Cadastro de Partido");
         this.botoes = new GerenciaBotoes();
-        Font fonte = new Font("Courier New", Font.BOLD, 17);
+        Font fonte = new Font("Courier New", Font.BOLD, 20);
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
+        
+        txt = new JLabel();
+        txt.setText("Escolha uma das Opções:");
+        txt.setFont(fonte);
+        constraints.gridx = 0;
+	constraints.gridy = 0;
+	container.add(txt, constraints);
                 
         cadastrar = new JButton();
         cadastrar.setText("Cadastrar");
@@ -83,7 +92,11 @@ public class TelaPartido extends JFrame {
                 ControladorPartido.getInstancia().exibeCadastraPartido();
                 dispose();
             }
-          
+            
+            if(opcao.equals(BOTAO_PESQUISAR)) {
+                ControladorPartido.getInstancia().abreTelaPesquisaPartido();
+                dispose();
+            }
             if(opcao.equals(BOTAO_VOLTAR)) {
                 TelaCadastro.getInstancia().setVisible(true);
                 dispose();
