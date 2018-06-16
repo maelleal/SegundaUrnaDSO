@@ -31,32 +31,7 @@ public class ControladorEleitor {
         }
         return instancia;
     }
-    /*
-    public Eleitor encontraEleitorPeloTitulo(int titulo){
-        Eleitor a = null;
-        for(Eleitor e : eleitores){
-            if(e.getTituloEleitoral() == titulo){
-                a = e;
-            }      
-        }
-        return a;
-    }
     
-    public SecaoEleitoral encontraSecaoPeloNumero(int secaoEleitoral){
-        SecaoEleitoral a = null;
-        for(SecaoEleitoral s : secoes){
-            if(s.getSecao() == secaoEleitoral){
-                a = s;
-            }      
-        }
-        return a;
-    }
-    */
-    /*
-    public void abreTelaEleitores(){
-        telaEleitor.setVisible(true);
-    }
-    */
     public void exibeMenuCadastro() {
         ControladorCadastro.getInstancia().iniciaCadastro();
     }
@@ -64,15 +39,20 @@ public class ControladorEleitor {
         TelaCadastraEleitor.getInstancia().setVisible(true);
     }
     
-    public void cadastraEleitor(int tituloEleitoral, String nome, String cidade){
-        Eleitor eleitor = new Eleitor(tituloEleitoral, nome, cidade);
-        EleitorDAO.getInstancia().put(eleitor);
+    public void incluiEleitor(Integer tituloEleitoral, String nomeEleitor){
+        Eleitor eleitor = new Eleitor(tituloEleitoral, nomeEleitor);
+        if(EleitorDAO.getInstancia().get(tituloEleitoral)== null) {
+            EleitorDAO.getInstancia().put(eleitor);
+            TelaCadastraEleitor.getInstancia().mensagemOK();
+        } else {
+            TelaCadastraEleitor.getInstancia().mensagemErro();
+        } 
     }
-  
+    /*
     public void incluiEleitor(Eleitor eleitor){
         EleitorDAO.getInstancia().put(eleitor);
     }
-    /*
+    
     public void excluirEleitor(Eleitor e){
         //EleitorDAO.getInstancia().remove();
     //TODO tratar exceções

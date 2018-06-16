@@ -72,10 +72,7 @@ public class PartidoPoliticoDAO {
             
             oi.close();
             fin.close();
-            
-            oi = null;
-            fin = null;
-        
+         
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
             

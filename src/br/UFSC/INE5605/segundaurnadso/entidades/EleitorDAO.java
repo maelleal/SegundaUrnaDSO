@@ -22,22 +22,26 @@ public class EleitorDAO {
     private static EleitorDAO instancia;
     private HashMap<Integer, Eleitor> cacheEleitor = new HashMap<>();
     private final String arquivoEleitor = "eleitores.dat";
-    /*
+    
     private EleitorDAO (){
         load();
     }
-    */
+    
     public Eleitor get(Integer idEleitor){
         return cacheEleitor.get(idEleitor);
     }
     
     public void put(Eleitor eleitor){
         cacheEleitor.put(eleitor.getTituloEleitoral(), eleitor);
+        this.persist();
     }
     
-    public void remove(Integer titulo){
+    public void removeEleitor(Integer titulo){
 	cacheEleitor.remove(titulo);
-	persist();
+    }
+    
+    public Collection<Eleitor> getList(){
+	return cacheEleitor.values();
     }
     
     public void persist(){
@@ -51,8 +55,6 @@ public class EleitorDAO {
             
            oo.close();
            fout.close();
-           oo = null;
-           fout = null;
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
@@ -70,14 +72,13 @@ public class EleitorDAO {
             
             oi.close();
             fin.close();
-            oi = null;
-            fin = null;
         
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
+            persist();
         
         } catch (IOException ex) {
             System.out.println(ex);
@@ -91,7 +92,4 @@ public class EleitorDAO {
         return instancia;
     }
     
-    public Collection<Eleitor> getList(){
-	return cacheEleitor.values();
-    }
 }

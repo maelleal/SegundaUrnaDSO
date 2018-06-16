@@ -19,11 +19,11 @@ public class Eleitor extends Pessoa implements Serializable  {
     private String cidade;
     public boolean jaVotou;
 
-    public Eleitor(Integer tituloEleitoral, String nome, String cidade) {
+    public Eleitor(Integer tituloEleitoral, String nome) {
         super(nome);
         this.tituloEleitoral = tituloEleitoral;
         this.jaVotou = false;
-        this.cidade = cidade;
+        //this.cidade = cidade;
     }
 
     public boolean getJaVotou() {

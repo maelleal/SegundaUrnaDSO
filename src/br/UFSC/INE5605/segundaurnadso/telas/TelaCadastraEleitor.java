@@ -125,7 +125,7 @@ public class TelaCadastraEleitor extends JFrame {
                     if(nomeEleitor.getText().equals("")) {
                         JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                     }else {
-                       // ControladorEleitor.getInstancia().cadastraEleitor(nomeEleitor, opcao, opcao);
+                        ControladorEleitor.getInstancia().incluiEleitor(numero, nomeEleitor.getText());
                         dispose();
                     }
                 } catch (NumberFormatException erro) {
