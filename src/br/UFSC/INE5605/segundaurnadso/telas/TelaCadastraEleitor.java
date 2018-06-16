@@ -8,6 +8,7 @@ package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.EleitorDAO;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -100,6 +101,16 @@ public class TelaCadastraEleitor extends JFrame {
         setLocationRelativeTo(null);
     }
     
+    public void mensagemOK() {
+        JOptionPane.showMessageDialog(null, "Eleitor Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.ERROR_MESSAGE);
+        TelaEleitor.getInstancia().setVisible(true);
+            dispose();
+    }
+
+    public void mensagemErro() {
+        JOptionPane.showMessageDialog(null, "Eleitor já existe!", "Erro ao salvar o cadastro", JOptionPane.ERROR_MESSAGE);
+    }
+    
     public class GerenciaBotoes implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent evento) {
@@ -107,15 +118,18 @@ public class TelaCadastraEleitor extends JFrame {
             if(opcao.equals(BOTAO_SALVAR)) {
                 try {
                     int numero = Integer.parseInt(tituloEleitor.getText());
-                    if (numero < 0 || numero > 99){
+                    if (numero < 0 || numero > 99999999){
+                        JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 99999999!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                         //apaga o que está no campo de numeroCandidato
+                    }
+                    if(nomeEleitor.getText().equals("")) {
+                        JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                     }else {
-                        ControladorCadastro.getInstancia().executaCadastroCandidato();
+                       // ControladorEleitor.getInstancia().cadastraEleitor(nomeEleitor, opcao, opcao);
                         dispose();
                     }
-                } catch (Exception e) {
-                   
-                    JOptionPane.showMessageDialog(null, "Somente numeros entre 1 e 99!", "Erro ao Cadastrar", ERROR_MESSAGE);
+                } catch (NumberFormatException erro) {
+                    JOptionPane.showMessageDialog(null, "Somente numeros entre 1 e 99999999!", "Erro ao Cadastrar", ERROR_MESSAGE);
                 }
             }
             

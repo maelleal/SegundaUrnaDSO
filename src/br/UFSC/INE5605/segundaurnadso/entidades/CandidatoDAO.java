@@ -23,21 +23,21 @@ public class CandidatoDAO {
     private HashMap<Integer, Candidato> cacheCandidatos = new HashMap<>();
     private final String arquivoCandidato = "candidatos.dat";
     
-   /* private CandidatoDAO(){
+    private CandidatoDAO(){
         load();
-    }*/
+    }
     public Candidato get(Integer idCandidato){
         return cacheCandidatos.get(idCandidato);
     }
     
     public void put(Candidato candidato){
         cacheCandidatos.put(candidato.getNumero(), candidato);
+        this.persist();
     }
     
     public void persist(){
         try{
             FileOutputStream fout = new FileOutputStream(arquivoCandidato);
-            
             ObjectOutputStream oo = new ObjectOutputStream(fout);
             oo.writeObject(cacheCandidatos);
             
@@ -73,12 +73,12 @@ public class CandidatoDAO {
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
+            persist();
         
         } catch (IOException ex) {
             System.out.println(ex);
         }
-    
-        
+       
     }
     
     public static CandidatoDAO getInstancia (){

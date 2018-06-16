@@ -13,11 +13,13 @@ import java.io.Serializable;
  */
 public class Eleitor extends Pessoa implements Serializable  {
     
-    private int tituloEleitoral;
+    private static final long serialVersionUID = 1L;
+    
+    private Integer tituloEleitoral;
     private String cidade;
     public boolean jaVotou;
 
-    public Eleitor(int tituloEleitoral, String nome, String cidade) {
+    public Eleitor(Integer tituloEleitoral, String nome, String cidade) {
         super(nome);
         this.tituloEleitoral = tituloEleitoral;
         this.jaVotou = false;
@@ -32,11 +34,11 @@ public class Eleitor extends Pessoa implements Serializable  {
         this.jaVotou = jaVotou;
     }
     
-    public int getTituloEleitoral() {
+    public Integer getTituloEleitoral() {
         return tituloEleitoral;
     }
 
-    public void setTituloEleitoral(int tituloEleitoral) {
+    public void setTituloEleitoral(Integer tituloEleitoral) {
         this.tituloEleitoral = tituloEleitoral;
     }
 

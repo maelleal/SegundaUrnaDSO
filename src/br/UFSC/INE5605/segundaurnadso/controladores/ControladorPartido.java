@@ -30,17 +30,6 @@ public class ControladorPartido {
       PartidoPoliticoDAO.getInstancias().put(partido3);
     }
     
-    /*
-    public PartidoPolitico encontraPartidoPeloNome(String nome){
-        PartidoPolitico a = null;
-        for(PartidoPolitico e : PartidoPoliticoDAO.getInstancias().get(Integer.valueOf(nome))){
-            if(e.getPartido() == nome){
-                a = e;
-            }      
-        }
-        return a;
-    }
-    */
     public void incluiPartido(String nomePartido, int codigoPartido) {
         PartidoPolitico partido = new PartidoPolitico(nomePartido, codigoPartido);
         if(PartidoPoliticoDAO.getInstancias().get(codigoPartido) == null){

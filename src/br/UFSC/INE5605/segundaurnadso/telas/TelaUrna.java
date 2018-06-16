@@ -12,6 +12,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -88,10 +89,10 @@ public class TelaUrna extends JFrame {
         
         JPanel containerVisor = new JPanel();
         containerVisor.setSize(400, 350);
-        containerVisor.setLayout(new GridBagLayout());
+        containerVisor.setLayout(new FlowLayout());
         
-        getContentPane().add( containerTeclado, BorderLayout.EAST );
-	getContentPane().add( containerVisor, BorderLayout.WEST );
+        getContentPane().add(containerTeclado);
+	getContentPane().add(containerVisor);
         
         
         botaoUm = new JButton();

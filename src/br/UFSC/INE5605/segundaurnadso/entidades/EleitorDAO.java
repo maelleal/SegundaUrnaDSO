@@ -21,12 +21,12 @@ import java.util.HashMap;
 public class EleitorDAO {
     private static EleitorDAO instancia;
     private HashMap<Integer, Eleitor> cacheEleitor = new HashMap<>();
-    private final String arquivoEleitor = "eleitor.dat";
-    
+    private final String arquivoEleitor = "eleitores.dat";
+    /*
     private EleitorDAO (){
         load();
     }
-    
+    */
     public Eleitor get(Integer idEleitor){
         return cacheEleitor.get(idEleitor);
     }
@@ -35,10 +35,14 @@ public class EleitorDAO {
         cacheEleitor.put(eleitor.getTituloEleitoral(), eleitor);
     }
     
+    public void remove(Integer titulo){
+	cacheEleitor.remove(titulo);
+	persist();
+    }
+    
     public void persist(){
         try{
            FileOutputStream fout = new FileOutputStream(arquivoEleitor);
-           
            ObjectOutputStream oo = new ObjectOutputStream(fout);
            oo.writeObject(cacheEleitor);
            
@@ -86,10 +90,7 @@ public class EleitorDAO {
         }
         return instancia;
     }
-    public void remove(Integer titulo){
-	cacheEleitor.remove(titulo);
-	persist();
-    }
+    
     public Collection<Eleitor> getList(){
 	return cacheEleitor.values();
     }

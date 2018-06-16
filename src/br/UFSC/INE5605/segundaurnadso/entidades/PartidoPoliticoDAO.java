@@ -23,29 +23,29 @@ import java.util.HashMap;
 public class PartidoPoliticoDAO {
     private static PartidoPoliticoDAO instancia;
     private HashMap<Integer, PartidoPolitico> cachePartidos = new HashMap<>();
-    private final String fileName = "partidos.dat";
-    /*
+    private final String arquivoPartido = "partidos.dat";
+    
     private PartidoPoliticoDAO() {
         load();
     }
-    */ 
+     
     public PartidoPolitico get(Integer codigoPartido){
         return cachePartidos.get(codigoPartido);
     }
     
     public void put(PartidoPolitico partido){
         cachePartidos.put(partido.getCodigo(), partido);
+        this.persist();
     }
     public void removePartido(Integer codigo) {
         this.cachePartidos.remove(codigo);
-        this.persist();
     }
     public Collection<PartidoPolitico> getList() {
         return cachePartidos.values();
     }
     public void persist(){
         try{
-           FileOutputStream fout = new FileOutputStream(fileName);
+           FileOutputStream fout = new FileOutputStream(arquivoPartido);
            ObjectOutputStream oo = new ObjectOutputStream(fout);
            oo.writeObject(cachePartidos);
            
@@ -54,12 +54,10 @@ public class PartidoPoliticoDAO {
             
            oo.close();
            fout.close();
-           oo = null;
-           fout = null;
            
             
         } catch (FileNotFoundException ex) {
-            load();
+            System.out.println(ex);
         }catch (IOException ex) {
             System.out.println(ex);
         }
@@ -67,7 +65,7 @@ public class PartidoPoliticoDAO {
     
     public void load () {
         try {
-            FileInputStream fin = new FileInputStream(fileName);
+            FileInputStream fin = new FileInputStream(arquivoPartido);
             ObjectInputStream oi = new ObjectInputStream(fin);
         
             this.cachePartidos = (HashMap<Integer, PartidoPolitico>) oi.readObject();
@@ -83,6 +81,7 @@ public class PartidoPoliticoDAO {
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
+            persist();
         
         } catch (IOException ex) {
             System.out.println(ex);
