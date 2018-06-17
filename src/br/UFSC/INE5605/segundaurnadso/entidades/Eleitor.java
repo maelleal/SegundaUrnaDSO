@@ -16,7 +16,7 @@ public class Eleitor extends Pessoa implements Serializable  {
     private static final long serialVersionUID = 1L;
     
     private Integer tituloEleitoral;
-    private String cidade;
+   // private String cidade;
     public boolean jaVotou;
 
     public Eleitor(Integer tituloEleitoral, String nome) {
@@ -50,7 +50,5 @@ public class Eleitor extends Pessoa implements Serializable  {
     @Override
     public void setNome(String nome) {
         this.nome = nome;
-    }
-    
-    
+    } 
 }

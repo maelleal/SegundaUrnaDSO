@@ -5,6 +5,7 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPrincipal;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorUrna;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
@@ -24,6 +25,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicBorders;
 /**
  *
  * @author Ismael
@@ -75,13 +78,17 @@ public class TelaUrna extends JFrame {
         super("Tela Urna");
         this.ctrlUrna = ctrlUrna;
         this.botoes = new GerenciaBotoes();
-        Font fonte = new Font("Courier New", Font.BOLD, 35);
-        Font fonte2 = new Font("Courier New", Font.BOLD, 15);
+        Font fonte = new Font("Courier New", Font.BOLD, 40);
+        Font fonte2 = new Font("Courier New", Font.BOLD, 23);
+        Font fonte3 = new Font("Courier New", Font.BOLD, 15);
+        Font fonte4 = new Font("Courier New", Font.BOLD, 20);
         
-        JPanel containerPrincipal = new JPanel();
+        Container containerPrincipal = getContentPane();
         containerPrincipal.setLayout(new GridBagLayout());
-        containerPrincipal.setSize(820, 720);
         GridBagConstraints constraints = new GridBagConstraints();
+        GridBagConstraints constraints2 = new GridBagConstraints();
+        GridBagConstraints constraints3 = new GridBagConstraints();
+        
         
         JPanel containerTeclado = new JPanel();
         containerTeclado.setSize(400, 350);
@@ -91,12 +98,14 @@ public class TelaUrna extends JFrame {
         containerVisor.setSize(400, 350);
         containerVisor.setLayout(new FlowLayout());
         
-        getContentPane().add(containerTeclado);
-	getContentPane().add(containerVisor);
+        containerPrincipal.add(containerTeclado, constraints3);
+	containerPrincipal.add(containerVisor, constraints3);
         
         
         botaoUm = new JButton();
         botaoUm.setText("1");
+        botaoUm.getMouseListeners();
+        botaoUm.setFont(fonte2);
         botaoUm.setActionCommand(BOTAO_UM);
         botaoUm.addActionListener(botoes);
         botaoUm.setPreferredSize(tamanhoBotao);
@@ -108,6 +117,7 @@ public class TelaUrna extends JFrame {
         
         botaoDois = new JButton();
         botaoDois.setText("2");
+        botaoDois.setFont(fonte2);
         botaoDois.setActionCommand(BOTAO_DOIS);
         botaoDois.addActionListener(botoes);
         botaoDois.setPreferredSize(tamanhoBotao);
@@ -119,6 +129,7 @@ public class TelaUrna extends JFrame {
         
         botaoTres = new JButton();
         botaoTres.setText("3");
+        botaoTres.setFont(fonte2);
         botaoTres.setActionCommand(BOTAO_TRES);
         botaoTres.addActionListener(botoes);
         botaoTres.setPreferredSize(tamanhoBotao);
@@ -130,6 +141,7 @@ public class TelaUrna extends JFrame {
         
         botaoQuatro = new JButton();
         botaoQuatro.setText("4");
+        botaoQuatro.setFont(fonte2);
         botaoQuatro.setActionCommand(BOTAO_QUATRO);
         botaoQuatro.addActionListener(botoes);
         botaoQuatro.setPreferredSize(tamanhoBotao);
@@ -141,6 +153,7 @@ public class TelaUrna extends JFrame {
         
         botaoCinco = new JButton();
         botaoCinco.setText("5");
+        botaoCinco.setFont(fonte2);
         botaoCinco.setActionCommand(BOTAO_CINCO);
         botaoCinco.addActionListener(botoes);
         botaoCinco.setPreferredSize(tamanhoBotao);
@@ -152,6 +165,7 @@ public class TelaUrna extends JFrame {
         
         botaoSeis = new JButton();
         botaoSeis.setText("6");
+        botaoSeis.setFont(fonte2);
         botaoSeis.setActionCommand(BOTAO_SEIS);
         botaoSeis.addActionListener(botoes);
         botaoSeis.setPreferredSize(tamanhoBotao);
@@ -163,6 +177,7 @@ public class TelaUrna extends JFrame {
         
         botaoSete = new JButton();
         botaoSete.setText("7");
+        botaoSete.setFont(fonte2);
         botaoSete.setActionCommand(BOTAO_SETE);
         botaoSete.addActionListener(botoes);
         botaoSete.setPreferredSize(tamanhoBotao);
@@ -174,6 +189,7 @@ public class TelaUrna extends JFrame {
         
         botaoOito = new JButton();
         botaoOito.setText("8");
+        botaoOito.setFont(fonte2);
         botaoOito.setActionCommand(BOTAO_OITO);
         botaoOito.addActionListener(botoes);
         botaoOito.setPreferredSize(tamanhoBotao);
@@ -185,6 +201,7 @@ public class TelaUrna extends JFrame {
         
         botaoNove = new JButton();
         botaoNove.setText("9");
+        botaoNove.setFont(fonte2);
         botaoNove.setActionCommand(BOTAO_NOVE);
         botaoNove.addActionListener(botoes);
         botaoNove.setPreferredSize(tamanhoBotao);
@@ -196,6 +213,8 @@ public class TelaUrna extends JFrame {
         
         botaoZero = new JButton();
         botaoZero.setText("0");
+        botaoZero.setFont(fonte2);
+        botaoZero.setBorderPainted(rootPaneCheckingEnabled);
         botaoZero.setActionCommand(BOTAO_ZERO);
         botaoZero.addActionListener(botoes);
         botaoZero.setPreferredSize(tamanhoBotao);
@@ -207,6 +226,8 @@ public class TelaUrna extends JFrame {
         
         botaoConfirma = new JButton();
         botaoConfirma.setText("CONFIRMA");
+        botaoConfirma.setFont(fonte3);
+        botaoConfirma.setBorder(new LineBorder(Color.DARK_GRAY));
         botaoConfirma.setActionCommand(OPCAO_CONFIRMA);
         botaoConfirma.addActionListener(botoes);
         botaoConfirma.setPreferredSize(tamanhoBotao);
@@ -218,6 +239,8 @@ public class TelaUrna extends JFrame {
         
         botaoVotarBranco = new JButton();
         botaoVotarBranco.setText("BRANCO");
+        botaoVotarBranco.setFont(fonte3);
+        botaoVotarBranco.setBorder(new LineBorder(Color.DARK_GRAY));
         botaoVotarBranco.setActionCommand(OPCAO_BRANCO);
         botaoVotarBranco.addActionListener(botoes);
         botaoVotarBranco.setPreferredSize(tamanhoBotao);
@@ -228,6 +251,7 @@ public class TelaUrna extends JFrame {
         
         botaoVoltar = new JButton();
         botaoVoltar.setText("CORRIGE");
+        botaoVoltar.setFont(fonte3);
         botaoVoltar.setActionCommand(OPCAO_CORRIGE);
         botaoVoltar.addActionListener(botoes);
         botaoVoltar.setPreferredSize(tamanhoBotao);
@@ -238,6 +262,8 @@ public class TelaUrna extends JFrame {
         
         botaoSair = new JButton();
         botaoSair.setText("SAIR");
+        botaoSair.setFont(fonte3);
+        botaoSair.setBorder(new LineBorder(Color.BLACK));
         botaoSair.setActionCommand(OPCAO_VOLTAR);
         botaoSair.addActionListener(botoes);
         botaoSair.setPreferredSize(tamanhoBotao);
@@ -246,11 +272,22 @@ public class TelaUrna extends JFrame {
 	containerTeclado.add(botaoSair, constraints);
         
         txtNumeroCandidato = new JLabel();
-        txtNumeroCandidato.setFont(fonte2);
-        txtNumeroCandidato.setText("DIGITE O NUMERO DO CANDIDADTO");
-	constraints.gridx = 2;
+        txtNumeroCandidato.setFont(fonte4);
+        txtNumeroCandidato.setText("DIGITE O NUMERO DO CANDIDATO");
+        constraints.gridheight = 1;
+        constraints.gridwidth = 4;
+	constraints.gridx = 1;
 	constraints.gridy = 0;
 	containerTeclado.add(txtNumeroCandidato, constraints);
+        
+        numeroCandidato = new JTextField(15);
+        numeroCandidato.addActionListener(botoes);
+        numeroCandidato.setPreferredSize(tamanhoBotao);
+        constraints.gridheight = 1;
+        constraints.gridwidth = 4;
+       	constraints.gridx = 1;
+	constraints.gridy = 1;
+	containerTeclado.add(numeroCandidato, constraints);
         
         txtCandidatoEscolhido = new JLabel();
         txtCandidatoEscolhido.setFont(fonte);
@@ -259,28 +296,63 @@ public class TelaUrna extends JFrame {
         constraints.gridwidth = 10;
 	constraints.gridx = 2;
 	constraints.gridy = 0;
-        getContentPane().add( txtCandidatoEscolhido, BorderLayout.CENTER );
+        getContentPane().add( txtCandidatoEscolhido, constraints2);
         
-        numeroCandidato = new JTextField(15);
-        numeroCandidato.addActionListener(botoes);
-        numeroCandidato.setPreferredSize(tamanhoBotao);
-        constraints.gridheight = 2;
-        constraints.gridwidth = 6;
-       	constraints.gridx = 1;
-	constraints.gridy = 1;
-	containerTeclado.add(numeroCandidato, constraints);
-        
-        
+        JLabel temp = new JLabel();
+        temp.setFont(fonte);
+        temp.setText("");
+        constraints.gridheight = 10;
+        constraints.gridwidth = 10;
+	constraints.gridx = 1;
+	constraints.gridy = 0;
+        getContentPane().add( temp, constraints2);
         
         
-        
-        setSize (840, 740);
+        setSize (950, 700);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
         setLocationRelativeTo(null);
         
-       
+        
+        
     }
+    public String captura(String cap){
+        return cap;
+    }
+    
+    public void capturaDigitacao (){
+        Candidato candidato = null;
+        txtCandidatoEscolhido.setText("dddd");
+        
+        int numeroDigitado = 2;
+        
+        if(numeroDigitado != 2) {
+            
+            
+        }
+        
+        /*
+        candidato = ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(numeroDigitado);
+        txtCandidatoEscolhido.setText(candidato.getNome());
+        while(!digitado.equals("")){ 
+            System.out.println("chegou aqui");
+            
+            txtCandidatoEscolhido.setVisible(true);
+            
+        }
+        */
+    
+    }
+    
+
+    
+    public static TelaUrna getInstancia(){
+        if(instancia == null){
+            instancia = new TelaUrna();
+        }
+        return instancia;
+    }
+    
     public class GerenciaBotoes implements ActionListener {
        
     @Override
@@ -289,21 +361,27 @@ public class TelaUrna extends JFrame {
         switch(opcao) {
         case BOTAO_UM:
             numeroCandidato.setText(numeroCandidato.getText()+"1");
+            capturaDigitacao();
             break;
         case BOTAO_DOIS:
             numeroCandidato.setText(numeroCandidato.getText()+"2");
+            capturaDigitacao();
             break;
         case BOTAO_TRES:
             numeroCandidato.setText(numeroCandidato.getText()+"3");
+            capturaDigitacao();
             break;
         case BOTAO_QUATRO:
             numeroCandidato.setText(numeroCandidato.getText()+"4");
+            capturaDigitacao();
             break;
         case BOTAO_CINCO:
             numeroCandidato.setText(numeroCandidato.getText()+"5");
+            capturaDigitacao();
             break;
         case BOTAO_SEIS:
             numeroCandidato.setText(numeroCandidato.getText()+"6");
+            capturaDigitacao();
             break;
         case BOTAO_SETE:
             numeroCandidato.setText(numeroCandidato.getText()+"7");
@@ -332,21 +410,8 @@ public class TelaUrna extends JFrame {
             break;
         default:
             break;
-            
-        
-    
         }
-        
-        
     }
     
 }
-    
-    public static TelaUrna getInstancia(){
-        if(instancia == null){
-            instancia = new TelaUrna();
-        }
-        return instancia;
-    }
-    
 }

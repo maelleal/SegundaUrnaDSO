@@ -23,7 +23,7 @@ public class CandidatoDAO {
     private HashMap<Integer, Candidato> cacheCandidatos = new HashMap<>();
     private final String arquivoCandidato = "candidatos.dat";
     
-    private CandidatoDAO(){
+    private CandidatoDAO() {
         load();
     }
     public Candidato get(Integer idCandidato){
@@ -46,8 +46,6 @@ public class CandidatoDAO {
             
             oo.close();
             fout.close();
-            oo = null;
-            fout = null;
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex);

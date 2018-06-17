@@ -5,7 +5,6 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
-//import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.HashMap;
+import java.io.Serializable;
 
 /**
  *
@@ -23,7 +24,7 @@ public class EleitorDAO {
     private HashMap<Integer, Eleitor> cacheEleitor = new HashMap<>();
     private final String arquivoEleitor = "eleitores.dat";
     
-    private EleitorDAO (){
+    private EleitorDAO() {
         load();
     }
     
@@ -85,7 +86,7 @@ public class EleitorDAO {
         }
     }
     
-    public static EleitorDAO getInstancia(){
+    public static EleitorDAO getInstancias(){
         if(instancia == null){
             instancia = new EleitorDAO();
         }

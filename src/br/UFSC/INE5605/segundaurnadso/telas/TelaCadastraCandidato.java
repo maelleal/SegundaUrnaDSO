@@ -9,6 +9,7 @@ import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.CandidatoDAO;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPoliticoDAO;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -40,7 +41,7 @@ public class TelaCadastraCandidato extends JFrame {
     private JButton voltar;
     private JTextField nomeCandidato;
     private JTextField numeroCandidato;
-    private JComboBox<PartidoPoliticoDAO> partidoCandidato;
+    private JComboBox<Object> partidoCandidato;
     private JLabel txtNomeCandidato;
     private JLabel txtPartidoCandidato;
     private JLabel txtNumeroCandidato;
@@ -75,7 +76,12 @@ public class TelaCadastraCandidato extends JFrame {
 	constraints.gridy = 2;
         container.add(txtPartidoCandidato, constraints);
         
-        partidoCandidato = new JComboBox();
+        partidoCandidato = new JComboBox<>();
+        partidoCandidato.removeAll();
+        for(PartidoPolitico part : PartidoPoliticoDAO.getInstancias().getList()){
+            partidoCandidato.addItem(part);
+        }
+        
         constraints.gridx = 0;
         constraints.gridy = 3;
         partidoCandidato.setPreferredSize(new Dimension(175, 30));
@@ -120,7 +126,15 @@ public class TelaCadastraCandidato extends JFrame {
         setLocationRelativeTo(null);
     }
     
-    
+    public void mensagemOK() {
+        JOptionPane.showMessageDialog(null, "Partido Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.ERROR_MESSAGE);
+        TelaPartido.getInstancia().setVisible(true);
+            dispose();
+    }
+
+    public void mensagemErro() {
+        JOptionPane.showMessageDialog(null, "Partido já existe!", "Erro ao salvar o cadastro", JOptionPane.ERROR_MESSAGE);
+    }
     
     public class GerenciaBotoes implements ActionListener {
         @Override
@@ -129,21 +143,22 @@ public class TelaCadastraCandidato extends JFrame {
             if(opcao.equals(BOTAO_SALVAR)) {
                 try {
                     int numero = Integer.parseInt(numeroCandidato.getText());
-                    if (numero < 0 || numero > 99){
-                        //apaga o que está no campo de numeroCandidato
-                    }else {
-                        ControladorCadastro.getInstancia().executaCadastroCandidato();
+                    if (numero < 0 || numero > 999){
+                        JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 999!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                    }
+                    if(nomeCandidato.getText().equals("")){
+                        JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                       // ControladorCandidato.getInstancia().incluiCandidato(nomeCandidato.getText(), partidoCandidato, numero);
                         dispose();
                     }
-                } catch (Exception e) {
-                   
-                    JOptionPane.showMessageDialog(null, "Somente numeros entre 1 e 99!", "Erro ao Cadastrar", ERROR_MESSAGE);
-
+                } catch (NumberFormatException erro) {
+                    JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 99!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                 }
                 
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorCandidato.getInstancia().exibeMenuCandidato();
+                TelaCandidato.getInstancia().setVisible(true);
                 dispose();
             }
         }
@@ -155,12 +170,6 @@ public class TelaCadastraCandidato extends JFrame {
         }
         return instancia;
     }
-    
-    
-    
-    
-    
-    
-    
+       
     
 }

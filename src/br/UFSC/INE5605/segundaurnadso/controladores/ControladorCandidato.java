@@ -16,6 +16,7 @@ import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPoliticoDAO;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraCandidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPesquisaCandidato;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -24,21 +25,22 @@ import java.util.ArrayList;
 public class ControladorCandidato{
     private static ControladorCandidato instancia;
     private CandidatoDAO candidatoDAO;
+    private JComboBox<Object> partidoCandidato;
     
     private ControladorCandidato() {
         
-        Candidato candidato1 = new Candidato("Ismael Leal", PartidoPoliticoDAO.getInstancias().get(88), 01);
-        CandidatoDAO.getInstancia().put(candidato1);
-        Candidato candidato2 = new Candidato("Ivo Guilherme", PartidoPoliticoDAO.getInstancias().get(88), 02);
-        CandidatoDAO.getInstancia().put(candidato2);
-        Candidato candidato3 = new Candidato("Jean VouRodar", PartidoPoliticoDAO.getInstancias().get(88), 03);
-        CandidatoDAO.getInstancia().put(candidato3);
     }
     
     
-    public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {
+    public void incluiCandidato(String nome, PartidoPolitico partido, Integer numeroCandidato) {
            Candidato candidato = new Candidato(nome, partido, numeroCandidato);
-           candidatoDAO.put(candidato);
+           if(CandidatoDAO.getInstancia().get(numeroCandidato) == null){
+               CandidatoDAO.getInstancia().put(candidato);
+               TelaCadastraCandidato.getInstancia().mensagemOK();
+           } else {
+               TelaCadastraCandidato.getInstancia().mensagemErro();
+           }
+           
     }
     
     public static ControladorCandidato getInstancia() {
@@ -67,6 +69,7 @@ public class ControladorCandidato{
         TelaPesquisaCandidato.getInstancia().updateData();
         TelaPesquisaCandidato.getInstancia().setVisible(true);
     }
+    
     public Candidato buscaCandidatoPeloNumero(int numeroCandidato){
         Candidato cand = null;
         for(Candidato e : CandidatoDAO.getInstancia().getList()){
@@ -76,6 +79,5 @@ public class ControladorCandidato{
         }
         return cand;
     }
-
     
 }

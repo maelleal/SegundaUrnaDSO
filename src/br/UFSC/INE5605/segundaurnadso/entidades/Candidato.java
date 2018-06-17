@@ -11,6 +11,8 @@ import java.io.Serializable;
  * @author Ismael
  */
 public class Candidato extends Pessoa implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
 
     private PartidoPolitico partido;
     private Integer numero;

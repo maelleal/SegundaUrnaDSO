@@ -120,7 +120,6 @@ public class TelaCadastraEleitor extends JFrame {
                     int numero = Integer.parseInt(tituloEleitor.getText());
                     if (numero < 0 || numero > 99999999){
                         JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 99999999!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
-                        //apaga o que está no campo de numeroCandidato
                     }
                     if(nomeEleitor.getText().equals("")) {
                         JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
