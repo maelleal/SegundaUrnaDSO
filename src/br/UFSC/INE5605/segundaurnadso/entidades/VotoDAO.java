@@ -23,12 +23,12 @@ public class VotoDAO {
     private HashMap<Integer, Voto> cacheVotos = new HashMap<>();
     private final String fileName = "votos.dat";
     
-    public Voto get(Integer codigoVoto){
-        return cacheVotos.get(codigoVoto);
+    public Voto get(Voto voto){
+        return cacheVotos.get(voto);
     }
     
     public void put(Voto voto){
-        cacheVotos.put(voto.getCodigo(), voto);
+        cacheVotos.put(voto);
     }
     
     public Collection<Voto> getList() {

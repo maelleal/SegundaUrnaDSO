@@ -13,7 +13,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.HashMap;
-import java.io.Serializable;
 
 /**
  *
@@ -24,7 +23,7 @@ public class EleitorDAO {
     private HashMap<Integer, Eleitor> cacheEleitor = new HashMap<>();
     private final String arquivoEleitor = "eleitores.dat";
     
-    private EleitorDAO() {
+    private EleitorDAO (){
         load();
     }
     
@@ -34,15 +33,11 @@ public class EleitorDAO {
     
     public void put(Eleitor eleitor){
         cacheEleitor.put(eleitor.getTituloEleitoral(), eleitor);
-        this.persist();
     }
     
-    public void removeEleitor(Integer titulo){
+    public void remove(Integer titulo){
 	cacheEleitor.remove(titulo);
-    }
-    
-    public Collection<Eleitor> getList(){
-	return cacheEleitor.values();
+	persist();
     }
     
     public void persist(){
@@ -56,9 +51,11 @@ public class EleitorDAO {
             
            oo.close();
            fout.close();
+           
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
+            persist();
         }catch (IOException ex) {
             System.out.println(ex);
         }
@@ -73,6 +70,8 @@ public class EleitorDAO {
             
             oi.close();
             fin.close();
+            oi = null;
+            fin = null;
         
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
@@ -86,11 +85,14 @@ public class EleitorDAO {
         }
     }
     
-    public static EleitorDAO getInstancias(){
+    public static EleitorDAO getInstancia(){
         if(instancia == null){
             instancia = new EleitorDAO();
         }
         return instancia;
     }
     
+    public Collection<Eleitor> getList(){
+	return cacheEleitor.values();
+    }
 }

@@ -5,9 +5,7 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPartido;
-import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -100,14 +98,17 @@ public class TelaCadastraPartido extends JFrame{
     }
 
     public void mensagemOK() {
-        JOptionPane.showMessageDialog(null, "Partido Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Partido Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.OK_OPTION);
         TelaPartido.getInstancia().setVisible(true);
-            dispose();
+        dispose();
     }
 
     public void mensagemErro() {
         JOptionPane.showMessageDialog(null, "Partido já existe!", "Erro ao salvar o cadastro", JOptionPane.ERROR_MESSAGE);
     }
+    
+    
+    
     
     public class GerenciaBotoes implements ActionListener {
         @Override
@@ -117,18 +118,23 @@ public class TelaCadastraPartido extends JFrame{
                 try {
                     int numero = Integer.parseInt(codigoPartido.getText());
                     if(numero < 0 && numero > 99 ){
+                        codigoPartido.setText("");
                         JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 99!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                     }
                     if(nomePartido.getText().equals("")) {
+                        nomePartido.setText("");
                         JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                     } else {
                         ControladorPartido.getInstancia().incluiPartido(nomePartido.getText(), numero);
                     }
                 } catch (NumberFormatException erro) {
+                    codigoPartido.setText("");
                     JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 99!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                 }
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
+                nomePartido.setText("");
+                codigoPartido.setText("");
                 TelaPartido.getInstancia().setVisible(true);
                 dispose();
             }

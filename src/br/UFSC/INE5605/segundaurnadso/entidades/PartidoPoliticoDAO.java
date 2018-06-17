@@ -5,6 +5,7 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
+//import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -71,7 +72,10 @@ public class PartidoPoliticoDAO {
             
             oi.close();
             fin.close();
-         
+            
+            oi = null;
+            fin = null;
+        
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
             
@@ -83,6 +87,7 @@ public class PartidoPoliticoDAO {
             System.out.println(ex);
         }
     }
+   
     public static PartidoPoliticoDAO getInstancias(){
         if(instancia == null ){
             instancia = new PartidoPoliticoDAO();

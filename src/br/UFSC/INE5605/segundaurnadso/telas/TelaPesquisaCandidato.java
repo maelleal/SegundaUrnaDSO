@@ -112,7 +112,7 @@ public class TelaPesquisaCandidato extends JFrame {
         modelTabelaCandidato.addColumn("Partido");
 
         for (Candidato cand : CandidatoDAO.getInstancia().getList()) {
-            modelTabelaCandidato.addRow(new Object[]{cand.getNumero(), cand.getNome(), cand.getPartido()});
+            modelTabelaCandidato.addRow(new Object[]{cand.getNumeroCandidato(), cand.getNome(), cand.getPartido()});
         }
         tabelaCandidatos.setModel(modelTabelaCandidato);
         this.repaint();

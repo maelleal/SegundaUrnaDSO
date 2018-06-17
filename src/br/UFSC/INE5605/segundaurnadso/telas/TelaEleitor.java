@@ -96,7 +96,7 @@ public class TelaEleitor extends JFrame {
             }
             
             if(opcao.equals(BOTAO_PESQUISAR)) {
-                ControladorEleitor.getInstancia().abreTelaPesquisaEleitor();
+                ControladorEleitor.getInstancia().executaTelaPesquisaEleitor();
                 dispose();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {

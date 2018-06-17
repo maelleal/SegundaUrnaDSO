@@ -23,7 +23,7 @@ public class CandidatoDAO {
     private HashMap<Integer, Candidato> cacheCandidatos = new HashMap<>();
     private final String arquivoCandidato = "candidatos.dat";
     
-    private CandidatoDAO() {
+    private CandidatoDAO(){
         load();
     }
     public Candidato get(Integer idCandidato){
@@ -31,10 +31,17 @@ public class CandidatoDAO {
     }
     
     public void put(Candidato candidato){
-        cacheCandidatos.put(candidato.getNumero(), candidato);
+        cacheCandidatos.put(candidato.getNumeroCandidato(), candidato);
         this.persist();
     }
-    
+    public void remove(Integer codigo){
+	cacheCandidatos.remove(codigo);
+	persist();
+    }
+    public Collection<Candidato> getList(){
+	return cacheCandidatos.values();
+    }
+
     public void persist(){
         try{
             FileOutputStream fout = new FileOutputStream(arquivoCandidato);
@@ -47,8 +54,10 @@ public class CandidatoDAO {
             oo.close();
             fout.close();
             
+            
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
+            
         }catch (IOException ex) {
             System.out.println(ex);
         }
@@ -68,7 +77,7 @@ public class CandidatoDAO {
         
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
-            
+            persist();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
             persist();
@@ -86,11 +95,4 @@ public class CandidatoDAO {
         return instancia;
     }
     
-    public void remove(Integer idCandidato){
-	cacheCandidatos.remove(idCandidato);
-	persist();
     }
-    public Collection<Candidato> getList(){
-	return cacheCandidatos.values();
-    }
-}

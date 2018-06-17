@@ -5,14 +5,13 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
+import br.UFSC.INE5605.SegundaUrnaDSO.interfaces.ICandidato;
 import java.io.Serializable;
 /**
  *
  * @author Ismael
  */
-public class Candidato extends Pessoa implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
+public class Candidato extends Pessoa implements Serializable, ICandidato {
 
     private PartidoPolitico partido;
     private Integer numero;
@@ -22,18 +21,16 @@ public class Candidato extends Pessoa implements Serializable {
         this.partido = partido;
         this.numero = numero;
     }
-
+    
+    @Override
     public PartidoPolitico getPartido() {
         return partido;
     }
-
+    
     public void setPartido(PartidoPolitico partido) {
         this.partido = partido;
     }
 
-    public Integer getNumero() {
-        return numero;
-    }
 
     public void setNumero(Integer numero) {
         this.numero = numero;
@@ -47,5 +44,11 @@ public class Candidato extends Pessoa implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }  
+
+    @Override
+    public int getNumeroCandidato() {
+        return numero;
+    }
+    
     
 }

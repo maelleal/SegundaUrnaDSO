@@ -17,39 +17,11 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPesquisaEleitor;
  */
 public class ControladorEleitor {
     private static ControladorEleitor instancia;
+    private TelaEleitor telaEleitor;
+   
 
     public ControladorEleitor() {
-        
     }
-    
-    public void incluiEleitor(Integer tituloEleitoral, String nomeEleitor){
-        Eleitor eleitor = new Eleitor(tituloEleitoral, nomeEleitor);
-        if(EleitorDAO.getInstancias().get(tituloEleitoral)== null) {
-            EleitorDAO.getInstancias().put(eleitor);
-            TelaCadastraEleitor.getInstancia().mensagemOK();
-        } else {
-            TelaCadastraEleitor.getInstancia().mensagemErro();
-        } 
-    }
-    
-    public void exibeMenuCadastro() {
-        ControladorCadastro.getInstancia().iniciaCadastro();
-    }
-    public void exibeCadastraEleitor() {
-        TelaCadastraEleitor.getInstancia().setVisible(true);
-    }
-    
-    /*
-    public void incluiEleitor(Eleitor eleitor){
-        EleitorDAO.getInstancia().put(eleitor);
-    }
-    
-    public void excluirEleitor(Eleitor e){
-        //EleitorDAO.getInstancia().remove();
-    //TODO tratar exceções
-    }
-    
-    */
     
     public static ControladorEleitor getInstancia(){
         if(instancia == null) {
@@ -57,11 +29,70 @@ public class ControladorEleitor {
         }
         return instancia;
     }
+    /*
+    public Eleitor encontraEleitorPeloTitulo(int titulo){
+        Eleitor a = null;
+        for(Eleitor e : eleitores){
+            if(e.getTituloEleitoral() == titulo){
+                a = e;
+            }      
+        }
+        return a;
+    }
+    
+    public SecaoEleitoral encontraSecaoPeloNumero(int secaoEleitoral){
+        SecaoEleitoral a = null;
+        for(SecaoEleitoral s : secoes){
+            if(s.getSecao() == secaoEleitoral){
+                a = s;
+            }      
+        }
+        return a;
+    }
+    */
+    /*
+    public void abreTelaEleitores(){
+        telaEleitor.setVisible(true);
+    }
+    */
+    public void exibeMenuCadastro() {
+        ControladorCadastro.getInstancia().iniciaCadastro();
+    }
+    public void exibeCadastraEleitor() {
+        TelaCadastraEleitor.getInstancia().setVisible(true);
+    }
+    
+    public void cadastraEleitor(int tituloEleitoral, String nome){
+        Eleitor eleitor = new Eleitor(tituloEleitoral, nome);
+        if(EleitorDAO.getInstancia().get(tituloEleitoral)== null){
+            EleitorDAO.getInstancia().put(eleitor);
+            TelaCadastraEleitor.getInstancia().mensagemOK();
+        } else {
+            TelaCadastraEleitor.getInstancia().mensagemErro();
+        }
+        
+    }
+  
+    public void incluiEleitor(Eleitor eleitor){
+        EleitorDAO.getInstancia().put(eleitor);
+    }
+    /*
+    public void excluirEleitor(Eleitor e){
+        //EleitorDAO.getInstancia().remove();
+    //TODO tratar exceções
+    }
+    
+    */
 
-    public void abreTelaPesquisaEleitor() {
+    public void executaTelaPesquisaEleitor() {
         TelaPesquisaEleitor.getInstancia().updateData();
         TelaPesquisaEleitor.getInstancia().setVisible(true);
         
     }
+
+    public void exibeEleitor() {
+        TelaEleitor.getInstancia().setVisible(true);
+    }
+
     
 }

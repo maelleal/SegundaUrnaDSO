@@ -23,8 +23,9 @@ public class ControladorPartido {
     public ControladorPartido() {
     
     }
-  
-    public void incluiPartido(String nomePartido, Integer codigoPartido) {
+    
+    
+    public void incluiPartido(String nomePartido, int codigoPartido) {
         PartidoPolitico partido = new PartidoPolitico(nomePartido, codigoPartido);
         if(PartidoPoliticoDAO.getInstancias().get(codigoPartido) == null){
             PartidoPoliticoDAO.getInstancias().put(partido);

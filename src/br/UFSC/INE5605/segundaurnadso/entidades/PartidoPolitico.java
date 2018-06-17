@@ -38,4 +38,8 @@ public class PartidoPolitico implements Serializable {
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
+    
+    public String toString(){
+        return this.nome;
+    }
 }

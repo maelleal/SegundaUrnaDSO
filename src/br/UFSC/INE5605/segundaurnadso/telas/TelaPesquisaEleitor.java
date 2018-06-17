@@ -108,7 +108,7 @@ public class TelaPesquisaEleitor extends JFrame {
         modelTabelaEleitor.addColumn("Titulo");
         modelTabelaEleitor.addColumn("Nome");
 
-        for (Eleitor eleitor : EleitorDAO.getInstancias().getList()) {
+        for (Eleitor eleitor : EleitorDAO.getInstancia().getList()) {
             modelTabelaEleitor.addRow(new Object[]{eleitor.getTituloEleitoral(), eleitor.getNome()});
         }
         tabelaEleitores.setModel(modelTabelaEleitor);

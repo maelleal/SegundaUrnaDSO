@@ -12,15 +12,10 @@ import java.io.Serializable;
  * @author Ismael
  */
 public class Voto implements Serializable {
-    
     private Candidato candidato;
  
     public Voto(Candidato candidato){
         this.candidato = candidato;
-    }
-
-    public Voto() {
-        
     }
 
     public Candidato getCandidato() {

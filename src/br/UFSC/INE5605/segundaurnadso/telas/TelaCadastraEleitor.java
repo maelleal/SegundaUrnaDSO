@@ -6,10 +6,7 @@
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.EleitorDAO;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -102,7 +99,7 @@ public class TelaCadastraEleitor extends JFrame {
     }
     
     public void mensagemOK() {
-        JOptionPane.showMessageDialog(null, "Eleitor Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Eleitor Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.OK_OPTION);
         TelaEleitor.getInstancia().setVisible(true);
             dispose();
     }
@@ -115,16 +112,23 @@ public class TelaCadastraEleitor extends JFrame {
         @Override
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
+            String nomeDigitado = nomeEleitor.getText();
             if(opcao.equals(BOTAO_SALVAR)) {
                 try {
                     int numero = Integer.parseInt(tituloEleitor.getText());
                     if (numero < 0 || numero > 99999999){
                         JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 99999999!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                        tituloEleitor.setText("");
+                        //apaga o que está no campo de numeroCandidato
                     }
                     if(nomeEleitor.getText().equals("")) {
+                        nomeEleitor.setText("");
                         JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                     }else {
-                        ControladorEleitor.getInstancia().incluiEleitor(numero, nomeEleitor.getText());
+                        ControladorEleitor.getInstancia().cadastraEleitor(numero, nomeDigitado);
+                        ControladorEleitor.getInstancia().exibeEleitor();
+                        nomeEleitor.setText("");
+                        tituloEleitor.setText("");
                         dispose();
                     }
                 } catch (NumberFormatException erro) {
@@ -133,7 +137,9 @@ public class TelaCadastraEleitor extends JFrame {
             }
             
             if(opcao.equals(BOTAO_VOLTAR)) {
-                TelaEleitor.getInstancia().setVisible(true);
+                nomeEleitor.setText("");
+                tituloEleitor.setText("");
+                ControladorEleitor.getInstancia().exibeEleitor();
                 dispose();
             }
         }

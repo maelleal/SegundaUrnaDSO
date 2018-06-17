@@ -7,6 +7,7 @@ package br.UFSC.INE5605.SegundaUrnaDSO.interfaces;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
+import java.util.ArrayList;
 
 /**
  *

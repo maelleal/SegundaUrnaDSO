@@ -9,7 +9,8 @@ import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPrincipal;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorUrna;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
-import java.awt.BorderLayout;
+import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Voto;
+import br.UFSC.INE5605.segundaurnadso.entidades.VotoDAO;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -23,17 +24,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-import javax.swing.plaf.basic.BasicBorders;
 /**
  *
  * @author Ismael
  */
 public class TelaUrna extends JFrame {
     private static TelaUrna instancia;
-    private Candidato candidato;
     public static final String	BOTAO_UM = "1";
     public static final String	BOTAO_DOIS = "2";
     public static final String	BOTAO_TRES = "3";
@@ -70,6 +70,7 @@ public class TelaUrna extends JFrame {
     private GerenciaBotoes botoes;
     private Dimension tamanhoBotao = new Dimension(100, 30);
     private Dimension tamanhoBotao2 = new Dimension(100, 30);
+    private boolean validador = false;
     
     
     //adicionar dois paineis dentre de um painel
@@ -316,42 +317,31 @@ public class TelaUrna extends JFrame {
         
         
     }
-    public String captura(String cap){
-        return cap;
-    }
     
-    public void capturaDigitacao (){
+    
+    private void capturaDigitacao (){
         Candidato candidato = null;
-        txtCandidatoEscolhido.setText("dddd");
+        String digitado = numeroCandidato.getText();
         
-        int numeroDigitado = 2;
-        
-        if(numeroDigitado != 2) {
-            
-            
+        int stringToNumero = Integer.parseInt(digitado);
+        if(numeroCandidato.getText().length() == 2) {
+            validador = true;
+            candidato = ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(stringToNumero);
+            txtCandidatoEscolhido.setText(ControladorCandidato.getInstancia().getNome(candidato));
         }
-        
-        /*
-        candidato = ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(numeroDigitado);
-        txtCandidatoEscolhido.setText(candidato.getNome());
-        while(!digitado.equals("")){ 
-            System.out.println("chegou aqui");
-            
-            txtCandidatoEscolhido.setVisible(true);
-            
-        }
-        */
-    
     }
-    
-
-    
     public static TelaUrna getInstancia(){
         if(instancia == null){
             instancia = new TelaUrna();
         }
         return instancia;
     }
+    public void incluiVoto (Voto voto){
+        //VotoDAO.getInstancia().put(voto);
+    }
+
+    
+    
     
     public class GerenciaBotoes implements ActionListener {
        
@@ -385,32 +375,66 @@ public class TelaUrna extends JFrame {
             break;
         case BOTAO_SETE:
             numeroCandidato.setText(numeroCandidato.getText()+"7");
+            capturaDigitacao();
             break;
         case BOTAO_OITO:
             numeroCandidato.setText(numeroCandidato.getText()+"8");
+            capturaDigitacao();
             break;
         case BOTAO_NOVE:
             numeroCandidato.setText(numeroCandidato.getText()+"9");
+            capturaDigitacao();
             break;
         case BOTAO_ZERO:
             numeroCandidato.setText(numeroCandidato.getText()+"0");
+            capturaDigitacao();
             break;
         case OPCAO_CONFIRMA:
-            //containerVisor.add(txtNumeroCandidato, constraints);
+            //tratar os numeros sem candidato//tratar os numeros sem candidato//tratar os numeros sem candidato//tratar os numeros sem candidato//tratar os numeros sem candidato
+            /*
+            try {
+                    int numero = Integer.parseInt(numeroCandidato.getText());
+                    if (!validador){
+                        JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                        //apaga o que está no campo de numeroCandidato
+                        numeroCandidato.setText("");
+                    } else {
+                        ControladorUrna.getInstancia().;
+                        dispose();
+                    }
+                } catch (Exception e) {
+                    nomeCandidato.setText("");
+                    numeroCandidato.setText("");
+                    JOptionPane.showMessageDialog(null, "Somente numeros entre 1 e 99!", "Erro ao Cadastrar", ERROR_MESSAGE);
+
+                }
+            */
             break;
         case OPCAO_BRANCO:
             
             break;
         case OPCAO_CORRIGE:
             numeroCandidato.setText("");
+            txtCandidatoEscolhido.setText("");
             break;
         case OPCAO_VOLTAR:
+            numeroCandidato.setText("");
+            txtCandidatoEscolhido.setText("");
             ControladorPrincipal.getInstancia().abreTelaPrincipal();
             dispose();
             break;
         default:
             break;
         }
+    }
+    public void mensagemOK() {
+        JOptionPane.showMessageDialog(null, "Voto realizado com sucesso!", "FIM", JOptionPane.ERROR_MESSAGE);
+        TelaPrincipal.getInstancia().setVisible(true);
+        dispose();
+    }
+
+    public void mensagemErro() {
+        JOptionPane.showMessageDialog(null, "Candidato não existente!", "Erro realizar o voto", JOptionPane.ERROR_MESSAGE);
     }
     
 }
