@@ -98,7 +98,7 @@ public class TelaCadastraPartido extends JFrame{
     }
 
     public void mensagemOK() {
-        JOptionPane.showMessageDialog(null, "Partido Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(null, "Partido Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.DEFAULT_OPTION);
         TelaPartido.getInstancia().setVisible(true);
         dispose();
     }
@@ -123,6 +123,7 @@ public class TelaCadastraPartido extends JFrame{
                         JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                     } else {
                         ControladorPartido.getInstancia().incluiPartido(nomePartido.getText(), numero);
+                        mensagemOK();
                     }
                 } catch (NumberFormatException erro) {
                     codigoPartido.setText("");

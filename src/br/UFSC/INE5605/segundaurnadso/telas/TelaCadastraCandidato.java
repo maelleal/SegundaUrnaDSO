@@ -120,7 +120,7 @@ public class TelaCadastraCandidato extends JFrame {
     }
     
     public void mensagemOK() {
-        JOptionPane.showMessageDialog(null, "Candidato Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Candidato Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.DEFAULT_OPTION);
         TelaCandidato.getInstancia().setVisible(true);
         dispose();
     }
@@ -140,7 +140,6 @@ public class TelaCadastraCandidato extends JFrame {
                 try {
                     int numero = Integer.parseInt(numeroCandidato.getText());
                     if (numero < 0 || numero > 99){
-                        //apaga o que está no campo de numeroCandidato
                         numeroCandidato.setText("");
                     }
                     if(nomeDigitado.equals("")) {
@@ -172,12 +171,6 @@ public class TelaCadastraCandidato extends JFrame {
         }
         return instancia;
     }
-    
-    
-    
-    
-    
-    
     
     
 }

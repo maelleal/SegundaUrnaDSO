@@ -16,7 +16,6 @@ public class Eleitor extends Pessoa implements Serializable  {
     private static final long serialVersionUID = 1L;
     
     private Integer tituloEleitoral;
-    private String cidade;
     public boolean jaVotou;
     private String nome;
 

@@ -13,6 +13,9 @@ import java.util.Objects;
  * @author Ismael
  */
 public class Voto implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private Candidato candidato;
 
     

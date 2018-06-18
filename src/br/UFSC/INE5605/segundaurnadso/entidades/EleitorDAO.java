@@ -36,7 +36,7 @@ public class EleitorDAO {
         this.persist();
     }
     
-    public void remove(Eleitor eleitor){
+    public void remove(Integer eleitor){
 	cacheEleitor.remove(eleitor);
 	persist();
     }

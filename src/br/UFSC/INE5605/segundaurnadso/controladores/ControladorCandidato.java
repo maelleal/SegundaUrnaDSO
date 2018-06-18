@@ -23,16 +23,8 @@ public class ControladorCandidato{
     private Candidato candidato;
     
     private ControladorCandidato() {
-       
-        Candidato candidato1 = new Candidato("Ismael Leal", PartidoPoliticoDAO.getInstancias().get(88), 11);
-        CandidatoDAO.getInstancia().put(candidato1);
-        Candidato candidato2 = new Candidato("Ivo Guilherme", PartidoPoliticoDAO.getInstancias().get(88), 22);
-        CandidatoDAO.getInstancia().put(candidato2);
-        Candidato candidato3 = new Candidato("Jean VouRodar", PartidoPoliticoDAO.getInstancias().get(88), 81);
-        CandidatoDAO.getInstancia().put(candidato3);
-       
+     
     }
-    
     
     public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {
            Candidato candidato = new Candidato(nome, partido, numeroCandidato);
@@ -42,6 +34,10 @@ public class ControladorCandidato{
            } else {
                TelaCadastraCandidato.getInstancia().mensagemErro();
            }
+    }
+    
+    public void excluiCandidato(int codigoCandidato) {
+        CandidatoDAO.getInstancia().remove(codigoCandidato);
     }
     
     public void exibeTelaCandidato() {
@@ -67,6 +63,7 @@ public class ControladorCandidato{
         }
         return cand;
     }
+    
     public Iterable<PartidoPolitico> getLista() {
         return PartidoPoliticoDAO.getInstancias().getList();
     }

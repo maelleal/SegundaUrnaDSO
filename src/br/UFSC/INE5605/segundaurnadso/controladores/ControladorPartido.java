@@ -10,7 +10,6 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPoliticoDAO;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraPartido;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPesquisaPartido;
-import java.io.Serializable;
 
 
 /**
@@ -27,7 +26,6 @@ public class ControladorPartido {
         PartidoPolitico partido = new PartidoPolitico(nomePartido, codigoPartido);
         if(PartidoPoliticoDAO.getInstancias().get(codigoPartido) == null){
             PartidoPoliticoDAO.getInstancias().put(partido);
-            TelaCadastraPartido.getInstancia().mensagemOK();
         } else {
             TelaCadastraPartido.getInstancia().mensagemErro();
         }
@@ -39,6 +37,11 @@ public class ControladorPartido {
     public void exibeTelaCadastraPartido() {
         TelaCadastraPartido.getInstancia().setVisible(true);
     }
+    
+    public void exibeTelaPrincipal() {
+        ControladorPrincipal.getInstancia().exibeTelaPrincipal();
+    }
+    
     public void exibeTelaPesquisaPartido() {
         TelaPesquisaPartido.getInstancia().updateData();
         TelaPesquisaPartido.getInstancia().setVisible(true);

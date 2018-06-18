@@ -125,9 +125,13 @@ public class TelaPesquisaEleitor extends JFrame {
                 dispose();
             }
             if(opcao.equals(BOTAO_DELETAR)) {
-                //ControladorEleitor.getInstancia().excluirEleitor();
-                dispose();
+                int pegaLinha = tabelaEleitores.getSelectedRow();
+                Object teste2 = tabelaEleitores.getValueAt(pegaLinha, 0);
+                int codigoRemover = (Integer)teste2;
+                ControladorEleitor.getInstancia().excluiEleitor(codigoRemover);
+                updateData();
             }
+            
             if(opcao.equals(BOTAO_VOLTAR)) {
                 ControladorEleitor.getInstancia().exibeTelaEleitor();
                 dispose();
