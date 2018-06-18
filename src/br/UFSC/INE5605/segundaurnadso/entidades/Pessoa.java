@@ -5,11 +5,13 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ismael
  */
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable {
     public String nome;
 
     public Pessoa(String nome) {

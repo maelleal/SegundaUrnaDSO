@@ -24,7 +24,6 @@ public class ControladorPartido {
     
     }
     
-    
     public void incluiPartido(String nomePartido, int codigoPartido) {
         PartidoPolitico partido = new PartidoPolitico(nomePartido, codigoPartido);
         if(PartidoPoliticoDAO.getInstancias().get(codigoPartido) == null){
@@ -33,6 +32,10 @@ public class ControladorPartido {
         } else {
             TelaCadastraPartido.getInstancia().mensagemErro();
         }
+    }
+    
+    public void excluiPartido(Integer codigo) {
+        PartidoPoliticoDAO.getInstancias().removePartido(codigo);
     }
     
     public void exibeMenuCadastro() {

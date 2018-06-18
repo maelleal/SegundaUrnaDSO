@@ -107,9 +107,6 @@ public class TelaCadastraPartido extends JFrame{
         JOptionPane.showMessageDialog(null, "Partido já existe!", "Erro ao salvar o cadastro", JOptionPane.ERROR_MESSAGE);
     }
     
-    
-    
-    
     public class GerenciaBotoes implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent evento) {

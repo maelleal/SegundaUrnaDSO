@@ -38,7 +38,8 @@ public class PartidoPoliticoDAO {
         this.persist();
     }
     public void removePartido(Integer codigo) {
-        this.cachePartidos.remove(codigo);
+        cachePartidos.remove(codigo);
+        this.persist();
     }
     public Collection<PartidoPolitico> getList() {
         return cachePartidos.values();
@@ -72,9 +73,6 @@ public class PartidoPoliticoDAO {
             
             oi.close();
             fin.close();
-            
-            oi = null;
-            fin = null;
         
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);

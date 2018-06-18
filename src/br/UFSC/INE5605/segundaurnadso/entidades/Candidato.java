@@ -11,15 +11,17 @@ import java.io.Serializable;
  *
  * @author Ismael
  */
-public class Candidato extends Pessoa implements Serializable, ICandidato {
+public class Candidato extends Pessoa implements Serializable, ICandidato  {
 
     private PartidoPolitico partido;
     private Integer numero;
+ 
 
     public Candidato(String nome, PartidoPolitico partido, Integer numero) {
         super(nome);
         this.partido = partido;
         this.numero = numero;
+        this.nome = nome;
     }
     
     @Override
@@ -31,16 +33,15 @@ public class Candidato extends Pessoa implements Serializable, ICandidato {
         this.partido = partido;
     }
 
-
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
     
-    @Override
+    //@Override
     public String getNome() {
         return nome;
     }
-    @Override
+    //@Override
     public void setNome(String nome) {
         this.nome = nome;
     }  
