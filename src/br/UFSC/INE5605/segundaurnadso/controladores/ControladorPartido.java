@@ -44,17 +44,14 @@ public class ControladorPartido {
         TelaPesquisaPartido.getInstancia().setVisible(true);
     }
 
-    public void abreTelaPartido() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public void alteraPartido() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void excluiPartido() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void excluiPartido(int codigoPartido) {
+        PartidoPoliticoDAO.getInstancias().removePartido(codigoPartido);
     }
+    
 
     
     public static ControladorPartido getInstancia(){

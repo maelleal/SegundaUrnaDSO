@@ -123,16 +123,17 @@ public class TelaPesquisaPartido extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorPartido.getInstancia().abreTelaPartido();
+                ControladorPartido.getInstancia().exibeTelaPartido();
                 dispose();
             }
             if(opcao.equals(BOTAO_ALTERAR)) {
                 ControladorPartido.getInstancia().alteraPartido();
-                dispose();
+                
             }
             if(opcao.equals(BOTAO_DELETAR)) {
-                ControladorPartido.getInstancia().excluiPartido();
-                dispose();
+                ControladorPartido.getInstancia().excluiPartido(tabelaPartidos.getSelectedRow());
+                
+                
             }
         }
     }
