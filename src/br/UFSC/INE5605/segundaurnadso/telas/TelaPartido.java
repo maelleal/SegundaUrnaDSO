@@ -89,16 +89,16 @@ public class TelaPartido extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_CADASTRAR)) {
-                ControladorPartido.getInstancia().exibeCadastraPartido();
+                ControladorPartido.getInstancia().exibeTelaCadastraPartido();
                 dispose();
             }
             
             if(opcao.equals(BOTAO_PESQUISAR)) {
-                ControladorPartido.getInstancia().abreTelaPesquisaPartido();
+                ControladorPartido.getInstancia().exibeTelaPesquisaPartido();
                 dispose();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                TelaCadastro.getInstancia().setVisible(true);
+                ControladorPartido.getInstancia().exibeTelaPartido();
                 dispose();
             }
         }

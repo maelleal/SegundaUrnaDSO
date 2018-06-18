@@ -6,11 +6,9 @@
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPrincipal;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorUrna;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Voto;
-import br.UFSC.INE5605.segundaurnadso.entidades.VotoDAO;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -24,7 +22,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
@@ -89,7 +86,6 @@ public class TelaUrna extends JFrame {
         GridBagConstraints constraints = new GridBagConstraints();
         GridBagConstraints constraints2 = new GridBagConstraints();
         GridBagConstraints constraints3 = new GridBagConstraints();
-        
         
         JPanel containerTeclado = new JPanel();
         containerTeclado.setSize(400, 350);
@@ -308,16 +304,12 @@ public class TelaUrna extends JFrame {
 	constraints.gridy = 0;
         getContentPane().add( temp, constraints2);
         
-        
         setSize (950, 700);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
         setLocationRelativeTo(null);
         
-        
-        
     }
-    
     
     private void capturaDigitacao (){
         Candidato candidato = null;
@@ -330,17 +322,10 @@ public class TelaUrna extends JFrame {
             txtCandidatoEscolhido.setText(ControladorCandidato.getInstancia().getNome(candidato));
         }
     }
-    public static TelaUrna getInstancia(){
-        if(instancia == null){
-            instancia = new TelaUrna();
-        }
-        return instancia;
-    }
+    
     public void incluiVoto (Voto voto){
         //VotoDAO.getInstancia().put(voto);
     }
-
-    
     
     
     public class GerenciaBotoes implements ActionListener {
@@ -420,7 +405,7 @@ public class TelaUrna extends JFrame {
         case OPCAO_VOLTAR:
             numeroCandidato.setText("");
             txtCandidatoEscolhido.setText("");
-            ControladorPrincipal.getInstancia().abreTelaPrincipal();
+            ControladorUrna.getInstancia().exibeTelaPrincipal();
             dispose();
             break;
         default:
@@ -429,7 +414,7 @@ public class TelaUrna extends JFrame {
     }
     public void mensagemOK() {
         JOptionPane.showMessageDialog(null, "Voto realizado com sucesso!", "FIM", JOptionPane.ERROR_MESSAGE);
-        TelaPrincipal.getInstancia().setVisible(true);
+        ControladorUrna.getInstancia().exibeTelaPrincipal();
         dispose();
     }
 
@@ -438,4 +423,10 @@ public class TelaUrna extends JFrame {
     }
     
 }
+    public static TelaUrna getInstancia(){
+        if(instancia == null){
+            instancia = new TelaUrna();
+        }
+        return instancia;
+    }
 }

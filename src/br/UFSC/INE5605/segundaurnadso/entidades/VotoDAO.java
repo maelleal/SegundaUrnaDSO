@@ -21,7 +21,12 @@ import java.util.HashMap;
 public class VotoDAO {
     private static VotoDAO instancia;
     private HashMap<Integer, Voto> cacheVotos = new HashMap<>();
-    private final String fileName = "votos.dat";
+    private final String arquivoVotos = "votos.dat";
+
+    private VotoDAO() {
+        load();
+    }
+    
     
     public Voto get(Voto voto){
         return cacheVotos.get(voto);
@@ -36,7 +41,7 @@ public class VotoDAO {
     }
     public void persist(){
         try{
-           FileOutputStream fout = new FileOutputStream(fileName);
+           FileOutputStream fout = new FileOutputStream(arquivoVotos);
            ObjectOutputStream oo = new ObjectOutputStream(fout);
            oo.writeObject(cacheVotos);
            
@@ -45,10 +50,7 @@ public class VotoDAO {
             
            oo.close();
            fout.close();
-           oo = null;
-           fout = null;
            
-            
         } catch (FileNotFoundException ex) {
             load();
         }catch (IOException ex) {
@@ -58,7 +60,7 @@ public class VotoDAO {
     
     public void load () {
         try {
-            FileInputStream fin = new FileInputStream(fileName);
+            FileInputStream fin = new FileInputStream(arquivoVotos);
             ObjectInputStream oi = new ObjectInputStream(fin);
         
             this.cacheVotos = (HashMap<Integer, Voto>) oi.readObject();
@@ -66,15 +68,14 @@ public class VotoDAO {
             oi.close();
             fin.close();
             
-            oi = null;
-            fin = null;
         
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
             
         } catch (FileNotFoundException ex) {
+            persist();
             System.out.println(ex);
-        
+            
         } catch (IOException ex) {
             System.out.println(ex);
         }

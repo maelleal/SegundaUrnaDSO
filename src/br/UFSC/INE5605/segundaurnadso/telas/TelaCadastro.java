@@ -5,7 +5,7 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPrincipal;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -16,7 +16,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,7 +50,6 @@ public class TelaCadastro extends JFrame {
         constraints.gridx = 0;
 	constraints.gridy = 0;
 	container.add(txt, constraints);
-        
        
         botaoSair = new JButton();
         botaoSair.setText("VOLTAR");
@@ -104,15 +102,15 @@ public class TelaCadastro extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(OPCAO_ELEITOR)) {
-                ControladorCadastro.getInstancia().executaTelaEleitor();
+                ControladorPrincipal.getInstancia().exibeTelaEleitor();
                 dispose();
             }
             if(opcao.equals(OPCAO_PARTIDO)) {
-                ControladorCadastro.getInstancia().executaTelaPartido();
+                ControladorPrincipal.getInstancia().exibeTelaPartido();
                 dispose();
             }
             if(opcao.equals(OPCAO_CANDIDATO)) {
-                ControladorCadastro.getInstancia().executaTelaCandidato();
+                ControladorPrincipal.getInstancia().exibeTelaCandidato();
                 dispose();
             }
             if(opcao.equals(OPCAO_VOLTAR)) {
@@ -121,9 +119,6 @@ public class TelaCadastro extends JFrame {
             }
         }
     }
-    
-
-    
     public static TelaCadastro getInstancia() {
         if(instancia == null){
             instancia = new TelaCadastro();

@@ -116,7 +116,7 @@ public class TelaCadastraEleitor extends JFrame {
             if(opcao.equals(BOTAO_SALVAR)) {
                 try {
                     int numero = Integer.parseInt(tituloEleitor.getText());
-                    if (numero < 0 || numero > 99999999){
+                    if (numero < 0 || numero > 999999999){
                         JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 99999999!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                         tituloEleitor.setText("");
                         //apaga o que está no campo de numeroCandidato
@@ -126,7 +126,7 @@ public class TelaCadastraEleitor extends JFrame {
                         JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                     }else {
                         ControladorEleitor.getInstancia().cadastraEleitor(numero, nomeDigitado);
-                        ControladorEleitor.getInstancia().exibeEleitor();
+                        ControladorEleitor.getInstancia().exibeTelaEleitor();
                         nomeEleitor.setText("");
                         tituloEleitor.setText("");
                         dispose();
@@ -139,7 +139,7 @@ public class TelaCadastraEleitor extends JFrame {
             if(opcao.equals(BOTAO_VOLTAR)) {
                 nomeEleitor.setText("");
                 tituloEleitor.setText("");
-                ControladorEleitor.getInstancia().exibeEleitor();
+                ControladorEleitor.getInstancia().exibeTelaEleitor();
                 dispose();
             }
         }

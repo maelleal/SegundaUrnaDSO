@@ -23,7 +23,6 @@ public class ControladorPartido {
     public ControladorPartido() {
     
     }
-    
     public void incluiPartido(String nomePartido, int codigoPartido) {
         PartidoPolitico partido = new PartidoPolitico(nomePartido, codigoPartido);
         if(PartidoPoliticoDAO.getInstancias().get(codigoPartido) == null){
@@ -34,27 +33,31 @@ public class ControladorPartido {
         }
     }
     
-    public void excluiPartido(Integer codigo) {
-        PartidoPoliticoDAO.getInstancias().removePartido(codigo);
+    public void exibeTelaPartido() {
+        TelaPartido.getInstancia().setVisible(true);
     }
-    
-    public void exibeMenuCadastro() {
-        ControladorCadastro.getInstancia().iniciaCadastro();
-    }
-    public void exibeCadastraPartido() {
+    public void exibeTelaCadastraPartido() {
         TelaCadastraPartido.getInstancia().setVisible(true);
     }
-   
+    public void exibeTelaPesquisaPartido() {
+        TelaPesquisaPartido.getInstancia().updateData();
+        TelaPesquisaPartido.getInstancia().setVisible(true);
+    }
+
+    public void alteraPartido() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void excluiPartido(int codigoPartido) {
+        PartidoPoliticoDAO.getInstancias().removePartido(codigoPartido);
+    }
+    
+
+    
     public static ControladorPartido getInstancia(){
         if(instancia == null){
             instancia = new ControladorPartido();
         }
         return instancia;
     }
-
-    public void abreTelaPesquisaPartido() {
-        TelaPesquisaPartido.getInstancia().updateData();
-        TelaPesquisaPartido.getInstancia().setVisible(true);
-    }
-    
 }

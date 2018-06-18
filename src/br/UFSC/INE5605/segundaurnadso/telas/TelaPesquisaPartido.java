@@ -5,7 +5,6 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPartido;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPolitico;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.PartidoPoliticoDAO;
@@ -131,8 +130,17 @@ public class TelaPesquisaPartido extends JFrame {
                 updateData();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorCadastro.getInstancia().executaTelaPartido();
+                ControladorPartido.getInstancia().exibeTelaPartido();
                 dispose();
+            }
+            if(opcao.equals(BOTAO_ALTERAR)) {
+                ControladorPartido.getInstancia().alteraPartido();
+                
+            }
+            if(opcao.equals(BOTAO_DELETAR)) {
+                ControladorPartido.getInstancia().excluiPartido(tabelaPartidos.getSelectedRow());
+                
+                
             }
         }
     }

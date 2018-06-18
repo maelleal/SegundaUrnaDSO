@@ -160,7 +160,7 @@ public class TelaCadastraCandidato extends JFrame {
             if(opcao.equals(BOTAO_VOLTAR)) {
                 nomeCandidato.setText("");
                 numeroCandidato.setText("");
-                ControladorCandidato.getInstancia().exibeMenuCandidato();
+                ControladorCandidato.getInstancia().exibeTelaCandidato();
                 dispose();
             }
         }

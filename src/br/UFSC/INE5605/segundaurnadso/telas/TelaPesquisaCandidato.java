@@ -124,7 +124,7 @@ public class TelaPesquisaCandidato extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorCandidato.getInstancia().exibeMenuCandidato();
+                ControladorCandidato.getInstancia().exibeTelaCandidato();
                 dispose();
             }
         }

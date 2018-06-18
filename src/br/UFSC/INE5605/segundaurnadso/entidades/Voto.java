@@ -6,13 +6,16 @@
 package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
  * @author Ismael
  */
-public class Voto implements Serializable {
+public class Voto implements Serializable{
     private Candidato candidato;
+
+    
  
     public Voto(Candidato candidato){
         this.candidato = candidato;

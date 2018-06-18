@@ -17,17 +17,10 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPesquisaEleitor;
  */
 public class ControladorEleitor {
     private static ControladorEleitor instancia;
-    private TelaEleitor telaEleitor;
    
 
     public ControladorEleitor() {
-    }
-    
-    public static ControladorEleitor getInstancia(){
-        if(instancia == null) {
-            instancia = new ControladorEleitor();
-        }
-        return instancia;
+        
     }
     /*
     public Eleitor encontraEleitorPeloTitulo(int titulo){
@@ -50,17 +43,6 @@ public class ControladorEleitor {
         return a;
     }
     */
-    /*
-    public void abreTelaEleitores(){
-        telaEleitor.setVisible(true);
-    }
-    */
-    public void exibeMenuCadastro() {
-        ControladorCadastro.getInstancia().iniciaCadastro();
-    }
-    public void exibeCadastraEleitor() {
-        TelaCadastraEleitor.getInstancia().setVisible(true);
-    }
     
     public void cadastraEleitor(int tituloEleitoral, String nome){
         Eleitor eleitor = new Eleitor(tituloEleitoral, nome);
@@ -76,23 +58,31 @@ public class ControladorEleitor {
     public void incluiEleitor(Eleitor eleitor){
         EleitorDAO.getInstancia().put(eleitor);
     }
-    /*
+    
     public void excluirEleitor(Eleitor e){
-        //EleitorDAO.getInstancia().remove();
-    //TODO tratar exceções
+        EleitorDAO.getInstancia().remove(e);
+        //TODO tratar exceções
     }
     
-    */
-
-    public void executaTelaPesquisaEleitor() {
+    public void exibeTelaPesquisaEleitor() {
         TelaPesquisaEleitor.getInstancia().updateData();
         TelaPesquisaEleitor.getInstancia().setVisible(true);
-        
     }
-
-    public void exibeEleitor() {
+    public void exibeTelaEleitor() {
         TelaEleitor.getInstancia().setVisible(true);
     }
+    public void exibeTelaCadastraEleitor() {
+        TelaCadastraEleitor.getInstancia().setVisible(true);
+    }
 
+    public void exibeTelaPrincipal() {
+        ControladorPrincipal.getInstancia().exibeTelaPrincipal();
+    }
+    public static ControladorEleitor getInstancia(){
+        if(instancia == null) {
+            instancia = new ControladorEleitor();
+        }
+        return instancia;
+    }
     
 }
