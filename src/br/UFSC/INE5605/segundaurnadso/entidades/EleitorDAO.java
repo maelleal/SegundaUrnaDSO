@@ -33,9 +33,10 @@ public class EleitorDAO {
     
     public void put(Eleitor eleitor){
         cacheEleitor.put(eleitor.getTituloEleitoral(), eleitor);
+        this.persist();
     }
     
-    public void remove(Eleitor eleitor){
+    public void remove(Integer eleitor){
 	cacheEleitor.remove(eleitor);
 	persist();
     }
@@ -70,8 +71,6 @@ public class EleitorDAO {
             
             oi.close();
             fin.close();
-            oi = null;
-            fin = null;
         
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);

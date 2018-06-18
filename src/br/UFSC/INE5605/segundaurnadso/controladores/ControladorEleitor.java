@@ -22,27 +22,6 @@ public class ControladorEleitor {
     public ControladorEleitor() {
         
     }
-    /*
-    public Eleitor encontraEleitorPeloTitulo(int titulo){
-        Eleitor a = null;
-        for(Eleitor e : eleitores){
-            if(e.getTituloEleitoral() == titulo){
-                a = e;
-            }      
-        }
-        return a;
-    }
-    
-    public SecaoEleitoral encontraSecaoPeloNumero(int secaoEleitoral){
-        SecaoEleitoral a = null;
-        for(SecaoEleitoral s : secoes){
-            if(s.getSecao() == secaoEleitoral){
-                a = s;
-            }      
-        }
-        return a;
-    }
-    */
     
     public void cadastraEleitor(int tituloEleitoral, String nome){
         Eleitor eleitor = new Eleitor(tituloEleitoral, nome);
@@ -59,9 +38,9 @@ public class ControladorEleitor {
         EleitorDAO.getInstancia().put(eleitor);
     }
     
-    public void excluirEleitor(Eleitor e){
-        EleitorDAO.getInstancia().remove(e);
-        //TODO tratar exceções
+    public void excluiEleitor(int codigoEleitor){
+        EleitorDAO.getInstancia().remove(codigoEleitor);
+        
     }
     public Eleitor buscaEleitorPeloTitulo(int tituloEleitor){
         Eleitor eleitor = null;

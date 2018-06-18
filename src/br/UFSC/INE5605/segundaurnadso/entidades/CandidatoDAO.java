@@ -72,9 +72,7 @@ public class CandidatoDAO {
         
             oi.close();
             fin.close();
-            oi = null;
-            fin = null;
-        
+           
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
             persist();
@@ -95,4 +93,4 @@ public class CandidatoDAO {
         return instancia;
     }
     
-    }
+}

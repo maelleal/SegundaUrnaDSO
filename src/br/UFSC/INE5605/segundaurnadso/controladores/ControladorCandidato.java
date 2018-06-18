@@ -23,8 +23,8 @@ public class ControladorCandidato{
     
     
     private ControladorCandidato() {
+     
     }
-    
     
     public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {
            Candidato candidato = new Candidato(nome, partido, numeroCandidato);
@@ -34,6 +34,10 @@ public class ControladorCandidato{
            } else {
                TelaCadastraCandidato.getInstancia().mensagemErro();
            }
+    }
+    
+    public void excluiCandidato(int codigoCandidato) {
+        CandidatoDAO.getInstancia().remove(codigoCandidato);
     }
     
     public void exibeTelaCandidato() {
@@ -59,6 +63,7 @@ public class ControladorCandidato{
         }
         return cand;
     }
+    
     public Iterable<PartidoPolitico> getLista() {
         return PartidoPoliticoDAO.getInstancia().getList();
     }

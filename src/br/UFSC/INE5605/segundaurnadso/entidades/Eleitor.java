@@ -16,13 +16,14 @@ public class Eleitor extends Pessoa implements Serializable  {
     private static final long serialVersionUID = 1L;
     
     private Integer tituloEleitoral;
-    private String cidade;
     public boolean jaVotou;
+    private String nome;
 
     public Eleitor(Integer tituloEleitoral, String nome) {
         super(nome);
         this.tituloEleitoral = tituloEleitoral;
         this.jaVotou = false;
+        this.nome = nome;
     }
 
     public boolean getJaVotou() {
@@ -41,12 +42,12 @@ public class Eleitor extends Pessoa implements Serializable  {
         this.tituloEleitoral = tituloEleitoral;
     }
 
-    @Override
+    //@Override
     public String getNome() {
         return nome;
     }
 
-    @Override
+    //@Override
     public void setNome(String nome) {
         this.nome = nome;
     }

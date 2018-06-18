@@ -122,6 +122,13 @@ public class TelaPesquisaPartido extends JFrame {
         @Override
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
+            if(opcao.equals(BOTAO_DELETAR)) {
+                int pegaLinha = tabelaPartidos.getSelectedRow();
+                Object teste2 = tabelaPartidos.getValueAt(pegaLinha, 0);
+                int codigoRemover = (Integer)teste2;
+                ControladorPartido.getInstancia().excluiPartido(codigoRemover);
+                updateData();
+            }
             if(opcao.equals(BOTAO_VOLTAR)) {
                 ControladorPartido.getInstancia().exibeTelaPartido();
                 dispose();
@@ -152,4 +159,5 @@ public class TelaPesquisaPartido extends JFrame {
         }
         return instancia;
     }
+    
 }
