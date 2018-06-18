@@ -120,7 +120,7 @@ public class TelaCadastraCandidato extends JFrame {
     }
     
     public void mensagemOK() {
-        JOptionPane.showMessageDialog(null, "Candidato Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Candidato Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.DEFAULT_OPTION);
         TelaCandidato.getInstancia().setVisible(true);
         dispose();
     }

@@ -108,8 +108,8 @@ public class TelaPesquisaPartido extends JFrame {
         DefaultTableModel modelTabelaPartido = new DefaultTableModel();
         modelTabelaPartido.addColumn("Codigo");
         modelTabelaPartido.addColumn("Nome");
-
-        for (PartidoPolitico partido : PartidoPoliticoDAO.getInstancias().getList()) {
+//mudar para contolador//mudar para contolador//mudar para contolador//mudar para contolador//mudar para contolador//mudar para contolador//mudar para contolador//mudar para contolador
+        for (PartidoPolitico partido : PartidoPoliticoDAO.getInstancia().getList()) {
             modelTabelaPartido.addRow(new Object[]{partido.getCodigo(), partido.getNome()});
         }
         tabelaPartidos.setModel(modelTabelaPartido);
@@ -127,11 +127,19 @@ public class TelaPesquisaPartido extends JFrame {
                 dispose();
             }
             if(opcao.equals(BOTAO_ALTERAR)) {
-                ControladorPartido.getInstancia().alteraPartido();
+                int pegaLinha = tabelaPartidos.getSelectedRow();
+                Object teste2 = tabelaPartidos.getValueAt(pegaLinha, 0);
+                int codigoRemover = (Integer)teste2;
+                //ControladorPartido.getInstancia().alteraPartido(codigoRemover);
                 
             }
             if(opcao.equals(BOTAO_DELETAR)) {
-                ControladorPartido.getInstancia().excluiPartido(tabelaPartidos.getSelectedRow());
+                int pegaLinha = tabelaPartidos.getSelectedRow();
+                Object teste2 = tabelaPartidos.getValueAt(pegaLinha, 0);
+                int codigoRemover = (Integer)teste2;
+                ControladorPartido.getInstancia().excluiPartido(codigoRemover);
+                System.out.println(codigoRemover);
+                updateData();
                 
                 
             }

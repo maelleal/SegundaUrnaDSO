@@ -98,7 +98,7 @@ public class TelaCadastraPartido extends JFrame{
     }
 
     public void mensagemOK() {
-        JOptionPane.showMessageDialog(null, "Partido Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(null, "Partido Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.DEFAULT_OPTION);
         TelaPartido.getInstancia().setVisible(true);
         dispose();
     }

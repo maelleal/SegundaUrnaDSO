@@ -8,7 +8,6 @@ package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaUrna;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Voto;
-import br.UFSC.INE5605.segundaurnadso.entidades.VotoDAO;
 import javax.swing.JOptionPane;
 
 /**

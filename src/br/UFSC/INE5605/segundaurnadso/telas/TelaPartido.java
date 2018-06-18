@@ -98,7 +98,7 @@ public class TelaPartido extends JFrame {
                 dispose();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorPartido.getInstancia().exibeTelaPartido();
+                ControladorPartido.getInstancia().exibeTelaCadastro();
                 dispose();
             }
         }

@@ -20,17 +20,9 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPesquisaCandidato;
  */
 public class ControladorCandidato{
     private static ControladorCandidato instancia;
-    private Candidato candidato;
+    
     
     private ControladorCandidato() {
-       
-        Candidato candidato1 = new Candidato("Ismael Leal", PartidoPoliticoDAO.getInstancias().get(88), 11);
-        CandidatoDAO.getInstancia().put(candidato1);
-        Candidato candidato2 = new Candidato("Ivo Guilherme", PartidoPoliticoDAO.getInstancias().get(88), 22);
-        CandidatoDAO.getInstancia().put(candidato2);
-        Candidato candidato3 = new Candidato("Jean VouRodar", PartidoPoliticoDAO.getInstancias().get(88), 81);
-        CandidatoDAO.getInstancia().put(candidato3);
-       
     }
     
     
@@ -68,7 +60,7 @@ public class ControladorCandidato{
         return cand;
     }
     public Iterable<PartidoPolitico> getLista() {
-        return PartidoPoliticoDAO.getInstancias().getList();
+        return PartidoPoliticoDAO.getInstancia().getList();
     }
 
     public String getNome(Candidato candidato) {
@@ -79,6 +71,10 @@ public class ControladorCandidato{
             instancia = new ControladorCandidato();
         }
         return instancia;
+    }
+
+    public void exibeTelaCadastro() {
+        ControladorPrincipal.getInstancia().exibeTelaCadastro();
     }
 
     

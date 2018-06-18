@@ -98,7 +98,7 @@ public class TelaCandidato extends JFrame {
                 dispose();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorCandidato.getInstancia().exibeTelaPrincipal();
+                ControladorCandidato.getInstancia().exibeTelaCadastro();
                 dispose();
             }
         }

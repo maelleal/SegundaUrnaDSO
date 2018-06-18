@@ -99,7 +99,7 @@ public class TelaEleitor extends JFrame {
                 dispose();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorEleitor.getInstancia().exibeTelaPrincipal();
+                ControladorEleitor.getInstancia().exibeTelaCadastro();
                 dispose();
             }
         }

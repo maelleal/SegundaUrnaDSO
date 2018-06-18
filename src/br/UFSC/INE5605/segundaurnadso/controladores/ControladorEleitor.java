@@ -63,6 +63,15 @@ public class ControladorEleitor {
         EleitorDAO.getInstancia().remove(e);
         //TODO tratar exceções
     }
+    public Eleitor buscaEleitorPeloTitulo(int tituloEleitor){
+        Eleitor eleitor = null;
+        for(Eleitor e : EleitorDAO.getInstancia().getList()){
+            if(e.getTituloEleitoral() == tituloEleitor){
+                eleitor = e;
+            }      
+        }
+        return eleitor;
+    }
     
     public void exibeTelaPesquisaEleitor() {
         TelaPesquisaEleitor.getInstancia().updateData();
@@ -83,6 +92,10 @@ public class ControladorEleitor {
             instancia = new ControladorEleitor();
         }
         return instancia;
+    }
+
+    public void exibeTelaCadastro() {
+        ControladorPrincipal.getInstancia().exibeTelaCadastro();
     }
     
 }

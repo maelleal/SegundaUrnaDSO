@@ -99,7 +99,7 @@ public class TelaCadastraEleitor extends JFrame {
     }
     
     public void mensagemOK() {
-        JOptionPane.showMessageDialog(null, "Eleitor Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(null, "Eleitor Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.DEFAULT_OPTION);
         TelaEleitor.getInstancia().setVisible(true);
             dispose();
     }

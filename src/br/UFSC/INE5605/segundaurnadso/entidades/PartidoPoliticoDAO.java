@@ -12,7 +12,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -39,6 +38,7 @@ public class PartidoPoliticoDAO {
     }
     public void removePartido(Integer codigo) {
         this.cachePartidos.remove(codigo);
+        persist();
     }
     public Collection<PartidoPolitico> getList() {
         return cachePartidos.values();
@@ -73,8 +73,6 @@ public class PartidoPoliticoDAO {
             oi.close();
             fin.close();
             
-            oi = null;
-            fin = null;
         
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
@@ -88,7 +86,7 @@ public class PartidoPoliticoDAO {
         }
     }
    
-    public static PartidoPoliticoDAO getInstancias(){
+    public static PartidoPoliticoDAO getInstancia(){
         if(instancia == null ){
             instancia = new PartidoPoliticoDAO();
         }
