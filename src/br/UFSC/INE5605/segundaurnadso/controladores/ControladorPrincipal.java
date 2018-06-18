@@ -7,6 +7,9 @@
 package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastro;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCandidato;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaEleitor;
+import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPartido;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPrincipal;
 
 /**
@@ -19,24 +22,31 @@ public class ControladorPrincipal {
     private ControladorPrincipal() {
         
     }
-     
+    
+    public void exibeTelaPrincipal() {
+        TelaPrincipal.getInstancia().setVisible(true);
+    }
+    public void exibeTelaEleitor() {
+        TelaEleitor.getInstancia().setVisible(true);   
+    }
+    public void exibeTelaCandidato() {
+        TelaCandidato.getInstancia().setVisible(true);   
+    }
+    public void exibeTelaPartido() {
+        TelaPartido.getInstancia().setVisible(true);
+    }
+    public void exibeTelaCadastro() {
+        TelaCadastro.getInstancia().setVisible(true);
+    }
+    public void exibeTelaUrna() {
+        ControladorUrna.getInstancia().executaTelaUrna();
+    }
     public static ControladorPrincipal getInstancia (){
         if (instancia == null) {
             instancia = new ControladorPrincipal();
         }
         return instancia;
     }
-    
-    
-    public void abreTelaCadastro () {
-        TelaCadastro.getInstancia().setVisible(true);
-    }
-
-    public void abreTelaPrincipal() {
-        TelaPrincipal.getInstancia().setVisible(true);
-    }
-    
-    
 }   
 
 

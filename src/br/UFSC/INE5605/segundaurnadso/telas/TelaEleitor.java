@@ -5,7 +5,6 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -91,16 +90,16 @@ public class TelaEleitor extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_CADASTRAR)) {
-                ControladorEleitor.getInstancia().exibeCadastraEleitor();
+                ControladorEleitor.getInstancia().exibeTelaCadastraEleitor();
                 dispose();
             }
             
             if(opcao.equals(BOTAO_PESQUISAR)) {
-                ControladorEleitor.getInstancia().executaTelaPesquisaEleitor();
+                ControladorEleitor.getInstancia().exibeTelaPesquisaEleitor();
                 dispose();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                TelaCadastro.getInstancia().setVisible(true);
+                ControladorEleitor.getInstancia().exibeTelaPrincipal();
                 dispose();
             }
         }

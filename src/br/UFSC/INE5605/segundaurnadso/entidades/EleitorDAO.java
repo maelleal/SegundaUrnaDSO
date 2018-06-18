@@ -35,8 +35,8 @@ public class EleitorDAO {
         cacheEleitor.put(eleitor.getTituloEleitoral(), eleitor);
     }
     
-    public void remove(Integer titulo){
-	cacheEleitor.remove(titulo);
+    public void remove(Eleitor eleitor){
+	cacheEleitor.remove(eleitor);
 	persist();
     }
     

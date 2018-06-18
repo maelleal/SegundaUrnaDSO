@@ -7,11 +7,8 @@ package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaUrna;
-import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Urna;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Voto;
-import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPrincipal;
 import br.UFSC.INE5605.segundaurnadso.entidades.VotoDAO;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,22 +17,11 @@ import javax.swing.JOptionPane;
  */
 public class ControladorUrna {
     private static ControladorUrna instancia;
-    Candidato candidato;
-    //private int votoGov;
-    
+    Candidato candidato;  
 
     private ControladorUrna() {
         
-        
     } 
-    
-    public static ControladorUrna getInstancia(){
-        if (instancia == null) {
-            instancia = new ControladorUrna();
-        }
-        return instancia;
-    }
-    
     public void iniciarVotacao(){
        
     }
@@ -46,15 +32,22 @@ public class ControladorUrna {
         //VotoDAO.getInstancia().put(votoComputado);
     }
     
-    
-    
-    public void resultadoGov(){
+    public void resultadoDoPleito(){
         JOptionPane.showMessageDialog(null, "Resultado é secreto!");
         System.exit(0);
     }
-    
 
-    public void abreTelaUrna() {
+    public void executaTelaUrna() {
         TelaUrna.getInstancia().setVisible(true);
+    }
+    public static ControladorUrna getInstancia(){
+        if (instancia == null) {
+            instancia = new ControladorUrna();
+        }
+        return instancia;
+    }
+
+    public void exibeTelaPrincipal() {
+        ControladorPrincipal.getInstancia().exibeTelaPrincipal();
     }
 }

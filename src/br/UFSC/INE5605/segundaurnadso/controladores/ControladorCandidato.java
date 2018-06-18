@@ -42,34 +42,21 @@ public class ControladorCandidato{
            } else {
                TelaCadastraCandidato.getInstancia().mensagemErro();
            }
-           
     }
     
-    public static ControladorCandidato getInstancia() {
-        if (instancia == null) {
-            instancia = new ControladorCandidato();
-        }
-        return instancia;
-    }
-
-    public void exibeMenuCandidato() {
+    public void exibeTelaCandidato() {
         TelaCandidato.getInstancia().setVisible(true);
     }
-    public void exibeMenuCadastro() {
-        ControladorCadastro.getInstancia().iniciaCadastro();
-    }
-    public void exibeCadastraCandidato() {
+    public void exibeTelaCadastraCandidato() {
         TelaCadastraCandidato.getInstancia().setVisible(true);
     }
-    void exibeTelaCandidato() {
-        TelaCandidato.getInstancia().setVisible(true);
-    }
-     public void exibeMenuPrincipal() {
-        ControladorCadastro.getInstancia().iniciaCadastro();
-    }
-    public void abreTelaPesquisaCandidato() {
+    
+    public void exibeTelaPesquisaCandidato() {
         TelaPesquisaCandidato.getInstancia().updateData();
         TelaPesquisaCandidato.getInstancia().setVisible(true);
+    }
+    public void exibeTelaPrincipal() {
+        ControladorPrincipal.getInstancia().exibeTelaPrincipal();
     }
     public Candidato buscaCandidatoPeloNumero(int numeroCandidato){
         Candidato cand = null;
@@ -80,11 +67,6 @@ public class ControladorCandidato{
         }
         return cand;
     }
-
-    public void executaCadastroCandidato() {
-        TelaCadastraCandidato.getInstancia().setVisible(true);  
-    }
-
     public Iterable<PartidoPolitico> getLista() {
         return PartidoPoliticoDAO.getInstancias().getList();
     }
@@ -92,6 +74,13 @@ public class ControladorCandidato{
     public String getNome(Candidato candidato) {
         return candidato.getNome();
     }
+    public static ControladorCandidato getInstancia() {
+        if (instancia == null) {
+            instancia = new ControladorCandidato();
+        }
+        return instancia;
+    }
 
     
+
 }

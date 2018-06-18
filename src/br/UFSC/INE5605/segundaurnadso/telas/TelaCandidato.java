@@ -5,7 +5,6 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCandidato;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -91,15 +90,15 @@ public class TelaCandidato extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_CADASTRAR)) {
-                ControladorCadastro.getInstancia().executaCadastroCandidato();
+                ControladorCandidato.getInstancia().exibeTelaCadastraCandidato();
                 dispose();
             }
             if(opcao.equals(BOTAO_PESQUISAR)) {
-                ControladorCandidato.getInstancia().abreTelaPesquisaCandidato();
+                ControladorCandidato.getInstancia().exibeTelaPesquisaCandidato();
                 dispose();
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorCandidato.getInstancia().exibeMenuPrincipal();
+                ControladorCandidato.getInstancia().exibeTelaPrincipal();
                 dispose();
             }
         }

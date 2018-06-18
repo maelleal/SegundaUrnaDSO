@@ -5,7 +5,7 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
-import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorCadastro;
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Eleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.EleitorDAO;
 import java.awt.Container;
@@ -120,8 +120,16 @@ public class TelaPesquisaEleitor extends JFrame {
         @Override
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
+            if(opcao.equals(BOTAO_ALTERAR)) {
+                //ControladorEleitor.getInstancia().alterarEleitor();
+                dispose();
+            }
+            if(opcao.equals(BOTAO_DELETAR)) {
+                //ControladorEleitor.getInstancia().excluirEleitor();
+                dispose();
+            }
             if(opcao.equals(BOTAO_VOLTAR)) {
-                ControladorCadastro.getInstancia().executaTelaEleitor();
+                ControladorEleitor.getInstancia().exibeTelaEleitor();
                 dispose();
             }
         }

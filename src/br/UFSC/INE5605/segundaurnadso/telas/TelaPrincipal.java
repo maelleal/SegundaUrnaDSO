@@ -109,15 +109,15 @@ public class GerenciaBotoes implements ActionListener {
     public void actionPerformed(ActionEvent evento) {
         String opcao = evento.getActionCommand();
         if(opcao.equals(OPCAO_CADASTRO)) {
-            ControladorPrincipal.getInstancia().abreTelaCadastro();
+            ControladorPrincipal.getInstancia().exibeTelaCadastro();
             dispose();
         }
         if(opcao.equals(OPCAO_VOTACAO)) {
-            ControladorUrna.getInstancia().abreTelaUrna();
+            ControladorPrincipal.getInstancia().exibeTelaUrna();
             dispose();
         }
         if(opcao.equals(OPCAO_RESULTADOS)) {
-            ControladorUrna.getInstancia().resultadoGov();
+            ControladorUrna.getInstancia().resultadoDoPleito();
             dispose();
         }
         if(opcao.equals(OPCAO_SAIR)) {
