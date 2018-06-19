@@ -10,6 +10,8 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaEleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.EleitorDAO;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaCadastraEleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaPesquisaEleitor;
+import br.UFSC.INE5605.segundaurnadso.telas.TelaVerificaEleitor;
+
 
 /**
  *
@@ -52,6 +54,8 @@ public class ControladorEleitor {
         return eleitor;
     }
     
+    
+    
     public void exibeTelaPesquisaEleitor() {
         TelaPesquisaEleitor.getInstancia().updateData();
         TelaPesquisaEleitor.getInstancia().setVisible(true);
@@ -75,6 +79,10 @@ public class ControladorEleitor {
 
     public void exibeTelaCadastro() {
         ControladorPrincipal.getInstancia().exibeTelaCadastro();
+    }
+
+    public void exibeTelaVerificaEleitor() {
+        TelaVerificaEleitor.getInstancia().setVisible(true);
     }
     
 }

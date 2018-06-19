@@ -41,7 +41,7 @@ public class TelaCadastraEleitor extends JFrame {
     private TelaCadastraEleitor() {
         super("Tela de Cadastro de Eleitor");
         this.gerenciador = new GerenciaBotoes();
-        Font fonte = new Font("Courier New", Font.BOLD, 15);
+        Font fonte = new Font("Courier New", Font.BOLD, 20);
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -119,7 +119,6 @@ public class TelaCadastraEleitor extends JFrame {
                     if (numero < 0 || numero > 999999999){
                         JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 99999999!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                         tituloEleitor.setText("");
-                        //apaga o que está no campo de numeroCandidato
                     }
                     if(nomeEleitor.getText().equals("")) {
                         nomeEleitor.setText("");

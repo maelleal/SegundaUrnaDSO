@@ -5,6 +5,7 @@
  */
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
+import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPrincipal;
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorUrna;
 import java.awt.Container;
@@ -113,7 +114,7 @@ public class GerenciaBotoes implements ActionListener {
             dispose();
         }
         if(opcao.equals(OPCAO_VOTACAO)) {
-            ControladorPrincipal.getInstancia().exibeTelaUrna();
+            ControladorEleitor.getInstancia().exibeTelaVerificaEleitor();
             dispose();
         }
         if(opcao.equals(OPCAO_RESULTADOS)) {
