@@ -44,6 +44,12 @@ public class ControladorPartido {
         }
         return partido;
     }
+    public void alteraPartido(PartidoPolitico partido) {
+        
+        TelaCadastraPartido.getInstancia().alteraPartido(partido.getCodigo());
+        TelaCadastraPartido.getInstancia().setVisible(true);
+        
+    }
     
     public void exibeTelaPartido() {
         TelaPartido.getInstancia().setVisible(true);
@@ -51,7 +57,9 @@ public class ControladorPartido {
     public void exibeTelaCadastraPartido() {
         TelaCadastraPartido.getInstancia().setVisible(true);
     }
-    
+    public void exibeTelaCadastro() {
+        ControladorPrincipal.getInstancia().exibeTelaCadastro();
+    }
     public void exibeTelaPrincipal() {
         ControladorPrincipal.getInstancia().exibeTelaPrincipal();
     }
@@ -61,23 +69,22 @@ public class ControladorPartido {
         TelaPesquisaPartido.getInstancia().setVisible(true);
     }
     
-
-    
-
-    
-    
-
-    
     public static ControladorPartido getInstancia(){
         if(instancia == null){
             instancia = new ControladorPartido();
         }
         return instancia;
     }
-
-    public void exibeTelaCadastro() {
-        ControladorPrincipal.getInstancia().exibeTelaCadastro();
+    public String getNome(PartidoPolitico partido) {
+        return partido.getNome();
     }
+    public Integer getCodigo(PartidoPolitico partido) {
+        return partido.getCodigo();
+    }
+
+    
+
+    
 
     
 

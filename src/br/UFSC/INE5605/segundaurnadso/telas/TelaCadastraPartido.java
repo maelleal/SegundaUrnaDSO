@@ -35,6 +35,7 @@ public class TelaCadastraPartido extends JFrame{
     private JLabel txtcodigoPartido;
     private GerenciaBotoes botoes;
     private Dimension tamanhoBotao = new Dimension(280, 80);
+    private boolean verificaAlteração = false;
     
     private TelaCadastraPartido() {
         super("Tela de Cadastro de Partido");
@@ -96,10 +97,24 @@ public class TelaCadastraPartido extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         setLocationRelativeTo(null);
     }
+    public void alteraPartido(Integer codigoPartidoAlterado){
+        verificaAlteração = true;
+        ControladorPartido.getInstancia().buscaPartidoPeloCodigo(codigoPartidoAlterado);
+        nomePartido.setText(ControladorPartido.getInstancia().getNome(ControladorPartido.getInstancia().buscaPartidoPeloCodigo(codigoPartidoAlterado)));
+        codigoPartido.setText(String.valueOf(ControladorPartido.getInstancia().getCodigo(ControladorPartido.getInstancia().buscaPartidoPeloCodigo(codigoPartidoAlterado))));
+        ControladorPartido.getInstancia().excluiPartido(codigoPartidoAlterado);
+        dispose();
+        
+    }
 
     public void mensagemOK() {
         JOptionPane.showMessageDialog(null, "Partido Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.DEFAULT_OPTION);
-        TelaPartido.getInstancia().setVisible(true);
+        ControladorPartido.getInstancia().exibeTelaPartido();
+        dispose();
+    }
+    public void mensagemAlteracaoOK() {
+        JOptionPane.showMessageDialog(null, "Partido Alterado com sucesso!", "Cadastro Salvo", JOptionPane.DEFAULT_OPTION);
+        ControladorPartido.getInstancia().exibeTelaPesquisaPartido();
         dispose();
     }
 
@@ -121,8 +136,15 @@ public class TelaCadastraPartido extends JFrame{
                     if(nomePartido.getText().equals("")) {
                         nomePartido.setText("");
                         JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                    } else if (verificaAlteração) {
+                        ControladorPartido.getInstancia().incluiPartido(nomePartido.getText(), numero);
+                        nomePartido.setText("");
+                        codigoPartido.setText("");
+                        mensagemAlteracaoOK();
                     } else {
                         ControladorPartido.getInstancia().incluiPartido(nomePartido.getText(), numero);
+                        nomePartido.setText("");
+                        codigoPartido.setText("");
                         mensagemOK();
                     }
                 } catch (NumberFormatException erro) {
@@ -133,7 +155,7 @@ public class TelaCadastraPartido extends JFrame{
             if(opcao.equals(BOTAO_VOLTAR)) {
                 nomePartido.setText("");
                 codigoPartido.setText("");
-                TelaPartido.getInstancia().setVisible(true);
+                ControladorPartido.getInstancia().exibeTelaPartido();
                 dispose();
             }
         }
@@ -145,4 +167,5 @@ public class TelaCadastraPartido extends JFrame{
         }
         return instancia;
     }
+    
 }
