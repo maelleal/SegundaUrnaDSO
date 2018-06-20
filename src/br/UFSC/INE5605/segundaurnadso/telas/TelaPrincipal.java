@@ -43,8 +43,7 @@ public class TelaPrincipal extends JFrame{
     private TelaPrincipal() {
         super("Tela Principal");
         this.botoes = new GerenciaBotoes();
-        
-        Font fonte = new Font("Courier New", Font.BOLD, 17);    
+        Font fonte = new Font("Courier New", Font.BOLD, 20);    
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();

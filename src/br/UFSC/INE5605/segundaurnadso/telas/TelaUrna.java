@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
@@ -288,7 +289,7 @@ public class TelaUrna extends JFrame {
         
         txtCandidatoEscolhido = new JLabel();
         txtCandidatoEscolhido.setFont(fonte);
-        txtCandidatoEscolhido.setText("");
+        txtCandidatoEscolhido.setText("Escolha Candidato");
         constraints.gridheight = 10;
         constraints.gridwidth = 10;
 	constraints.gridx = 2;
@@ -317,9 +318,14 @@ public class TelaUrna extends JFrame {
         
         int stringToNumero = Integer.parseInt(digitado);
         if(numeroCandidato.getText().length() == 2) {
-            validador = true;
+            if(ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(stringToNumero) == null){
+                txtCandidatoEscolhido.setText("Escolha Candidato");
+            } else {
+                validador = true;
             candidato = ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(stringToNumero);
             txtCandidatoEscolhido.setText(ControladorCandidato.getInstancia().getNome(candidato));
+        
+            }
         }
     }
     
@@ -376,24 +382,29 @@ public class TelaUrna extends JFrame {
             break;
         case OPCAO_CONFIRMA:
             //tratar os numeros sem candidato//tratar os numeros sem candidato//tratar os numeros sem candidato//tratar os numeros sem candidato//tratar os numeros sem candidato
-            /*
             try {
                     int numero = Integer.parseInt(numeroCandidato.getText());
                     if (!validador){
-                        JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
-                        //apaga o que está no campo de numeroCandidato
+                        JOptionPane.showMessageDialog(null, "Voto nulo realizado com sucesso!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                         numeroCandidato.setText("");
+                        txtCandidatoEscolhido.setText("");
+                        ControladorUrna.getInstancia().exibeTelaPrincipal();
+                        dispose();
                     } else {
-                        ControladorUrna.getInstancia().;
+                        ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(numero);
+                        String temp = "Voto em "+ControladorCandidato.getInstancia().getNome(ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(numero))+" realizado com sucesso!";
+                        JOptionPane.showMessageDialog(null, temp, "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                        numeroCandidato.setText(""); 
+                        txtCandidatoEscolhido.setText("");
+                        ControladorUrna.getInstancia().exibeTelaPrincipal();
                         dispose();
                     }
                 } catch (Exception e) {
-                    nomeCandidato.setText("");
                     numeroCandidato.setText("");
-                    JOptionPane.showMessageDialog(null, "Somente numeros entre 1 e 99!", "Erro ao Cadastrar", ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Voto nulo realizado com sucesso!", "Erro ao Cadastrar", ERROR_MESSAGE);
 
                 }
-            */
+            
             break;
         case OPCAO_BRANCO:
             

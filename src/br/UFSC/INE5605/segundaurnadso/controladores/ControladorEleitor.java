@@ -54,14 +54,19 @@ public class ControladorEleitor {
         return eleitor;
     }
     
-    public void validaEleitor(int tituloEleitor){
-        for(Eleitor e : EleitorDAO.getInstancia().getList()){
-            if(e.getTituloEleitoral() == tituloEleitor){
-                TelaVerificaEleitor.getInstancia().mensagemOK();
-                ControladorPrincipal.getInstancia().exibeTelaUrna();
-            }   
+    public boolean validaEleitor(int tituloEleitor){
+        Eleitor eleitor = ControladorEleitor.getInstancia().buscaEleitorPeloTitulo(tituloEleitor);
+        if(eleitor == null)  {
+            TelaVerificaEleitor.getInstancia().mensagemErro();
+            return false;
+        } else if (eleitor.jaVotou == true){
+            TelaVerificaEleitor.getInstancia().mensagemJaVotou();
+            return false;
         }
-        TelaVerificaEleitor.getInstancia().mensagemErro();   
+        ControladorPrincipal.getInstancia().exibeTelaUrna();  
+        eleitor.jaVotou = true;
+        return true;
+        
     }
     
     public void exibeTelaPesquisaEleitor() {

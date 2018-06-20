@@ -79,7 +79,7 @@ public class TelaVerificaEleitor extends JFrame {
 	constraints.gridy = 5;
 	container.add(voltar, constraints);
        
-        setSize(500, 600);
+        setSize(400, 500);
         setVisible(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -93,6 +93,11 @@ public class TelaVerificaEleitor extends JFrame {
         JOptionPane.showMessageDialog(null, "Eleitor não cadastrado!", "Voto não autorizado", JOptionPane.ERROR_MESSAGE);
         
     }
+
+    public void mensagemJaVotou() {
+        JOptionPane.showMessageDialog(null, "Não pode votar duas vezes.  \nEleitor já votou!", "Voto não autorizado", JOptionPane.ERROR_MESSAGE);
+        
+    }
     
     
         
@@ -103,9 +108,15 @@ public class TelaVerificaEleitor extends JFrame {
             
             if(opcao.equals(BOTAO_VALIDAR)) {
                 int verificador = Integer.parseInt(tituloEleitor.getText());
-                ControladorEleitor.getInstancia().validaEleitor(verificador);
+                if (ControladorEleitor.getInstancia().validaEleitor(verificador)==false) {
+                    tituloEleitor.setText("");
+                } else {
+                    tituloEleitor.setText("");
+                    dispose();
+                }    
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
+                tituloEleitor.setText("");
                 ControladorPrincipal.getInstancia().exibeTelaPrincipal();
                 dispose();
             }
