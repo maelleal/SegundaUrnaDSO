@@ -137,7 +137,7 @@ public class TelaPesquisaPartido extends JFrame {
                 int pegaLinha = tabelaPartidos.getSelectedRow();
                 Object teste2 = tabelaPartidos.getValueAt(pegaLinha, 0);
                 int codigoRemover = (Integer)teste2;
-                //ControladorPartido.getInstancia().alteraPartido(codigoRemover);
+                ControladorPartido.getInstancia().alteraPartido(ControladorPartido.getInstancia().buscaPartidoPeloCodigo(codigoRemover));
                 
             }
         }

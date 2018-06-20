@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -84,6 +85,15 @@ public class TelaVerificaEleitor extends JFrame {
         setLocationRelativeTo(null);
     }
     
+    public void mensagemOK() {
+        JOptionPane.showMessageDialog(null, "Eleitor validado com sucesso!", "Voto autorizado", JOptionPane.DEFAULT_OPTION);
+    }
+    
+     public void mensagemErro() {
+        JOptionPane.showMessageDialog(null, "Eleitor não cadastrado!", "Voto não autorizado", JOptionPane.ERROR_MESSAGE);
+        
+    }
+    
     
         
     public class GerenciaBotoes implements ActionListener {
@@ -92,7 +102,8 @@ public class TelaVerificaEleitor extends JFrame {
             String opcao = evento.getActionCommand();
             
             if(opcao.equals(BOTAO_VALIDAR)) {
-                dispose();
+                int verificador = Integer.parseInt(tituloEleitor.getText());
+                ControladorEleitor.getInstancia().validaEleitor(verificador);
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
                 ControladorPrincipal.getInstancia().exibeTelaPrincipal();

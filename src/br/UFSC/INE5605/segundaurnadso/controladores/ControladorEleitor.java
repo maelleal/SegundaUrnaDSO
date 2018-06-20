@@ -54,7 +54,15 @@ public class ControladorEleitor {
         return eleitor;
     }
     
-    
+    public void validaEleitor(int tituloEleitor){
+        for(Eleitor e : EleitorDAO.getInstancia().getList()){
+            if(e.getTituloEleitoral() == tituloEleitor){
+                TelaVerificaEleitor.getInstancia().mensagemOK();
+                ControladorPrincipal.getInstancia().exibeTelaUrna();
+            }   
+        }
+        TelaVerificaEleitor.getInstancia().mensagemErro();   
+    }
     
     public void exibeTelaPesquisaEleitor() {
         TelaPesquisaEleitor.getInstancia().updateData();

@@ -8,6 +8,7 @@ package br.UFSC.INE5605.SegundaUrnaDSO.controladores;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Candidato;
 import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaUrna;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Voto;
+import br.UFSC.INE5605.segundaurnadso.entidades.VotoDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -48,5 +49,13 @@ public class ControladorUrna {
 
     public void exibeTelaPrincipal() {
         ControladorPrincipal.getInstancia().exibeTelaPrincipal();
+    }
+    public void contagemVotos(){
+        int contMaisVotado = 0;
+        int contTemp = 0;
+        //fazer um for em getList no DAO
+        //fazer um procura candidato pelo Voto
+        //se for tal nome, conta 1
+        //contMais votado é o max entre eles
     }
 }
