@@ -15,15 +15,21 @@ public class Candidato extends Pessoa implements Serializable, ICandidato {
     private static final long serialVersionUID = 1L;
     private PartidoPolitico partido;
     private Integer numero;
- 
+    private int voto;
 
     public Candidato(String nome, PartidoPolitico partido, Integer numero) {
         super(nome);
         this.partido = partido;
         this.numero = numero;
         this.nome = nome;
+        this.voto = 0;
     }
-    
+    public void incluiVoto() {
+        this.voto++;
+    }
+    public int votosRecebidos (){
+        return this.voto;
+    }
     @Override
     public PartidoPolitico getPartido() {
         return partido;
@@ -50,6 +56,8 @@ public class Candidato extends Pessoa implements Serializable, ICandidato {
     public int getNumeroCandidato() {
         return numero;
     }
+
+    
     
     
 }

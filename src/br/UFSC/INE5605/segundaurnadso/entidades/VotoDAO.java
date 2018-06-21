@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.UFSC.INE5605.segundaurnadso.entidades;
+package br.UFSC.INE5605.SegundaUrnaDSO.entidades;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -32,8 +32,8 @@ public class VotoDAO {
         return cacheVotos.get(voto);
     }
     
-    public void put(Voto voto){
-        cacheVotos.put(voto);
+    public void put(Integer k, Voto voto){
+        cacheVotos.put(k, voto);
     }
     
     public Collection<Voto> getList() {

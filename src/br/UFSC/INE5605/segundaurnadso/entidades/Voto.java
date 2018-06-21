@@ -26,6 +26,12 @@ public class Voto implements Serializable{
 
     public void setCandidato(Candidato candidato) {
         this.candidato = candidato;
-    }    
+    }   
+
+    @Override
+    public String toString() {
+        return "Voto{" + "candidato=" + candidato + '}';
+    }
+    
 
 }

@@ -63,9 +63,12 @@ public class ControladorCandidato{
         }
         return cand;
     }
-    
+    //VERIFICAR//VERIFICAR//VERIFICAR//VERIFICAR//VERIFICAR//VERIFICAR//VERIFICAR//VERIFICAR
     public Iterable<PartidoPolitico> getLista() {
         return PartidoPoliticoDAO.getInstancia().getList();
+    }
+    public Iterable<Candidato> getListaCandidatos() {
+        return CandidatoDAO.getInstancia().getList();
     }
 
     public String getNome(Candidato candidato) {

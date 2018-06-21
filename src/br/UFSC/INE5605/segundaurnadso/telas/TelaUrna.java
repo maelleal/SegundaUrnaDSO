@@ -392,6 +392,7 @@ public class TelaUrna extends JFrame {
                         dispose();
                     } else {
                         ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(numero);
+                        ControladorUrna.getInstancia().capturaVoto(numero);
                         String temp = "Voto em "+ControladorCandidato.getInstancia().getNome(ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(numero))+" realizado com sucesso!";
                         JOptionPane.showMessageDialog(null, temp, "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                         numeroCandidato.setText(""); 
@@ -411,7 +412,7 @@ public class TelaUrna extends JFrame {
             break;
         case OPCAO_CORRIGE:
             numeroCandidato.setText("");
-            txtCandidatoEscolhido.setText("");
+            txtCandidatoEscolhido.setText("Escolha Candidato");
             break;
         case OPCAO_VOLTAR:
             numeroCandidato.setText("");
