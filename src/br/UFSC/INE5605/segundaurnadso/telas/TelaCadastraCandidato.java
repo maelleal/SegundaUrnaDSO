@@ -161,7 +161,12 @@ public class TelaCadastraCandidato extends JFrame {
                         numeroCandidato.setText("");
                     }
                     if(nomeDigitado.equals("")) {
-                        trataExcecaoCampoEmBranco();
+                         try {
+                            nomeCandidato.setText("");
+                            TelaCadastraPartido.getInstancia().campoEmBrancoException();
+                        } catch (CampoEmBrancoException ex) {
+                         
+                        }
                     } else if (verificaAlteração) {
                         ControladorCandidato.getInstancia().cadastraCandidato(nomeDigitado, partidoDigitado, numero);
                         nomeCandidato.setText("");
@@ -186,13 +191,11 @@ public class TelaCadastraCandidato extends JFrame {
                 dispose();
             }
         }
-
-        public void trataExcecaoCampoEmBranco() throws CampoEmBrancoException {
-            throw new CampoEmBrancoException ("Favor, preencher todos os campos!, Erro ao Cadastrar");
-            
-        }
-
-        
+   
+    }
+    
+    public void campoEmBrancoException() throws CampoEmBrancoException{
+            throw new CampoEmBrancoException("");
     }
     
     public static TelaCadastraCandidato getInstancia(){

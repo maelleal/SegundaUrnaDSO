@@ -7,6 +7,7 @@ package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorEleitor;
+import br.UFSC.INE5605.segundaurnadso.exceções.CampoEmBrancoException;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -137,8 +138,11 @@ public class TelaCadastraEleitor extends JFrame {
                         tituloEleitor.setText("");
                     }
                     if(nomeEleitor.getText().equals("")) {
-                        nomeEleitor.setText("");
-                        JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                         try {
+                            nomeEleitor.setText("");
+                            TelaCadastraPartido.getInstancia().campoEmBrancoException();
+                        } catch (CampoEmBrancoException ex) {
+                        }
                     } else if (verificaAlteração) {
                         ControladorEleitor.getInstancia().cadastraEleitor(numero, nomeDigitado);
                         nomeEleitor.setText("");
@@ -162,6 +166,10 @@ public class TelaCadastraEleitor extends JFrame {
                 dispose();
             }
         }
+    }
+    
+    public void campoEmBrancoException() throws CampoEmBrancoException{
+            throw new CampoEmBrancoException("");
     }
 
     public static TelaCadastraEleitor getInstancia(){

@@ -14,6 +14,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -135,8 +137,12 @@ public class TelaCadastraPartido extends JFrame{
                         JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 99!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                     }
                     if(nomePartido.getText().equals("")) {
-                        nomePartido.setText("");
-                        JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                        try {
+                            nomePartido.setText("");
+                            TelaCadastraPartido.getInstancia().campoEmBrancoException();
+                        } catch (CampoEmBrancoException ex) {
+                         
+                        }
                     } else if (verificaAlteração) {
                         ControladorPartido.getInstancia().incluiPartido(nomePartido.getText(), numero);
                         nomePartido.setText("");
@@ -160,9 +166,13 @@ public class TelaCadastraPartido extends JFrame{
                 dispose();
             }
         }
+
+        
         
     }
-    
+    public void campoEmBrancoException() throws CampoEmBrancoException{
+            throw new CampoEmBrancoException("");
+    }
     public static TelaCadastraPartido getInstancia(){
         if(instancia == null){
             instancia = new TelaCadastraPartido();

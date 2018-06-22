@@ -5,6 +5,8 @@
  */
 package br.UFSC.INE5605.segundaurnadso.exceções;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ivo Guilherme
@@ -12,6 +14,6 @@ package br.UFSC.INE5605.segundaurnadso.exceções;
 public class CampoEmBrancoException extends Exception {
     
     public CampoEmBrancoException (String texto) {
-        super(texto);
+        JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
     }
 }
