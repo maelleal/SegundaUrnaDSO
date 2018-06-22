@@ -153,6 +153,7 @@ public class TelaCadastraEleitor extends JFrame {
                         ControladorEleitor.getInstancia().exibeTelaEleitor();
                         nomeEleitor.setText("");
                         tituloEleitor.setText("");
+                        dispose();
                     }
                 } catch (NumberFormatException erro) {
                     JOptionPane.showMessageDialog(null, "Somente numeros entre 1 e 99999999!", "Erro ao Cadastrar", ERROR_MESSAGE);

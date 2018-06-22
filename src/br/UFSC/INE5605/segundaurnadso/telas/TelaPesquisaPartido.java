@@ -124,11 +124,16 @@ public class TelaPesquisaPartido extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_DELETAR)) {
-                int pegaLinha = tabelaPartidos.getSelectedRow();
-                Object teste2 = tabelaPartidos.getValueAt(pegaLinha, 0);
-                int codigoRemover = (Integer)teste2;
-                ControladorPartido.getInstancia().excluiPartido(codigoRemover);
-                updateData();
+                try{
+                    int pegaLinha = tabelaPartidos.getSelectedRow();
+                    Object teste2 = tabelaPartidos.getValueAt(pegaLinha, 0);
+                    int codigoRemover = (Integer)teste2;
+                    ControladorPartido.getInstancia().excluiPartido(codigoRemover);
+                    updateData();
+                }catch(ArrayIndexOutOfBoundsException e){
+                    JOptionPane.showMessageDialog(null, "Selecione um campo!", "Erro ao deletar", JOptionPane.ERROR_MESSAGE);
+                }
+                
             }
             if(opcao.equals(BOTAO_VOLTAR)) {
                 ControladorPartido.getInstancia().exibeTelaPartido();

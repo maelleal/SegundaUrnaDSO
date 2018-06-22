@@ -174,6 +174,8 @@ public class TelaCadastraCandidato extends JFrame {
                         mensagemAlteracaoOK();    
                     } else {
                         ControladorCandidato.getInstancia().cadastraCandidato(nomeDigitado, partidoDigitado, numero);
+                        mensagemOK();
+                        ControladorCandidato.getInstancia().exibeTelaCandidato();
                         dispose();
                     }
                 } catch (Exception e) {

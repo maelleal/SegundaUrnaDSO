@@ -386,7 +386,7 @@ public class TelaUrna extends JFrame {
             try {
                     int numero = Integer.parseInt(numeroCandidato.getText());
                     if (!validador){
-                        JOptionPane.showMessageDialog(null, "Voto nulo realizado com sucesso!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Voto nulo realizado com sucesso!", "Voto realizado", JOptionPane.ERROR_MESSAGE);
                         numeroCandidato.setText("");
                         txtCandidatoEscolhido.setText("Escolha Candidato");
                         ControladorUrna.getInstancia().exibeTelaPrincipal();
@@ -395,7 +395,7 @@ public class TelaUrna extends JFrame {
                         ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(numero);
                         ControladorUrna.getInstancia().capturaVoto(numero);
                         String temp = "Voto em "+ControladorCandidato.getInstancia().getNome(ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(numero))+" realizado com sucesso!";
-                        JOptionPane.showMessageDialog(null, temp, "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, temp, "Voto realizado", JOptionPane.ERROR_MESSAGE);
                         numeroCandidato.setText(""); 
                         txtCandidatoEscolhido.setText("Escolha Candidato");
                         ControladorUrna.getInstancia().exibeTelaPrincipal();
@@ -403,7 +403,7 @@ public class TelaUrna extends JFrame {
                     }
                 } catch (Exception e) {
                     numeroCandidato.setText("");
-                    JOptionPane.showMessageDialog(null, "Voto nulo realizado com sucesso!", "Erro ao Cadastrar", ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Voto nulo realizado com sucesso!", "Voto realizado", ERROR_MESSAGE);
 
                 }
             
@@ -413,7 +413,7 @@ public class TelaUrna extends JFrame {
             if(!verificaCriacao){
                 ControladorUrna.getInstancia().cadastraBrancoNulo();
                 ControladorUrna.getInstancia().capturaVoto(00);
-                JOptionPane.showMessageDialog(null, "Voto em BRANCO realizado com sucesso!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Voto em BRANCO realizado com sucesso!", "Voto realizado", JOptionPane.ERROR_MESSAGE);
                 numeroCandidato.setText("");
                 txtCandidatoEscolhido.setText("Escolha Candidato");
                 ControladorUrna.getInstancia().exibeTelaPrincipal();
@@ -421,7 +421,7 @@ public class TelaUrna extends JFrame {
                 dispose();
             } else {
                 ControladorUrna.getInstancia().capturaVoto(00);
-                JOptionPane.showMessageDialog(null, "Voto em BRANCO realizado com sucesso!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Voto em BRANCO realizado com sucesso!", "Voto realizado", JOptionPane.ERROR_MESSAGE);
                 numeroCandidato.setText("");
                 txtCandidatoEscolhido.setText("Escolha Candidato");
                 ControladorUrna.getInstancia().exibeTelaPrincipal();

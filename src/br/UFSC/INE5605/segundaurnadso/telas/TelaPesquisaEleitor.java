@@ -133,11 +133,16 @@ public class TelaPesquisaEleitor extends JFrame {
                 
             }
             if(opcao.equals(BOTAO_DELETAR)) {
-                int pegaLinha = tabelaEleitores.getSelectedRow();
-                Object teste2 = tabelaEleitores.getValueAt(pegaLinha, 0);
-                int codigoRemover = (Integer)teste2;
-                ControladorEleitor.getInstancia().excluiEleitor(codigoRemover);
-                updateData();
+                try {
+                    int pegaLinha = tabelaEleitores.getSelectedRow();
+                    Object teste2 = tabelaEleitores.getValueAt(pegaLinha, 0);
+                    int codigoRemover = (Integer)teste2;
+                    ControladorEleitor.getInstancia().excluiEleitor(codigoRemover);
+                    updateData();
+                }catch(ArrayIndexOutOfBoundsException e){
+                    JOptionPane.showMessageDialog(null, "Selecione um campo!", "Erro ao deletar", JOptionPane.ERROR_MESSAGE);
+                }
+                
             }
             
             if(opcao.equals(BOTAO_VOLTAR)) {

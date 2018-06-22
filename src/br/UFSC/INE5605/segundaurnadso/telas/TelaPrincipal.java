@@ -117,8 +117,12 @@ public class GerenciaBotoes implements ActionListener {
             dispose();
         }
         if(opcao.equals(OPCAO_RESULTADOS)) {
-            ControladorUrna.getInstancia().resultadoDoPleito();
-            dispose();
+            try {
+                ControladorUrna.getInstancia().resultadoDoPleito();
+                dispose();
+            }catch(NullPointerException e){
+                JOptionPane.showMessageDialog(null, "Sem dados para resultado!", "Erro no pleito", JOptionPane.ERROR_MESSAGE);
+            }    
         }
         if(opcao.equals(OPCAO_SAIR)) {
             JOptionPane.showMessageDialog(null, "By By!!");
