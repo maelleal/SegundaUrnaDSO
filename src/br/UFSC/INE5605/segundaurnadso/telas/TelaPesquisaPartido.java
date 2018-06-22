@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -134,10 +135,15 @@ public class TelaPesquisaPartido extends JFrame {
                 dispose();
             }
             if(opcao.equals(BOTAO_ALTERAR)) {
-                int pegaLinha = tabelaPartidos.getSelectedRow();
-                Object teste2 = tabelaPartidos.getValueAt(pegaLinha, 0);
-                int codigoRemover = (Integer)teste2;
-                ControladorPartido.getInstancia().alteraPartido(ControladorPartido.getInstancia().buscaPartidoPeloCodigo(codigoRemover));
+                try {
+                    int pegaLinha = tabelaPartidos.getSelectedRow();
+                    Object teste2 = tabelaPartidos.getValueAt(pegaLinha, 0);
+                    int codigoRemover = (Integer)teste2;
+                    ControladorPartido.getInstancia().alteraPartido(ControladorPartido.getInstancia().buscaPartidoPeloCodigo(codigoRemover));
+                
+                } catch (ArrayIndexOutOfBoundsException e){
+                    JOptionPane.showMessageDialog(null, "Selecione um campo!", "Erro ao alterar", JOptionPane.ERROR_MESSAGE);
+                }
                 
             }
         }

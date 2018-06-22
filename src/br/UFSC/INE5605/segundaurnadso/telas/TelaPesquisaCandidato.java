@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -123,10 +124,15 @@ public class TelaPesquisaCandidato extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_ALTERAR)) {
-                int pegaLinha = tabelaCandidatos.getSelectedRow();
-                Object teste2 = tabelaCandidatos.getValueAt(pegaLinha, 0);
-                int codigoRemover = (Integer)teste2;
-                ControladorCandidato.getInstancia().alteraCandidato(ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(codigoRemover));
+                try{
+                    int pegaLinha = tabelaCandidatos.getSelectedRow();
+                    Object teste2 = tabelaCandidatos.getValueAt(pegaLinha, 0);
+                    int codigoRemover = (Integer)teste2;
+                    ControladorCandidato.getInstancia().alteraCandidato(ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(codigoRemover));
+                }catch(ArrayIndexOutOfBoundsException e){
+                    JOptionPane.showMessageDialog(null, "Selecione um campo!", "Erro ao alterar", JOptionPane.ERROR_MESSAGE);
+                }
+                
                 
             }
             if(opcao.equals(BOTAO_DELETAR)) {
