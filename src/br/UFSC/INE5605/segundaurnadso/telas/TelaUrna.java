@@ -69,9 +69,10 @@ public class TelaUrna extends JFrame {
     private Dimension tamanhoBotao = new Dimension(100, 30);
     private Dimension tamanhoBotao2 = new Dimension(100, 30);
     private boolean validador = false;
+    //verifica se já foi criado o candidato naovalidos
+    boolean verificaCriacao = false;
     
     
-    //adicionar dois paineis dentre de um painel
     
     private TelaUrna(){
         super("Tela Urna");
@@ -381,7 +382,7 @@ public class TelaUrna extends JFrame {
             capturaDigitacao();
             break;
         case OPCAO_CONFIRMA:
-            //tratar os numeros sem candidato//tratar os numeros sem candidato//tratar os numeros sem candidato//tratar os numeros sem candidato//tratar os numeros sem candidato
+            
             try {
                     int numero = Integer.parseInt(numeroCandidato.getText());
                     if (!validador){
@@ -408,6 +409,26 @@ public class TelaUrna extends JFrame {
             
             break;
         case OPCAO_BRANCO:
+            
+            if(!verificaCriacao){
+                ControladorUrna.getInstancia().cadastraBrancoNulo();
+                ControladorUrna.getInstancia().capturaVoto(00);
+                JOptionPane.showMessageDialog(null, "Voto em BRANCO realizado com sucesso!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                numeroCandidato.setText("");
+                txtCandidatoEscolhido.setText("");
+                ControladorUrna.getInstancia().exibeTelaPrincipal();
+                verificaCriacao = true;
+                dispose();
+            } else {
+                ControladorUrna.getInstancia().capturaVoto(00);
+                JOptionPane.showMessageDialog(null, "Voto em BRANCO realizado com sucesso!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                numeroCandidato.setText("");
+                txtCandidatoEscolhido.setText("");
+                ControladorUrna.getInstancia().exibeTelaPrincipal();
+                verificaCriacao = true;
+                dispose();
+            }
+            
             
             break;
         case OPCAO_CORRIGE:

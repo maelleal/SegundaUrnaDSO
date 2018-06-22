@@ -11,6 +11,7 @@ import br.UFSC.INE5605.SegundaUrnaDSO.telas.TelaUrna;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.Voto;
 import br.UFSC.INE5605.SegundaUrnaDSO.entidades.VotoDAO;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 
 /**
  *
@@ -29,8 +30,10 @@ public class ControladorUrna {
         Voto votoComputado = new Voto(candidato);
         VotoDAO.getInstancia().put(k, votoComputado);
         k++;
-        System.out.println("Votou certinho");
+        
     }
+    
+    
     public void contagemVotos(){
         
         for (Candidato candidato : ControladorCandidato.getInstancia().getListaCandidatos()) {
@@ -47,10 +50,30 @@ public class ControladorUrna {
         }
     }
     public void resultadoDoPleito(){
-        JOptionPane.showMessageDialog(null, "Resultado é secreto!");
-        System.exit(0);
+        int candidatoVice = 0;
+        int candidatoVencedor = 0;
+        Candidato vencedor = null;
+        Candidato nulos = null;
+        for (Candidato candidato : ControladorCandidato.getInstancia().getListaCandidatos()) {
+            for (Voto voto : VotoDAO.getInstancia().getList()) {
+                if (candidato.equals(voto.getCandidato())) {
+                    candidato.incluiVoto();
+                }
+            }
+            if(candidato.votosRecebidos() < candidatoVencedor){
+                   candidatoVice = candidato.votosRecebidos();
+               } else {
+                  candidatoVencedor = candidato.votosRecebidos();
+                  vencedor = candidato;
+                  
+               }
+        }
+        nulos = ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(0);
+        int votosNaoValidos = nulos.votosRecebidos();
+        String CandidatoEleito = ControladorCandidato.getInstancia().getNome(vencedor);
+        JOptionPane.showMessageDialog(null, "Com "+candidatoVencedor+" votos \n"+"O candidato "+CandidatoEleito+" está eleito \nVotos BRANCOS / NULOS = "+votosNaoValidos, "Resultado do pleito", ERROR_MESSAGE);
+        
     }
-
     public void executaTelaUrna() {
         TelaUrna.getInstancia().setVisible(true);
     }
@@ -64,5 +87,10 @@ public class ControladorUrna {
             instancia = new ControladorUrna();
         }
         return instancia;
+    }
+    public void cadastraBrancoNulo (){
+        ControladorCandidato.getInstancia().cadastraNulo();
+        
+        
     }
 }

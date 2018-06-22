@@ -23,7 +23,12 @@ public class ControladorCandidato{
     
     
     private ControladorCandidato() {
-     
+        
+    }
+    public void cadastraNulo(){
+        Candidato candidatoNaoValidos = new Candidato("Votos Não Válidos", new PartidoPolitico("", 00), 00);
+        CandidatoDAO.getInstancia().put(candidatoNaoValidos);
+        
     }
     
     public void cadastraCandidato(String nome, PartidoPolitico partido, int numeroCandidato) {
@@ -34,6 +39,7 @@ public class ControladorCandidato{
                TelaCadastraCandidato.getInstancia().mensagemErro();
            }
     }
+    
     
     public void excluiCandidato(int codigoCandidato) {
         CandidatoDAO.getInstancia().remove(codigoCandidato);
@@ -62,7 +68,7 @@ public class ControladorCandidato{
         }
         return cand;
     }
-    //VERIFICAR//VERIFICAR//VERIFICAR//VERIFICAR//VERIFICAR//VERIFICAR//VERIFICAR//VERIFICAR
+    
     public Iterable<PartidoPolitico> getLista() {
         return PartidoPoliticoDAO.getInstancia().getList();
     }
