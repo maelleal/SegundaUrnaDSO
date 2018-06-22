@@ -122,6 +122,13 @@ public class TelaPesquisaCandidato extends JFrame {
         @Override
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
+            if(opcao.equals(BOTAO_ALTERAR)) {
+                int pegaLinha = tabelaCandidatos.getSelectedRow();
+                Object teste2 = tabelaCandidatos.getValueAt(pegaLinha, 0);
+                int codigoRemover = (Integer)teste2;
+                ControladorCandidato.getInstancia().alteraCandidato(ControladorCandidato.getInstancia().buscaCandidatoPeloNumero(codigoRemover));
+                
+            }
             if(opcao.equals(BOTAO_DELETAR)) {
                 int pegaLinha = tabelaCandidatos.getSelectedRow();
                 Object teste2 = tabelaCandidatos.getValueAt(pegaLinha, 0);

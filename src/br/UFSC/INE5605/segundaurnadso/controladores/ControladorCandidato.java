@@ -30,7 +30,6 @@ public class ControladorCandidato{
            Candidato candidato = new Candidato(nome, partido, numeroCandidato);
            if(CandidatoDAO.getInstancia().get(numeroCandidato) == null ){
                CandidatoDAO.getInstancia().put(candidato);
-               TelaCadastraCandidato.getInstancia().mensagemOK();
            } else {
                TelaCadastraCandidato.getInstancia().mensagemErro();
            }
@@ -71,9 +70,6 @@ public class ControladorCandidato{
         return CandidatoDAO.getInstancia().getList();
     }
 
-    public String getNome(Candidato candidato) {
-        return candidato.getNome();
-    }
     public static ControladorCandidato getInstancia() {
         if (instancia == null) {
             instancia = new ControladorCandidato();
@@ -85,6 +81,17 @@ public class ControladorCandidato{
         ControladorPrincipal.getInstancia().exibeTelaCadastro();
     }
 
+    public void alteraCandidato(Candidato candidato) {
+        TelaCadastraCandidato.getInstancia().alteraCandidato(candidato.getNumeroCandidato());
+        TelaCadastraCandidato.getInstancia().setVisible(true);
+        
+    }
     
+    public String getNome(Candidato candidato) {
+        return candidato.getNome();
+    }
 
+    public Integer getNumero(Candidato candidato) {
+        return candidato.getNumeroCandidato();
+    }
 }

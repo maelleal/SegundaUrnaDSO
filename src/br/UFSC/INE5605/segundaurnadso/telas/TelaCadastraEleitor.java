@@ -37,6 +37,7 @@ public class TelaCadastraEleitor extends JFrame {
     private JLabel txtTituloEleitor;
     private GerenciaBotoes gerenciador;
     private Dimension tamanhoBotao = new Dimension(280, 80);
+     private boolean verificaAlteração = false;
 
     private TelaCadastraEleitor() {
         super("Tela de Cadastro de Eleitor");
@@ -98,10 +99,25 @@ public class TelaCadastraEleitor extends JFrame {
         setLocationRelativeTo(null);
     }
     
+    public void alteraEleitor(Integer tituloEleitoralAlterado){
+        verificaAlteração = true;
+        ControladorEleitor.getInstancia().buscaEleitorPeloTitulo(tituloEleitoralAlterado);
+        nomeEleitor.setText(ControladorEleitor.getInstancia().getNome(ControladorEleitor.getInstancia().buscaEleitorPeloTitulo(tituloEleitoralAlterado)));
+        tituloEleitor.setText(String.valueOf(ControladorEleitor.getInstancia().getTituloEleitoral(ControladorEleitor.getInstancia().buscaEleitorPeloTitulo(tituloEleitoralAlterado))));
+        ControladorEleitor.getInstancia().excluiEleitor(tituloEleitoralAlterado);
+        dispose();
+    }
+    
     public void mensagemOK() {
         JOptionPane.showMessageDialog(null, "Eleitor Cadastrado com sucesso!", "Cadastro Salvo", JOptionPane.DEFAULT_OPTION);
-        TelaEleitor.getInstancia().setVisible(true);
-            dispose();
+        ControladorEleitor.getInstancia().exibeTelaEleitor();
+        dispose();
+    }
+    
+    public void mensagemAlteracaoOK() {
+        JOptionPane.showMessageDialog(null, "Eleitor Alterado com sucesso!", "Cadastro Salvo", JOptionPane.DEFAULT_OPTION);
+        ControladorEleitor.getInstancia().exibeTelaPesquisaEleitor();
+        dispose();
     }
 
     public void mensagemErro() {
@@ -123,12 +139,16 @@ public class TelaCadastraEleitor extends JFrame {
                     if(nomeEleitor.getText().equals("")) {
                         nomeEleitor.setText("");
                         JOptionPane.showMessageDialog(null, "Favor, preencher todos os campos!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
+                    } else if (verificaAlteração) {
+                        ControladorEleitor.getInstancia().cadastraEleitor(numero, nomeDigitado);
+                        nomeEleitor.setText("");
+                        tituloEleitor.setText("");
+                        mensagemAlteracaoOK();
                     }else {
                         ControladorEleitor.getInstancia().cadastraEleitor(numero, nomeDigitado);
                         ControladorEleitor.getInstancia().exibeTelaEleitor();
                         nomeEleitor.setText("");
                         tituloEleitor.setText("");
-                        dispose();
                     }
                 } catch (NumberFormatException erro) {
                     JOptionPane.showMessageDialog(null, "Somente numeros entre 1 e 99999999!", "Erro ao Cadastrar", ERROR_MESSAGE);

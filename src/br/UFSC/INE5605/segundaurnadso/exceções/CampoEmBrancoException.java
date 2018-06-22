@@ -9,9 +9,9 @@ package br.UFSC.INE5605.segundaurnadso.exceções;
  *
  * @author Ivo Guilherme
  */
-public class CaracterNaoEhInteiroException extends Exception {
+public class CampoEmBrancoException extends Exception {
     
-    public CaracterNaoEhInteiroException (String texto) {
+    public CampoEmBrancoException (String texto) {
         super(texto);
     }
 }

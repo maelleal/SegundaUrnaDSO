@@ -6,7 +6,7 @@
 package br.UFSC.INE5605.SegundaUrnaDSO.telas;
 
 import br.UFSC.INE5605.SegundaUrnaDSO.controladores.ControladorPartido;
-import br.UFSC.INE5605.segundaurnadso.exceções.CaracterNaoEhInteiroException;
+import br.UFSC.INE5605.segundaurnadso.exceções.CampoEmBrancoException;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -131,7 +131,6 @@ public class TelaCadastraPartido extends JFrame{
                 try {
                     int numero = Integer.parseInt(codigoPartido.getText());
                     if(numero < 0 && numero > 99 ){
-                        //throw new CaracterNaoEhInteiroException ("Código apenas com números inteiros de 1 a 99");
                         codigoPartido.setText("");
                         JOptionPane.showMessageDialog(null, "Código apenas com números inteiros de 1 a 99!", "Erro ao Cadastrar", JOptionPane.ERROR_MESSAGE);
                     }
@@ -161,6 +160,7 @@ public class TelaCadastraPartido extends JFrame{
                 dispose();
             }
         }
+        
     }
     
     public static TelaCadastraPartido getInstancia(){

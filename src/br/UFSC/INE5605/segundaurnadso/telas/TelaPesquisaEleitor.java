@@ -121,8 +121,11 @@ public class TelaPesquisaEleitor extends JFrame {
         public void actionPerformed(ActionEvent evento) {
             String opcao = evento.getActionCommand();
             if(opcao.equals(BOTAO_ALTERAR)) {
-                //ControladorEleitor.getInstancia().alterarEleitor();
-                dispose();
+                int pegaLinha = tabelaEleitores.getSelectedRow();
+                Object teste2 = tabelaEleitores.getValueAt(pegaLinha, 0);
+                int codigoRemover = (Integer)teste2;
+                ControladorEleitor.getInstancia().alteraEleitor(ControladorEleitor.getInstancia().buscaEleitorPeloTitulo(codigoRemover));
+                
             }
             if(opcao.equals(BOTAO_DELETAR)) {
                 int pegaLinha = tabelaEleitores.getSelectedRow();

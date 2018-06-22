@@ -29,7 +29,6 @@ public class ControladorEleitor {
         Eleitor eleitor = new Eleitor(tituloEleitoral, nome);
         if(EleitorDAO.getInstancia().get(tituloEleitoral)== null){
             EleitorDAO.getInstancia().put(eleitor);
-            TelaCadastraEleitor.getInstancia().mensagemOK();
         } else {
             TelaCadastraEleitor.getInstancia().mensagemErro();
         }
@@ -97,5 +96,19 @@ public class ControladorEleitor {
     public void exibeTelaVerificaEleitor() {
         TelaVerificaEleitor.getInstancia().setVisible(true);
     }
+
+    public void alteraEleitor(Eleitor eleitor) {
+        TelaCadastraEleitor.getInstancia().alteraEleitor(eleitor.getTituloEleitoral());
+        TelaCadastraEleitor.getInstancia().setVisible(true);
+        
+    }
+    
+    public String getNome(Eleitor eleitor) {
+        return eleitor.getNome();
+    }
+    public Integer getTituloEleitoral(Eleitor eleitor) {
+        return eleitor.getTituloEleitoral();
+    }
+    
     
 }
